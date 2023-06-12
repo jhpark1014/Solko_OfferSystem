@@ -1,0 +1,2284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.solidkorea.co.kr/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.solidkorea.co.kr/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.solidkorea.co.kr/">
+      <s:element name="V2_GetConnectionString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dbname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="V2_GetConnectionStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="V2_GetConnectionStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_SendMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mailTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="body" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_SendMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_SendMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_SendMail_Internal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="emailGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="titlePrefix" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_SendMail_InternalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_SendMail_InternalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_SendMail_External">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="emailGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="titlePrefix" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_SendMail_ExternalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_SendMail_ExternalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetDepartments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deptname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetDepartmentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_GetDepartmentsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetExpireDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serialKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetExpireDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_GetExpireDateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetExpireAbout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dateStart" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateEnd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="containTechSupportYES" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetExpireAboutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_GetExpireAboutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_FindOneAsGuidString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entityName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_FindOneAsGuidStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_FindOneAsGuidStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetUserData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetUserDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_GetUserDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetUserName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetUserNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_GetUserNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetUserMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetUserMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_GetUserMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetOneDataSimple">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entityName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="getColumnName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetOneDataSimpleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_GetOneDataSimpleResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_Create_Campaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_Create_CampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_Create_CampaignResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_Create_CampaignActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="campaign_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="typecode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="channeltypecode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="willStart" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="willEnd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_Create_CampaignActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_Create_CampaignActivityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_Create_EMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_Create_EMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_Create_EMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_UpdateData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyColName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateColName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateColType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateColValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_UpdateDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CRM_UpdateData_Toggle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyColName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateColName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_UpdateData_ToggleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_UpdateData_ToggleResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetMailData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="emailGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_GetMailDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_GetMailDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_FindScheduledMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="workDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_FindScheduledMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_FindScheduledMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_FindCampaignActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entityname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="parentGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="findColumnName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="findCondition" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_FindCampaignActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_FindCampaignActivityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_FindScheduledMail_V2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="workDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_FindScheduledMail_V2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_FindScheduledMail_V2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_FindScheduledMail_From_CampaignActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_FindScheduledMail_From_CampaignActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_FindScheduledMail_From_CampaignActivityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_SendMail_using_CampaignActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_SendMail_using_CampaignActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_SendMail_using_CampaignActivityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_SendScheduledMail_using_CampaignActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_SendScheduledMail_using_CampaignActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_SendScheduledMail_using_CampaignActivityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_SendScheduledMail_Internal_using_CampaignActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="caid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="allOrReady" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="titlePrefix" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRM_SendScheduledMail_Internal_using_CampaignActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRM_SendScheduledMail_Internal_using_CampaignActivityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNextString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="test" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNextStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNextStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPrevString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="test" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPrevStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPrevStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="V2_GetConnectionStringSoapIn">
+    <wsdl:part name="parameters" element="tns:V2_GetConnectionString" />
+  </wsdl:message>
+  <wsdl:message name="V2_GetConnectionStringSoapOut">
+    <wsdl:part name="parameters" element="tns:V2_GetConnectionStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMailSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_SendMail" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMailSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_SendMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_InternalSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_SendMail_Internal" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_InternalSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_SendMail_InternalResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_ExternalSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_SendMail_External" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_ExternalSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_SendMail_ExternalResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetDepartmentsSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_GetDepartments" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetDepartmentsSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_GetDepartmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetExpireDateSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_GetExpireDate" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetExpireDateSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_GetExpireDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetExpireAboutSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_GetExpireAbout" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetExpireAboutSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_GetExpireAboutResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindOneAsGuidStringSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_FindOneAsGuidString" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindOneAsGuidStringSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_FindOneAsGuidStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserDataSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_GetUserData" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserDataSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_GetUserDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserNameSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_GetUserName" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserNameSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_GetUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserMailSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_GetUserMail" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserMailSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_GetUserMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetOneDataSimpleSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_GetOneDataSimple" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetOneDataSimpleSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_GetOneDataSimpleResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_CampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_Create_Campaign" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_CampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_Create_CampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_CampaignActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_Create_CampaignActivity" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_CampaignActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_Create_CampaignActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_EMailSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_Create_EMail" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_EMailSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_Create_EMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_UpdateDataSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_UpdateData" />
+  </wsdl:message>
+  <wsdl:message name="CRM_UpdateDataSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_UpdateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_UpdateData_ToggleSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_UpdateData_Toggle" />
+  </wsdl:message>
+  <wsdl:message name="CRM_UpdateData_ToggleSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_UpdateData_ToggleResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetMailDataSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_GetMailData" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetMailDataSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_GetMailDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMailSoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_FindScheduledMail" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMailSoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_FindScheduledMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindCampaignActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_FindCampaignActivity" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindCampaignActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_FindCampaignActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMail_V2SoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_FindScheduledMail_V2" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMail_V2SoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_FindScheduledMail_V2Response" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMail_From_CampaignActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_FindScheduledMail_From_CampaignActivity" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMail_From_CampaignActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_FindScheduledMail_From_CampaignActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_using_CampaignActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_SendMail_using_CampaignActivity" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_using_CampaignActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_SendMail_using_CampaignActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendScheduledMail_using_CampaignActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_SendScheduledMail_using_CampaignActivity" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendScheduledMail_using_CampaignActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_SendScheduledMail_using_CampaignActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendScheduledMail_Internal_using_CampaignActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:CRM_SendScheduledMail_Internal_using_CampaignActivity" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendScheduledMail_Internal_using_CampaignActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:CRM_SendScheduledMail_Internal_using_CampaignActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNextStringSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNextString" />
+  </wsdl:message>
+  <wsdl:message name="GetNextStringSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNextStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPrevStringSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPrevString" />
+  </wsdl:message>
+  <wsdl:message name="GetPrevStringSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPrevStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="V2_GetConnectionStringHttpGetIn">
+    <wsdl:part name="dbname" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="V2_GetConnectionStringHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMailHttpGetIn">
+    <wsdl:part name="mailTo" type="s:string" />
+    <wsdl:part name="body" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_InternalHttpGetIn">
+    <wsdl:part name="emailGuid" type="s:string" />
+    <wsdl:part name="titlePrefix" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_InternalHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_ExternalHttpGetIn">
+    <wsdl:part name="emailGuid" type="s:string" />
+    <wsdl:part name="titlePrefix" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_ExternalHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetDepartmentsHttpGetIn">
+    <wsdl:part name="deptname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetDepartmentsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetExpireDateHttpGetIn">
+    <wsdl:part name="serialKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetExpireDateHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetExpireAboutHttpGetIn">
+    <wsdl:part name="dateStart" type="s:string" />
+    <wsdl:part name="dateEnd" type="s:string" />
+    <wsdl:part name="accountGuid" type="s:string" />
+    <wsdl:part name="containTechSupportYES" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetExpireAboutHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindOneAsGuidStringHttpGetIn">
+    <wsdl:part name="entityName" type="s:string" />
+    <wsdl:part name="keyName" type="s:string" />
+    <wsdl:part name="keyValue" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindOneAsGuidStringHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserDataHttpGetIn">
+    <wsdl:part name="userGuid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserNameHttpGetIn">
+    <wsdl:part name="userGuid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserMailHttpGetIn">
+    <wsdl:part name="userGuid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetOneDataSimpleHttpGetIn">
+    <wsdl:part name="entityName" type="s:string" />
+    <wsdl:part name="getColumnName" type="s:string" />
+    <wsdl:part name="keyName" type="s:string" />
+    <wsdl:part name="keyValue" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetOneDataSimpleHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_CampaignHttpGetIn">
+    <wsdl:part name="key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_CampaignHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_CampaignActivityHttpGetIn">
+    <wsdl:part name="campaign_guid" type="s:string" />
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="subject" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="typecode" type="s:string" />
+    <wsdl:part name="channeltypecode" type="s:string" />
+    <wsdl:part name="willStart" type="s:string" />
+    <wsdl:part name="willEnd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_CampaignActivityHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_EMailHttpGetIn">
+    <wsdl:part name="data" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_EMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_UpdateDataHttpGetIn">
+    <wsdl:part name="ename" type="s:string" />
+    <wsdl:part name="keyColName" type="s:string" />
+    <wsdl:part name="keyValue" type="s:string" />
+    <wsdl:part name="updateColName" type="s:string" />
+    <wsdl:part name="updateColType" type="s:string" />
+    <wsdl:part name="updateColValue" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_UpdateDataHttpGetOut" />
+  <wsdl:message name="CRM_UpdateData_ToggleHttpGetIn">
+    <wsdl:part name="ename" type="s:string" />
+    <wsdl:part name="keyColName" type="s:string" />
+    <wsdl:part name="keyValue" type="s:string" />
+    <wsdl:part name="updateColName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_UpdateData_ToggleHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetMailDataHttpGetIn">
+    <wsdl:part name="emailGuid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetMailDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMailHttpGetIn">
+    <wsdl:part name="workDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindCampaignActivityHttpGetIn">
+    <wsdl:part name="entityname" type="s:string" />
+    <wsdl:part name="parentGuid" type="s:string" />
+    <wsdl:part name="findColumnName" type="s:string" />
+    <wsdl:part name="findCondition" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindCampaignActivityHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMail_V2HttpGetIn">
+    <wsdl:part name="workDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMail_V2HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMail_From_CampaignActivityHttpGetIn">
+    <wsdl:part name="caid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMail_From_CampaignActivityHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_using_CampaignActivityHttpGetIn">
+    <wsdl:part name="caid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_using_CampaignActivityHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendScheduledMail_using_CampaignActivityHttpGetIn">
+    <wsdl:part name="caid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendScheduledMail_using_CampaignActivityHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendScheduledMail_Internal_using_CampaignActivityHttpGetIn">
+    <wsdl:part name="caid" type="s:string" />
+    <wsdl:part name="allOrReady" type="s:string" />
+    <wsdl:part name="titlePrefix" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendScheduledMail_Internal_using_CampaignActivityHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNextStringHttpGetIn">
+    <wsdl:part name="test" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNextStringHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPrevStringHttpGetIn">
+    <wsdl:part name="test" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPrevStringHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="V2_GetConnectionStringHttpPostIn">
+    <wsdl:part name="dbname" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="V2_GetConnectionStringHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMailHttpPostIn">
+    <wsdl:part name="mailTo" type="s:string" />
+    <wsdl:part name="body" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_InternalHttpPostIn">
+    <wsdl:part name="emailGuid" type="s:string" />
+    <wsdl:part name="titlePrefix" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_InternalHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_ExternalHttpPostIn">
+    <wsdl:part name="emailGuid" type="s:string" />
+    <wsdl:part name="titlePrefix" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_ExternalHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetDepartmentsHttpPostIn">
+    <wsdl:part name="deptname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetDepartmentsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetExpireDateHttpPostIn">
+    <wsdl:part name="serialKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetExpireDateHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetExpireAboutHttpPostIn">
+    <wsdl:part name="dateStart" type="s:string" />
+    <wsdl:part name="dateEnd" type="s:string" />
+    <wsdl:part name="accountGuid" type="s:string" />
+    <wsdl:part name="containTechSupportYES" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetExpireAboutHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindOneAsGuidStringHttpPostIn">
+    <wsdl:part name="entityName" type="s:string" />
+    <wsdl:part name="keyName" type="s:string" />
+    <wsdl:part name="keyValue" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindOneAsGuidStringHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserDataHttpPostIn">
+    <wsdl:part name="userGuid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserNameHttpPostIn">
+    <wsdl:part name="userGuid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserMailHttpPostIn">
+    <wsdl:part name="userGuid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetUserMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetOneDataSimpleHttpPostIn">
+    <wsdl:part name="entityName" type="s:string" />
+    <wsdl:part name="getColumnName" type="s:string" />
+    <wsdl:part name="keyName" type="s:string" />
+    <wsdl:part name="keyValue" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetOneDataSimpleHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_CampaignHttpPostIn">
+    <wsdl:part name="key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_CampaignHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_CampaignActivityHttpPostIn">
+    <wsdl:part name="campaign_guid" type="s:string" />
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="subject" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="typecode" type="s:string" />
+    <wsdl:part name="channeltypecode" type="s:string" />
+    <wsdl:part name="willStart" type="s:string" />
+    <wsdl:part name="willEnd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_CampaignActivityHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_EMailHttpPostIn">
+    <wsdl:part name="data" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_Create_EMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_UpdateDataHttpPostIn">
+    <wsdl:part name="ename" type="s:string" />
+    <wsdl:part name="keyColName" type="s:string" />
+    <wsdl:part name="keyValue" type="s:string" />
+    <wsdl:part name="updateColName" type="s:string" />
+    <wsdl:part name="updateColType" type="s:string" />
+    <wsdl:part name="updateColValue" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_UpdateDataHttpPostOut" />
+  <wsdl:message name="CRM_UpdateData_ToggleHttpPostIn">
+    <wsdl:part name="ename" type="s:string" />
+    <wsdl:part name="keyColName" type="s:string" />
+    <wsdl:part name="keyValue" type="s:string" />
+    <wsdl:part name="updateColName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_UpdateData_ToggleHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetMailDataHttpPostIn">
+    <wsdl:part name="emailGuid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_GetMailDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMailHttpPostIn">
+    <wsdl:part name="workDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindCampaignActivityHttpPostIn">
+    <wsdl:part name="entityname" type="s:string" />
+    <wsdl:part name="parentGuid" type="s:string" />
+    <wsdl:part name="findColumnName" type="s:string" />
+    <wsdl:part name="findCondition" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindCampaignActivityHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMail_V2HttpPostIn">
+    <wsdl:part name="workDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMail_V2HttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMail_From_CampaignActivityHttpPostIn">
+    <wsdl:part name="caid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_FindScheduledMail_From_CampaignActivityHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_using_CampaignActivityHttpPostIn">
+    <wsdl:part name="caid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendMail_using_CampaignActivityHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendScheduledMail_using_CampaignActivityHttpPostIn">
+    <wsdl:part name="caid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendScheduledMail_using_CampaignActivityHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendScheduledMail_Internal_using_CampaignActivityHttpPostIn">
+    <wsdl:part name="caid" type="s:string" />
+    <wsdl:part name="allOrReady" type="s:string" />
+    <wsdl:part name="titlePrefix" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CRM_SendScheduledMail_Internal_using_CampaignActivityHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNextStringHttpPostIn">
+    <wsdl:part name="test" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNextStringHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPrevStringHttpPostIn">
+    <wsdl:part name="test" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPrevStringHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="CRMServiceSoap">
+    <wsdl:operation name="V2_GetConnectionString">
+      <wsdl:input message="tns:V2_GetConnectionStringSoapIn" />
+      <wsdl:output message="tns:V2_GetConnectionStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail">
+      <wsdl:input message="tns:CRM_SendMailSoapIn" />
+      <wsdl:output message="tns:CRM_SendMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_Internal">
+      <wsdl:input message="tns:CRM_SendMail_InternalSoapIn" />
+      <wsdl:output message="tns:CRM_SendMail_InternalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_External">
+      <wsdl:input message="tns:CRM_SendMail_ExternalSoapIn" />
+      <wsdl:output message="tns:CRM_SendMail_ExternalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetDepartments">
+      <wsdl:input message="tns:CRM_GetDepartmentsSoapIn" />
+      <wsdl:output message="tns:CRM_GetDepartmentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireDate">
+      <wsdl:input message="tns:CRM_GetExpireDateSoapIn" />
+      <wsdl:output message="tns:CRM_GetExpireDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireAbout">
+      <wsdl:input message="tns:CRM_GetExpireAboutSoapIn" />
+      <wsdl:output message="tns:CRM_GetExpireAboutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindOneAsGuidString">
+      <wsdl:input message="tns:CRM_FindOneAsGuidStringSoapIn" />
+      <wsdl:output message="tns:CRM_FindOneAsGuidStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserData">
+      <wsdl:input message="tns:CRM_GetUserDataSoapIn" />
+      <wsdl:output message="tns:CRM_GetUserDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserName">
+      <wsdl:input message="tns:CRM_GetUserNameSoapIn" />
+      <wsdl:output message="tns:CRM_GetUserNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserMail">
+      <wsdl:input message="tns:CRM_GetUserMailSoapIn" />
+      <wsdl:output message="tns:CRM_GetUserMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetOneDataSimple">
+      <wsdl:input message="tns:CRM_GetOneDataSimpleSoapIn" />
+      <wsdl:output message="tns:CRM_GetOneDataSimpleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_Campaign">
+      <wsdl:input message="tns:CRM_Create_CampaignSoapIn" />
+      <wsdl:output message="tns:CRM_Create_CampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_CampaignActivity">
+      <wsdl:input message="tns:CRM_Create_CampaignActivitySoapIn" />
+      <wsdl:output message="tns:CRM_Create_CampaignActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_EMail">
+      <wsdl:input message="tns:CRM_Create_EMailSoapIn" />
+      <wsdl:output message="tns:CRM_Create_EMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData">
+      <wsdl:input message="tns:CRM_UpdateDataSoapIn" />
+      <wsdl:output message="tns:CRM_UpdateDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData_Toggle">
+      <wsdl:input message="tns:CRM_UpdateData_ToggleSoapIn" />
+      <wsdl:output message="tns:CRM_UpdateData_ToggleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetMailData">
+      <wsdl:input message="tns:CRM_GetMailDataSoapIn" />
+      <wsdl:output message="tns:CRM_GetMailDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail">
+      <wsdl:input message="tns:CRM_FindScheduledMailSoapIn" />
+      <wsdl:output message="tns:CRM_FindScheduledMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindCampaignActivity">
+      <wsdl:input message="tns:CRM_FindCampaignActivitySoapIn" />
+      <wsdl:output message="tns:CRM_FindCampaignActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_V2">
+      <wsdl:input message="tns:CRM_FindScheduledMail_V2SoapIn" />
+      <wsdl:output message="tns:CRM_FindScheduledMail_V2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_From_CampaignActivity">
+      <wsdl:input message="tns:CRM_FindScheduledMail_From_CampaignActivitySoapIn" />
+      <wsdl:output message="tns:CRM_FindScheduledMail_From_CampaignActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_using_CampaignActivity">
+      <wsdl:input message="tns:CRM_SendMail_using_CampaignActivitySoapIn" />
+      <wsdl:output message="tns:CRM_SendMail_using_CampaignActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_using_CampaignActivity">
+      <wsdl:input message="tns:CRM_SendScheduledMail_using_CampaignActivitySoapIn" />
+      <wsdl:output message="tns:CRM_SendScheduledMail_using_CampaignActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_Internal_using_CampaignActivity">
+      <wsdl:input message="tns:CRM_SendScheduledMail_Internal_using_CampaignActivitySoapIn" />
+      <wsdl:output message="tns:CRM_SendScheduledMail_Internal_using_CampaignActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNextString">
+      <wsdl:input message="tns:GetNextStringSoapIn" />
+      <wsdl:output message="tns:GetNextStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrevString">
+      <wsdl:input message="tns:GetPrevStringSoapIn" />
+      <wsdl:output message="tns:GetPrevStringSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CRMServiceHttpGet">
+    <wsdl:operation name="V2_GetConnectionString">
+      <wsdl:input message="tns:V2_GetConnectionStringHttpGetIn" />
+      <wsdl:output message="tns:V2_GetConnectionStringHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail">
+      <wsdl:input message="tns:CRM_SendMailHttpGetIn" />
+      <wsdl:output message="tns:CRM_SendMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_Internal">
+      <wsdl:input message="tns:CRM_SendMail_InternalHttpGetIn" />
+      <wsdl:output message="tns:CRM_SendMail_InternalHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_External">
+      <wsdl:input message="tns:CRM_SendMail_ExternalHttpGetIn" />
+      <wsdl:output message="tns:CRM_SendMail_ExternalHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetDepartments">
+      <wsdl:input message="tns:CRM_GetDepartmentsHttpGetIn" />
+      <wsdl:output message="tns:CRM_GetDepartmentsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireDate">
+      <wsdl:input message="tns:CRM_GetExpireDateHttpGetIn" />
+      <wsdl:output message="tns:CRM_GetExpireDateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireAbout">
+      <wsdl:input message="tns:CRM_GetExpireAboutHttpGetIn" />
+      <wsdl:output message="tns:CRM_GetExpireAboutHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindOneAsGuidString">
+      <wsdl:input message="tns:CRM_FindOneAsGuidStringHttpGetIn" />
+      <wsdl:output message="tns:CRM_FindOneAsGuidStringHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserData">
+      <wsdl:input message="tns:CRM_GetUserDataHttpGetIn" />
+      <wsdl:output message="tns:CRM_GetUserDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserName">
+      <wsdl:input message="tns:CRM_GetUserNameHttpGetIn" />
+      <wsdl:output message="tns:CRM_GetUserNameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserMail">
+      <wsdl:input message="tns:CRM_GetUserMailHttpGetIn" />
+      <wsdl:output message="tns:CRM_GetUserMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetOneDataSimple">
+      <wsdl:input message="tns:CRM_GetOneDataSimpleHttpGetIn" />
+      <wsdl:output message="tns:CRM_GetOneDataSimpleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_Campaign">
+      <wsdl:input message="tns:CRM_Create_CampaignHttpGetIn" />
+      <wsdl:output message="tns:CRM_Create_CampaignHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_CampaignActivity">
+      <wsdl:input message="tns:CRM_Create_CampaignActivityHttpGetIn" />
+      <wsdl:output message="tns:CRM_Create_CampaignActivityHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_EMail">
+      <wsdl:input message="tns:CRM_Create_EMailHttpGetIn" />
+      <wsdl:output message="tns:CRM_Create_EMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData">
+      <wsdl:input message="tns:CRM_UpdateDataHttpGetIn" />
+      <wsdl:output message="tns:CRM_UpdateDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData_Toggle">
+      <wsdl:input message="tns:CRM_UpdateData_ToggleHttpGetIn" />
+      <wsdl:output message="tns:CRM_UpdateData_ToggleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetMailData">
+      <wsdl:input message="tns:CRM_GetMailDataHttpGetIn" />
+      <wsdl:output message="tns:CRM_GetMailDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail">
+      <wsdl:input message="tns:CRM_FindScheduledMailHttpGetIn" />
+      <wsdl:output message="tns:CRM_FindScheduledMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindCampaignActivity">
+      <wsdl:input message="tns:CRM_FindCampaignActivityHttpGetIn" />
+      <wsdl:output message="tns:CRM_FindCampaignActivityHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_V2">
+      <wsdl:input message="tns:CRM_FindScheduledMail_V2HttpGetIn" />
+      <wsdl:output message="tns:CRM_FindScheduledMail_V2HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_From_CampaignActivity">
+      <wsdl:input message="tns:CRM_FindScheduledMail_From_CampaignActivityHttpGetIn" />
+      <wsdl:output message="tns:CRM_FindScheduledMail_From_CampaignActivityHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_using_CampaignActivity">
+      <wsdl:input message="tns:CRM_SendMail_using_CampaignActivityHttpGetIn" />
+      <wsdl:output message="tns:CRM_SendMail_using_CampaignActivityHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_using_CampaignActivity">
+      <wsdl:input message="tns:CRM_SendScheduledMail_using_CampaignActivityHttpGetIn" />
+      <wsdl:output message="tns:CRM_SendScheduledMail_using_CampaignActivityHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_Internal_using_CampaignActivity">
+      <wsdl:input message="tns:CRM_SendScheduledMail_Internal_using_CampaignActivityHttpGetIn" />
+      <wsdl:output message="tns:CRM_SendScheduledMail_Internal_using_CampaignActivityHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNextString">
+      <wsdl:input message="tns:GetNextStringHttpGetIn" />
+      <wsdl:output message="tns:GetNextStringHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrevString">
+      <wsdl:input message="tns:GetPrevStringHttpGetIn" />
+      <wsdl:output message="tns:GetPrevStringHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CRMServiceHttpPost">
+    <wsdl:operation name="V2_GetConnectionString">
+      <wsdl:input message="tns:V2_GetConnectionStringHttpPostIn" />
+      <wsdl:output message="tns:V2_GetConnectionStringHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail">
+      <wsdl:input message="tns:CRM_SendMailHttpPostIn" />
+      <wsdl:output message="tns:CRM_SendMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_Internal">
+      <wsdl:input message="tns:CRM_SendMail_InternalHttpPostIn" />
+      <wsdl:output message="tns:CRM_SendMail_InternalHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_External">
+      <wsdl:input message="tns:CRM_SendMail_ExternalHttpPostIn" />
+      <wsdl:output message="tns:CRM_SendMail_ExternalHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetDepartments">
+      <wsdl:input message="tns:CRM_GetDepartmentsHttpPostIn" />
+      <wsdl:output message="tns:CRM_GetDepartmentsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireDate">
+      <wsdl:input message="tns:CRM_GetExpireDateHttpPostIn" />
+      <wsdl:output message="tns:CRM_GetExpireDateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireAbout">
+      <wsdl:input message="tns:CRM_GetExpireAboutHttpPostIn" />
+      <wsdl:output message="tns:CRM_GetExpireAboutHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindOneAsGuidString">
+      <wsdl:input message="tns:CRM_FindOneAsGuidStringHttpPostIn" />
+      <wsdl:output message="tns:CRM_FindOneAsGuidStringHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserData">
+      <wsdl:input message="tns:CRM_GetUserDataHttpPostIn" />
+      <wsdl:output message="tns:CRM_GetUserDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserName">
+      <wsdl:input message="tns:CRM_GetUserNameHttpPostIn" />
+      <wsdl:output message="tns:CRM_GetUserNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserMail">
+      <wsdl:input message="tns:CRM_GetUserMailHttpPostIn" />
+      <wsdl:output message="tns:CRM_GetUserMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetOneDataSimple">
+      <wsdl:input message="tns:CRM_GetOneDataSimpleHttpPostIn" />
+      <wsdl:output message="tns:CRM_GetOneDataSimpleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_Campaign">
+      <wsdl:input message="tns:CRM_Create_CampaignHttpPostIn" />
+      <wsdl:output message="tns:CRM_Create_CampaignHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_CampaignActivity">
+      <wsdl:input message="tns:CRM_Create_CampaignActivityHttpPostIn" />
+      <wsdl:output message="tns:CRM_Create_CampaignActivityHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_EMail">
+      <wsdl:input message="tns:CRM_Create_EMailHttpPostIn" />
+      <wsdl:output message="tns:CRM_Create_EMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData">
+      <wsdl:input message="tns:CRM_UpdateDataHttpPostIn" />
+      <wsdl:output message="tns:CRM_UpdateDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData_Toggle">
+      <wsdl:input message="tns:CRM_UpdateData_ToggleHttpPostIn" />
+      <wsdl:output message="tns:CRM_UpdateData_ToggleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetMailData">
+      <wsdl:input message="tns:CRM_GetMailDataHttpPostIn" />
+      <wsdl:output message="tns:CRM_GetMailDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail">
+      <wsdl:input message="tns:CRM_FindScheduledMailHttpPostIn" />
+      <wsdl:output message="tns:CRM_FindScheduledMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindCampaignActivity">
+      <wsdl:input message="tns:CRM_FindCampaignActivityHttpPostIn" />
+      <wsdl:output message="tns:CRM_FindCampaignActivityHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_V2">
+      <wsdl:input message="tns:CRM_FindScheduledMail_V2HttpPostIn" />
+      <wsdl:output message="tns:CRM_FindScheduledMail_V2HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_From_CampaignActivity">
+      <wsdl:input message="tns:CRM_FindScheduledMail_From_CampaignActivityHttpPostIn" />
+      <wsdl:output message="tns:CRM_FindScheduledMail_From_CampaignActivityHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_using_CampaignActivity">
+      <wsdl:input message="tns:CRM_SendMail_using_CampaignActivityHttpPostIn" />
+      <wsdl:output message="tns:CRM_SendMail_using_CampaignActivityHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_using_CampaignActivity">
+      <wsdl:input message="tns:CRM_SendScheduledMail_using_CampaignActivityHttpPostIn" />
+      <wsdl:output message="tns:CRM_SendScheduledMail_using_CampaignActivityHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_Internal_using_CampaignActivity">
+      <wsdl:input message="tns:CRM_SendScheduledMail_Internal_using_CampaignActivityHttpPostIn" />
+      <wsdl:output message="tns:CRM_SendScheduledMail_Internal_using_CampaignActivityHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNextString">
+      <wsdl:input message="tns:GetNextStringHttpPostIn" />
+      <wsdl:output message="tns:GetNextStringHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrevString">
+      <wsdl:input message="tns:GetPrevStringHttpPostIn" />
+      <wsdl:output message="tns:GetPrevStringHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CRMServiceSoap" type="tns:CRMServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="V2_GetConnectionString">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/V2_GetConnectionString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_SendMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_Internal">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_SendMail_Internal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_External">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_SendMail_External" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetDepartments">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_GetDepartments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireDate">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_GetExpireDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireAbout">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_GetExpireAbout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindOneAsGuidString">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_FindOneAsGuidString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserData">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_GetUserData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserName">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_GetUserName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserMail">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_GetUserMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetOneDataSimple">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_GetOneDataSimple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_Campaign">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_Create_Campaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_CampaignActivity">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_Create_CampaignActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_EMail">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_Create_EMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_UpdateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData_Toggle">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_UpdateData_Toggle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetMailData">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_GetMailData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_FindScheduledMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindCampaignActivity">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_FindCampaignActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_V2">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_FindScheduledMail_V2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_From_CampaignActivity">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_FindScheduledMail_From_CampaignActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_using_CampaignActivity">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_SendMail_using_CampaignActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_using_CampaignActivity">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_SendScheduledMail_using_CampaignActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_Internal_using_CampaignActivity">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/CRM_SendScheduledMail_Internal_using_CampaignActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNextString">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/GetNextString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrevString">
+      <soap:operation soapAction="http://www.solidkorea.co.kr/GetPrevString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CRMServiceSoap12" type="tns:CRMServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="V2_GetConnectionString">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/V2_GetConnectionString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_SendMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_Internal">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_SendMail_Internal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_External">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_SendMail_External" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetDepartments">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_GetDepartments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireDate">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_GetExpireDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireAbout">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_GetExpireAbout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindOneAsGuidString">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_FindOneAsGuidString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserData">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_GetUserData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserName">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_GetUserName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserMail">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_GetUserMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetOneDataSimple">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_GetOneDataSimple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_Campaign">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_Create_Campaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_CampaignActivity">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_Create_CampaignActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_EMail">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_Create_EMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_UpdateData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData_Toggle">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_UpdateData_Toggle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetMailData">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_GetMailData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_FindScheduledMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindCampaignActivity">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_FindCampaignActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_V2">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_FindScheduledMail_V2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_From_CampaignActivity">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_FindScheduledMail_From_CampaignActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_using_CampaignActivity">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_SendMail_using_CampaignActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_using_CampaignActivity">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_SendScheduledMail_using_CampaignActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_Internal_using_CampaignActivity">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/CRM_SendScheduledMail_Internal_using_CampaignActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNextString">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/GetNextString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrevString">
+      <soap12:operation soapAction="http://www.solidkorea.co.kr/GetPrevString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CRMServiceHttpGet" type="tns:CRMServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="V2_GetConnectionString">
+      <http:operation location="/V2_GetConnectionString" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail">
+      <http:operation location="/CRM_SendMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_Internal">
+      <http:operation location="/CRM_SendMail_Internal" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_External">
+      <http:operation location="/CRM_SendMail_External" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetDepartments">
+      <http:operation location="/CRM_GetDepartments" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireDate">
+      <http:operation location="/CRM_GetExpireDate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireAbout">
+      <http:operation location="/CRM_GetExpireAbout" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindOneAsGuidString">
+      <http:operation location="/CRM_FindOneAsGuidString" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserData">
+      <http:operation location="/CRM_GetUserData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserName">
+      <http:operation location="/CRM_GetUserName" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserMail">
+      <http:operation location="/CRM_GetUserMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetOneDataSimple">
+      <http:operation location="/CRM_GetOneDataSimple" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_Campaign">
+      <http:operation location="/CRM_Create_Campaign" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_CampaignActivity">
+      <http:operation location="/CRM_Create_CampaignActivity" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_EMail">
+      <http:operation location="/CRM_Create_EMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData">
+      <http:operation location="/CRM_UpdateData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData_Toggle">
+      <http:operation location="/CRM_UpdateData_Toggle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetMailData">
+      <http:operation location="/CRM_GetMailData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail">
+      <http:operation location="/CRM_FindScheduledMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindCampaignActivity">
+      <http:operation location="/CRM_FindCampaignActivity" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_V2">
+      <http:operation location="/CRM_FindScheduledMail_V2" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_From_CampaignActivity">
+      <http:operation location="/CRM_FindScheduledMail_From_CampaignActivity" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_using_CampaignActivity">
+      <http:operation location="/CRM_SendMail_using_CampaignActivity" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_using_CampaignActivity">
+      <http:operation location="/CRM_SendScheduledMail_using_CampaignActivity" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_Internal_using_CampaignActivity">
+      <http:operation location="/CRM_SendScheduledMail_Internal_using_CampaignActivity" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNextString">
+      <http:operation location="/GetNextString" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrevString">
+      <http:operation location="/GetPrevString" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CRMServiceHttpPost" type="tns:CRMServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="V2_GetConnectionString">
+      <http:operation location="/V2_GetConnectionString" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail">
+      <http:operation location="/CRM_SendMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_Internal">
+      <http:operation location="/CRM_SendMail_Internal" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_External">
+      <http:operation location="/CRM_SendMail_External" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetDepartments">
+      <http:operation location="/CRM_GetDepartments" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireDate">
+      <http:operation location="/CRM_GetExpireDate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetExpireAbout">
+      <http:operation location="/CRM_GetExpireAbout" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindOneAsGuidString">
+      <http:operation location="/CRM_FindOneAsGuidString" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserData">
+      <http:operation location="/CRM_GetUserData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserName">
+      <http:operation location="/CRM_GetUserName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetUserMail">
+      <http:operation location="/CRM_GetUserMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetOneDataSimple">
+      <http:operation location="/CRM_GetOneDataSimple" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_Campaign">
+      <http:operation location="/CRM_Create_Campaign" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_CampaignActivity">
+      <http:operation location="/CRM_Create_CampaignActivity" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_Create_EMail">
+      <http:operation location="/CRM_Create_EMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData">
+      <http:operation location="/CRM_UpdateData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="CRM_UpdateData_Toggle">
+      <http:operation location="/CRM_UpdateData_Toggle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_GetMailData">
+      <http:operation location="/CRM_GetMailData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail">
+      <http:operation location="/CRM_FindScheduledMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindCampaignActivity">
+      <http:operation location="/CRM_FindCampaignActivity" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_V2">
+      <http:operation location="/CRM_FindScheduledMail_V2" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_FindScheduledMail_From_CampaignActivity">
+      <http:operation location="/CRM_FindScheduledMail_From_CampaignActivity" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendMail_using_CampaignActivity">
+      <http:operation location="/CRM_SendMail_using_CampaignActivity" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_using_CampaignActivity">
+      <http:operation location="/CRM_SendScheduledMail_using_CampaignActivity" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRM_SendScheduledMail_Internal_using_CampaignActivity">
+      <http:operation location="/CRM_SendScheduledMail_Internal_using_CampaignActivity" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNextString">
+      <http:operation location="/GetNextString" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrevString">
+      <http:operation location="/GetPrevString" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CRMService">
+    <wsdl:port name="CRMServiceSoap" binding="tns:CRMServiceSoap">
+      <soap:address location="http://localhost:44755/CRMService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CRMServiceSoap12" binding="tns:CRMServiceSoap12">
+      <soap12:address location="http://localhost:44755/CRMService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CRMServiceHttpGet" binding="tns:CRMServiceHttpGet">
+      <http:address location="http://localhost:44755/CRMService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CRMServiceHttpPost" binding="tns:CRMServiceHttpPost">
+      <http:address location="http://localhost:44755/CRMService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,22 @@
+﻿.treestyle div {
+    /*height: 19px !important;*/
+    margin: 0px;
+    padding-bottom: 0px;
+}
+.modalBackground
+{
+    background-color:Gray;
+    filter:alpha(opacity=50);
+    opacity:0.7;
+}
+.pnlBackGround
+{
+ position:fixed;
+    top:10%;
+    left:10px;
+    width:300px;
+    height:125px;
+    text-align:center;
+    background-color:White;
+    border:solid 3px black;
+}

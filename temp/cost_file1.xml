@@ -1,0 +1,1406 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="_x0032_023.07.01-PLC_x002B_ALC">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Category" type="xs:string" minOccurs="0" />
+                <xs:element name="Product_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="PLC_List_Price" type="xs:string" minOccurs="0" />
+                <xs:element name="PLC_VAR_Price" type="xs:string" minOccurs="0" />
+                <xs:element name="ALC_List_Price" type="xs:string" minOccurs="0" />
+                <xs:element name="ALC_New_VAR_Price" type="xs:string" minOccurs="0" />
+                <xs:element name="ALC_VAR_Price" type="xs:string" minOccurs="0" />
+                <xs:element name="YLC_List_Price" type="xs:string" minOccurs="0" />
+                <xs:element name="YLC_VAR_Price" type="xs:string" minOccurs="0" />
+                <xs:element name="QLC_List_Price" type="xs:string" minOccurs="0" />
+                <xs:element name="QLC_VAR_Price" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Draftsight</Category>
+    <Product_Name>DraftSight Enterprise Network</Product_Name>
+    <PLC_List_Price>1554800</PLC_List_Price>
+    <PLC_VAR_Price>1010620</PLC_VAR_Price>
+    <ALC_List_Price>648700</ALC_List_Price>
+    <ALC_New_VAR_Price>421655</ALC_New_VAR_Price>
+    <ALC_VAR_Price>388701.04</ALC_VAR_Price>
+    <YLC_List_Price>908700</YLC_List_Price>
+    <YLC_VAR_Price>590109.78</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Draftsight</Category>
+    <Product_Name>DraftSight Enterprise Plus Network</Product_Name>
+    <PLC_List_Price>778700</PLC_List_Price>
+    <PLC_VAR_Price>506155</PLC_VAR_Price>
+    <ALC_List_Price>388700</ALC_List_Price>
+    <ALC_New_VAR_Price>252655</ALC_New_VAR_Price>
+    <ALC_VAR_Price>232714.69</ALC_VAR_Price>
+    <YLC_List_Price>518700</YLC_List_Price>
+    <YLC_VAR_Price>336636.3</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Draftsight</Category>
+    <Product_Name>DraftSight Mechanical Network</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>0</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>0</ALC_VAR_Price>
+    <YLC_List_Price>1235000</YLC_List_Price>
+    <YLC_VAR_Price>802750</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Draftsight</Category>
+    <Product_Name>DraftSight Premium</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>0</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>0</ALC_VAR_Price>
+    <YLC_List_Price>778700</YLC_List_Price>
+    <YLC_VAR_Price>506155</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Draftsight</Category>
+    <Product_Name>DraftSight Professional</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>0</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>0</ALC_VAR_Price>
+    <YLC_List_Price>388700</YLC_List_Price>
+    <YLC_VAR_Price>252655</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>CAM</Category>
+    <Product_Name>CAM Professional</Product_Name>
+    <PLC_List_Price>3276000</PLC_List_Price>
+    <PLC_VAR_Price>2129400</PLC_VAR_Price>
+    <ALC_List_Price>780000</ALC_List_Price>
+    <ALC_New_VAR_Price>507000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>468000</ALC_VAR_Price>
+    <YLC_List_Price>1641900</YLC_List_Price>
+    <YLC_VAR_Price>1067235</YLC_VAR_Price>
+    <QLC_List_Price>492700</QLC_List_Price>
+    <QLC_VAR_Price>319713.03</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>CAM</Category>
+    <Product_Name>CAM Professional Network</Product_Name>
+    <PLC_List_Price>4084600</PLC_List_Price>
+    <PLC_VAR_Price>2654990</PLC_VAR_Price>
+    <ALC_List_Price>977600</ALC_List_Price>
+    <ALC_New_VAR_Price>635440</ALC_New_VAR_Price>
+    <ALC_VAR_Price>586266.72</ALC_VAR_Price>
+    <YLC_List_Price>2052700</YLC_List_Price>
+    <YLC_VAR_Price>1333639.19</YLC_VAR_Price>
+    <QLC_List_Price>616200</QLC_List_Price>
+    <QLC_VAR_Price>400037.04</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>CAM</Category>
+    <Product_Name>CAM Standard</Product_Name>
+    <PLC_List_Price>1365000</PLC_List_Price>
+    <PLC_VAR_Price>887250</PLC_VAR_Price>
+    <ALC_List_Price>455000</ALC_List_Price>
+    <ALC_New_VAR_Price>295750</ALC_New_VAR_Price>
+    <ALC_VAR_Price>273000</ALC_VAR_Price>
+    <YLC_List_Price>813800</YLC_List_Price>
+    <YLC_VAR_Price>528970</YLC_VAR_Price>
+    <QLC_List_Price>244400</QLC_List_Price>
+    <QLC_VAR_Price>158860</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>CAM</Category>
+    <Product_Name>CAM Standard Network</Product_Name>
+    <PLC_List_Price>1701700</PLC_List_Price>
+    <PLC_VAR_Price>1106105</PLC_VAR_Price>
+    <ALC_List_Price>570700</ALC_List_Price>
+    <ALC_New_VAR_Price>370955</ALC_New_VAR_Price>
+    <ALC_VAR_Price>341906.37</ALC_VAR_Price>
+    <YLC_List_Price>1017900</YLC_List_Price>
+    <YLC_VAR_Price>661635</YLC_VAR_Price>
+    <QLC_List_Price>305500</QLC_List_Price>
+    <QLC_VAR_Price>198575</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>CAM</Category>
+    <Product_Name>Machinist Professional</Product_Name>
+    <PLC_List_Price>8190000</PLC_List_Price>
+    <PLC_VAR_Price>5323500</PLC_VAR_Price>
+    <ALC_List_Price>1950000</ALC_List_Price>
+    <ALC_New_VAR_Price>1267500</ALC_New_VAR_Price>
+    <ALC_VAR_Price>1170000</ALC_VAR_Price>
+    <YLC_List_Price>4105400</YLC_List_Price>
+    <YLC_VAR_Price>2668510</YLC_VAR_Price>
+    <QLC_List_Price>1231100</QLC_List_Price>
+    <QLC_VAR_Price>799968.78</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>CAM</Category>
+    <Product_Name>Machinist Standard</Product_Name>
+    <PLC_List_Price>5453500</PLC_List_Price>
+    <PLC_VAR_Price>3544229.65</PLC_VAR_Price>
+    <ALC_List_Price>1300000</ALC_List_Price>
+    <ALC_New_VAR_Price>845000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>780000</ALC_VAR_Price>
+    <YLC_List_Price>2735200</YLC_List_Price>
+    <YLC_VAR_Price>1777332.96</YLC_VAR_Price>
+    <QLC_List_Price>820300</QLC_List_Price>
+    <QLC_VAR_Price>533195</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Composer</Category>
+    <Product_Name>Composer</Product_Name>
+    <PLC_List_Price>10237500</PLC_List_Price>
+    <PLC_VAR_Price>6757773.75</PLC_VAR_Price>
+    <ALC_List_Price>2210000</ALC_List_Price>
+    <ALC_New_VAR_Price>1458600</ALC_New_VAR_Price>
+    <ALC_VAR_Price>1458600</ALC_VAR_Price>
+    <YLC_List_Price>4903600</YLC_List_Price>
+    <YLC_VAR_Price>3186849.64</YLC_VAR_Price>
+    <QLC_List_Price>1471600</QLC_List_Price>
+    <QLC_VAR_Price>956245.68</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Composer</Category>
+    <Product_Name>Composer Enterprise Sync</Product_Name>
+    <PLC_List_Price>31892900</PLC_List_Price>
+    <PLC_VAR_Price>23154245.4</PLC_VAR_Price>
+    <ALC_List_Price>7592000</ALC_List_Price>
+    <ALC_New_VAR_Price>5511032.8</ALC_New_VAR_Price>
+    <ALC_VAR_Price>5511032.8</ALC_VAR_Price>
+    <YLC_List_Price>15984800</YLC_List_Price>
+    <YLC_VAR_Price>10390120</YLC_VAR_Price>
+    <QLC_List_Price>4795700</QLC_List_Price>
+    <QLC_VAR_Price>3116725.43</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Composer</Category>
+    <Product_Name>Composer Enterprise Sync Network</Product_Name>
+    <PLC_List_Price>39760500</PLC_List_Price>
+    <PLC_VAR_Price>28866123</PLC_VAR_Price>
+    <ALC_List_Price>9519900</ALC_List_Price>
+    <ALC_New_VAR_Price>6910495.41</ALC_New_VAR_Price>
+    <ALC_VAR_Price>6910495.41</ALC_VAR_Price>
+    <YLC_List_Price>19983600</YLC_List_Price>
+    <YLC_VAR_Price>12989340</YLC_VAR_Price>
+    <QLC_List_Price>5995600</QLC_List_Price>
+    <QLC_VAR_Price>3897140</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Composer</Category>
+    <Product_Name>Composer Network</Product_Name>
+    <PLC_List_Price>12763400</PLC_List_Price>
+    <PLC_VAR_Price>8423844</PLC_VAR_Price>
+    <ALC_List_Price>2771600</ALC_List_Price>
+    <ALC_New_VAR_Price>1828978.84</ALC_New_VAR_Price>
+    <ALC_VAR_Price>1828978.84</ALC_VAR_Price>
+    <YLC_List_Price>6130800</YLC_List_Price>
+    <YLC_VAR_Price>3985020</YLC_VAR_Price>
+    <QLC_List_Price>1839500</QLC_List_Price>
+    <QLC_VAR_Price>1195675</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Composer</Category>
+    <Product_Name>Composer Player Pro</Product_Name>
+    <PLC_List_Price>806000</PLC_List_Price>
+    <PLC_VAR_Price>584994.8</PLC_VAR_Price>
+    <ALC_List_Price>188500</ALC_List_Price>
+    <ALC_New_VAR_Price>137793.5</ALC_New_VAR_Price>
+    <ALC_VAR_Price>137793.5</ALC_VAR_Price>
+    <YLC_List_Price>400400</YLC_List_Price>
+    <YLC_VAR_Price>260260</YLC_VAR_Price>
+    <QLC_List_Price>119600</QLC_List_Price>
+    <QLC_VAR_Price>77476.88</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Composer</Category>
+    <Product_Name>Composer Sync</Product_Name>
+    <PLC_List_Price>12885600</PLC_List_Price>
+    <PLC_VAR_Price>9354945.6</PLC_VAR_Price>
+    <ALC_List_Price>3068000</ALC_List_Price>
+    <ALC_New_VAR_Price>2228288.4</ALC_New_VAR_Price>
+    <ALC_VAR_Price>2228288.4</ALC_VAR_Price>
+    <YLC_List_Price>6458400</YLC_List_Price>
+    <YLC_VAR_Price>4197960</YLC_VAR_Price>
+    <QLC_List_Price>1937000</QLC_List_Price>
+    <QLC_VAR_Price>1259050</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Composer</Category>
+    <Product_Name>Composer Sync Network</Product_Name>
+    <PLC_List_Price>16064100</PLC_List_Price>
+    <PLC_VAR_Price>11660930.19</PLC_VAR_Price>
+    <ALC_List_Price>3846700</ALC_List_Price>
+    <ALC_New_VAR_Price>2793858.21</ALC_New_VAR_Price>
+    <ALC_VAR_Price>2793858.21</ALC_VAR_Price>
+    <YLC_List_Price>8074300</YLC_List_Price>
+    <YLC_VAR_Price>5248295</YLC_VAR_Price>
+    <QLC_List_Price>2421900</QLC_List_Price>
+    <QLC_VAR_Price>1574235</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>eDrawing</Category>
+    <Product_Name>eDrawings Professional</Product_Name>
+    <PLC_List_Price>676000</PLC_List_Price>
+    <PLC_VAR_Price>439400</PLC_VAR_Price>
+    <ALC_List_Price>0</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>0</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>eDrawing</Category>
+    <Product_Name>eDrawings Professional Network</Product_Name>
+    <PLC_List_Price>2312700</PLC_List_Price>
+    <PLC_VAR_Price>1104776.79</PLC_VAR_Price>
+    <ALC_List_Price>0</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>0</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Electrical</Category>
+    <Product_Name>Electrical 3D</Product_Name>
+    <PLC_List_Price>8190000</PLC_List_Price>
+    <PLC_VAR_Price>5405400</PLC_VAR_Price>
+    <ALC_List_Price>2184000</ALC_List_Price>
+    <ALC_New_VAR_Price>1419600</ALC_New_VAR_Price>
+    <ALC_VAR_Price>1201200</ALC_VAR_Price>
+    <YLC_List_Price>4339400</YLC_List_Price>
+    <YLC_VAR_Price>2820610</YLC_VAR_Price>
+    <QLC_List_Price>1301300</QLC_List_Price>
+    <QLC_VAR_Price>845845</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Electrical</Category>
+    <Product_Name>Electrical 3D Network Add-On</Product_Name>
+    <PLC_List_Price>10210200</PLC_List_Price>
+    <PLC_VAR_Price>6738732</PLC_VAR_Price>
+    <ALC_List_Price>2739100</ALC_List_Price>
+    <ALC_New_VAR_Price>1779319.36</ALC_New_VAR_Price>
+    <ALC_VAR_Price>1505409.36</ALC_VAR_Price>
+    <YLC_List_Price>5426200</YLC_List_Price>
+    <YLC_VAR_Price>3526487.38</YLC_VAR_Price>
+    <QLC_List_Price>1627600</QLC_List_Price>
+    <QLC_VAR_Price>1057614.48</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Electrical</Category>
+    <Product_Name>Electrical Professional</Product_Name>
+    <PLC_List_Price>13650000</PLC_List_Price>
+    <PLC_VAR_Price>9009000</PLC_VAR_Price>
+    <ALC_List_Price>3640000</ALC_List_Price>
+    <ALC_New_VAR_Price>2366000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>2002000</ALC_VAR_Price>
+    <YLC_List_Price>7231900</YLC_List_Price>
+    <YLC_VAR_Price>4700735</YLC_VAR_Price>
+    <QLC_List_Price>2169700</QLC_List_Price>
+    <QLC_VAR_Price>1409871.06</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Electrical</Category>
+    <Product_Name>Electrical Professional Network Add-On</Product_Name>
+    <PLC_List_Price>17017000</PLC_List_Price>
+    <PLC_VAR_Price>11231220</PLC_VAR_Price>
+    <ALC_List_Price>4564300</ALC_List_Price>
+    <ALC_New_VAR_Price>2966795</ALC_New_VAR_Price>
+    <ALC_VAR_Price>2510365</ALC_VAR_Price>
+    <YLC_List_Price>9042800</YLC_List_Price>
+    <YLC_VAR_Price>5877820</YLC_VAR_Price>
+    <QLC_List_Price>2713100</QLC_List_Price>
+    <QLC_VAR_Price>1763243.69</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Electrical</Category>
+    <Product_Name>Electrical Schematic Professional</Product_Name>
+    <PLC_List_Price>8190000</PLC_List_Price>
+    <PLC_VAR_Price>5405400</PLC_VAR_Price>
+    <ALC_List_Price>2184000</ALC_List_Price>
+    <ALC_New_VAR_Price>1419600</ALC_New_VAR_Price>
+    <ALC_VAR_Price>1201200</ALC_VAR_Price>
+    <YLC_List_Price>4339400</YLC_List_Price>
+    <YLC_VAR_Price>2820610</YLC_VAR_Price>
+    <QLC_List_Price>1301300</QLC_List_Price>
+    <QLC_VAR_Price>845845</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Electrical</Category>
+    <Product_Name>Electrical Schematic Professional Network</Product_Name>
+    <PLC_List_Price>10210200</PLC_List_Price>
+    <PLC_VAR_Price>6738732</PLC_VAR_Price>
+    <ALC_List_Price>2739100</ALC_List_Price>
+    <ALC_New_VAR_Price>1779319.36</ALC_New_VAR_Price>
+    <ALC_VAR_Price>1505409.36</ALC_VAR_Price>
+    <YLC_List_Price>5426200</YLC_List_Price>
+    <YLC_VAR_Price>3526487.38</YLC_VAR_Price>
+    <QLC_List_Price>1627600</QLC_List_Price>
+    <QLC_VAR_Price>1057614.48</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Electrical</Category>
+    <Product_Name>Electrical Schematic Standard</Product_Name>
+    <PLC_List_Price>5453500</PLC_List_Price>
+    <PLC_VAR_Price>3544229.65</PLC_VAR_Price>
+    <ALC_List_Price>1300000</ALC_List_Price>
+    <ALC_New_VAR_Price>845000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>780000</ALC_VAR_Price>
+    <YLC_List_Price>2735200</YLC_List_Price>
+    <YLC_VAR_Price>1777332.96</YLC_VAR_Price>
+    <QLC_List_Price>820300</QLC_List_Price>
+    <QLC_VAR_Price>533195</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Flow Simulation</Product_Name>
+    <PLC_List_Price>21021000</PLC_List_Price>
+    <PLC_VAR_Price>12612600</PLC_VAR_Price>
+    <ALC_List_Price>4932200</ALC_List_Price>
+    <ALC_New_VAR_Price>2959320</ALC_New_VAR_Price>
+    <ALC_VAR_Price>2466100</ALC_VAR_Price>
+    <YLC_List_Price>10463700</YLC_List_Price>
+    <YLC_VAR_Price>6801405</YLC_VAR_Price>
+    <QLC_List_Price>3139500</QLC_List_Price>
+    <QLC_VAR_Price>2040675</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Flow Simulation Electronic Cooling Module</Product_Name>
+    <PLC_List_Price>5453500</PLC_List_Price>
+    <PLC_VAR_Price>3272645.35</PLC_VAR_Price>
+    <ALC_List_Price>1298700</ALC_List_Price>
+    <ALC_New_VAR_Price>779869.35</ALC_New_VAR_Price>
+    <ALC_VAR_Price>649999.35</ALC_VAR_Price>
+    <YLC_List_Price>2733900</YLC_List_Price>
+    <YLC_VAR_Price>1777035</YLC_VAR_Price>
+    <QLC_List_Price>820300</QLC_List_Price>
+    <QLC_VAR_Price>533195</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Flow Simulation Electronic Cooling Module Network Add-On</Product_Name>
+    <PLC_List_Price>6799000</PLC_List_Price>
+    <PLC_VAR_Price>4080759.8</PLC_VAR_Price>
+    <ALC_List_Price>1628900</ALC_List_Price>
+    <ALC_New_VAR_Price>977991.56</ALC_New_VAR_Price>
+    <ALC_VAR_Price>815101.56</ALC_VAR_Price>
+    <YLC_List_Price>3417700</YLC_List_Price>
+    <YLC_VAR_Price>2220821.46</YLC_VAR_Price>
+    <QLC_List_Price>1025700</QLC_List_Price>
+    <QLC_VAR_Price>666192.15</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Flow Simulation HVAC Module</Product_Name>
+    <PLC_List_Price>5453500</PLC_List_Price>
+    <PLC_VAR_Price>3272645.35</PLC_VAR_Price>
+    <ALC_List_Price>1298700</ALC_List_Price>
+    <ALC_New_VAR_Price>779869.35</ALC_New_VAR_Price>
+    <ALC_VAR_Price>649999.35</ALC_VAR_Price>
+    <YLC_List_Price>2733900</YLC_List_Price>
+    <YLC_VAR_Price>1777035</YLC_VAR_Price>
+    <QLC_List_Price>820300</QLC_List_Price>
+    <QLC_VAR_Price>533195</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Flow Simulation HVAC Module Network Add-On</Product_Name>
+    <PLC_List_Price>6799000</PLC_List_Price>
+    <PLC_VAR_Price>4080759.8</PLC_VAR_Price>
+    <ALC_List_Price>1628900</ALC_List_Price>
+    <ALC_New_VAR_Price>977991.56</ALC_New_VAR_Price>
+    <ALC_VAR_Price>815101.56</ALC_VAR_Price>
+    <YLC_List_Price>3417700</YLC_List_Price>
+    <YLC_VAR_Price>2220821.46</YLC_VAR_Price>
+    <QLC_List_Price>1025700</QLC_List_Price>
+    <QLC_VAR_Price>666192.15</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Flow Simulation Network</Product_Name>
+    <PLC_List_Price>26206700</PLC_List_Price>
+    <PLC_VAR_Price>15724020</PLC_VAR_Price>
+    <ALC_List_Price>6184100</ALC_List_Price>
+    <ALC_New_VAR_Price>3711078.41</ALC_New_VAR_Price>
+    <ALC_VAR_Price>3092668.41</ALC_VAR_Price>
+    <YLC_List_Price>13080600</YLC_List_Price>
+    <YLC_VAR_Price>8502390</YLC_VAR_Price>
+    <QLC_List_Price>3924700</QLC_List_Price>
+    <QLC_VAR_Price>2550662.53</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Inspection</Category>
+    <Product_Name>Inspection Professional</Product_Name>
+    <PLC_List_Price>5453500</PLC_List_Price>
+    <PLC_VAR_Price>2726750</PLC_VAR_Price>
+    <ALC_List_Price>1298700</ALC_List_Price>
+    <ALC_New_VAR_Price>779869.35</ALC_New_VAR_Price>
+    <ALC_VAR_Price>778700.52</ALC_VAR_Price>
+    <YLC_List_Price>2733900</YLC_List_Price>
+    <YLC_VAR_Price>1777035</YLC_VAR_Price>
+    <QLC_List_Price>820300</QLC_List_Price>
+    <QLC_VAR_Price>533195</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Inspection</Category>
+    <Product_Name>Inspection Professional Network</Product_Name>
+    <PLC_List_Price>6799000</PLC_List_Price>
+    <PLC_VAR_Price>3399500</PLC_VAR_Price>
+    <ALC_List_Price>1628900</ALC_List_Price>
+    <ALC_New_VAR_Price>977991.56</ALC_New_VAR_Price>
+    <ALC_VAR_Price>976362.66</ALC_VAR_Price>
+    <YLC_List_Price>3417700</YLC_List_Price>
+    <YLC_VAR_Price>2220821.46</YLC_VAR_Price>
+    <QLC_List_Price>1025700</QLC_List_Price>
+    <QLC_VAR_Price>666192.15</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Inspection</Category>
+    <Product_Name>Inspection Standard</Product_Name>
+    <PLC_List_Price>3133000</PLC_List_Price>
+    <PLC_VAR_Price>1566500</PLC_VAR_Price>
+    <ALC_List_Price>778700</ALC_List_Price>
+    <ALC_New_VAR_Price>467842.96</ALC_New_VAR_Price>
+    <ALC_VAR_Price>466674.91</ALC_VAR_Price>
+    <YLC_List_Price>1602900</YLC_List_Price>
+    <YLC_VAR_Price>1041885</YLC_VAR_Price>
+    <QLC_List_Price>481000</QLC_List_Price>
+    <QLC_VAR_Price>312650</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Inspection</Category>
+    <Product_Name>Inspection Standard Network</Product_Name>
+    <PLC_List_Price>3906500</PLC_List_Price>
+    <PLC_VAR_Price>1953250</PLC_VAR_Price>
+    <ALC_List_Price>976300</ALC_List_Price>
+    <ALC_New_VAR_Price>586463.41</ALC_New_VAR_Price>
+    <ALC_VAR_Price>584998.96</ALC_VAR_Price>
+    <YLC_List_Price>2004600</YLC_List_Price>
+    <YLC_VAR_Price>1302789.54</YLC_VAR_Price>
+    <QLC_List_Price>601900</QLC_List_Price>
+    <QLC_VAR_Price>391235</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>Manage Professional CAD Editor</Product_Name>
+    <PLC_List_Price>5522400</PLC_List_Price>
+    <PLC_VAR_Price>3589560</PLC_VAR_Price>
+    <ALC_List_Price>1459900</ALC_List_Price>
+    <ALC_New_VAR_Price>948059.06</ALC_New_VAR_Price>
+    <ALC_VAR_Price>876231.98</ALC_VAR_Price>
+    <YLC_List_Price>2913300</YLC_List_Price>
+    <YLC_VAR_Price>1893645</YLC_VAR_Price>
+    <QLC_List_Price>873600</QLC_List_Price>
+    <QLC_VAR_Price>567577.92</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>Manage Professional Contributor</Product_Name>
+    <PLC_List_Price>4594200</PLC_List_Price>
+    <PLC_VAR_Price>2986230</PLC_VAR_Price>
+    <ALC_List_Price>1297400</ALC_List_Price>
+    <ALC_New_VAR_Price>843310</ALC_New_VAR_Price>
+    <ALC_VAR_Price>778699.48</ALC_VAR_Price>
+    <YLC_List_Price>2506400</YLC_List_Price>
+    <YLC_VAR_Price>1629160</YLC_VAR_Price>
+    <QLC_List_Price>751400</QLC_List_Price>
+    <QLC_VAR_Price>488410</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>Manage Professional Viewer(5 User)</Product_Name>
+    <PLC_List_Price>7650500</PLC_List_Price>
+    <PLC_VAR_Price>4972825</PLC_VAR_Price>
+    <ALC_List_Price>2437500</ALC_List_Price>
+    <ALC_New_VAR_Price>1582668.75</ALC_New_VAR_Price>
+    <ALC_VAR_Price>1462500</ALC_VAR_Price>
+    <YLC_List_Price>4451200</YLC_List_Price>
+    <YLC_VAR_Price>2892834.88</YLC_VAR_Price>
+    <QLC_List_Price>1335100</QLC_List_Price>
+    <QLC_VAR_Price>867547.98</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>MBD</Category>
+    <Product_Name>MBD Standard</Product_Name>
+    <PLC_List_Price>2723500</PLC_List_Price>
+    <PLC_VAR_Price>1208416.95</PLC_VAR_Price>
+    <ALC_List_Price>648700</ALC_List_Price>
+    <ALC_New_VAR_Price>288476.89</ALC_New_VAR_Price>
+    <ALC_VAR_Price>243067.89</ALC_VAR_Price>
+    <YLC_List_Price>1365000</YLC_List_Price>
+    <YLC_VAR_Price>887250</YLC_VAR_Price>
+    <QLC_List_Price>409500</QLC_List_Price>
+    <QLC_VAR_Price>266175</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>MBD</Category>
+    <Product_Name>MBD Standard Network</Product_Name>
+    <PLC_List_Price>3395600</PLC_List_Price>
+    <PLC_VAR_Price>1506967.28</PLC_VAR_Price>
+    <ALC_List_Price>813800</ALC_List_Price>
+    <ALC_New_VAR_Price>362141</ALC_New_VAR_Price>
+    <ALC_VAR_Price>305500.52</ALC_VAR_Price>
+    <YLC_List_Price>1706900</YLC_List_Price>
+    <YLC_VAR_Price>1109485</YLC_VAR_Price>
+    <QLC_List_Price>512200</QLC_List_Price>
+    <QLC_VAR_Price>332417.8</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>PDM Professional CAD Editor</Product_Name>
+    <PLC_List_Price>3225300</PLC_List_Price>
+    <PLC_VAR_Price>1786171.14</PLC_VAR_Price>
+    <ALC_List_Price>897000</ALC_List_Price>
+    <ALC_New_VAR_Price>451101.3</ALC_New_VAR_Price>
+    <ALC_VAR_Price>361401.3</ALC_VAR_Price>
+    <YLC_List_Price>1745900</YLC_List_Price>
+    <YLC_VAR_Price>1134835</YLC_VAR_Price>
+    <QLC_List_Price>523900</QLC_List_Price>
+    <QLC_VAR_Price>378308.19</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>PDM Professional Contributor</Product_Name>
+    <PLC_List_Price>2358200</PLC_List_Price>
+    <PLC_VAR_Price>1304320.42</PLC_VAR_Price>
+    <ALC_List_Price>733200</ALC_List_Price>
+    <ALC_New_VAR_Price>370999.2</ALC_New_VAR_Price>
+    <ALC_VAR_Price>297679.2</ALC_VAR_Price>
+    <YLC_List_Price>1353300</YLC_List_Price>
+    <YLC_VAR_Price>879645</YLC_VAR_Price>
+    <QLC_List_Price>405600</QLC_List_Price>
+    <QLC_VAR_Price>263396.64</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>PDM Professional Viewer(5 User)</Product_Name>
+    <PLC_List_Price>4672200</PLC_List_Price>
+    <PLC_VAR_Price>2588866.02</PLC_VAR_Price>
+    <ALC_List_Price>1899300</ALC_List_Price>
+    <ALC_New_VAR_Price>960855.87</ALC_New_VAR_Price>
+    <ALC_VAR_Price>770925.87</ALC_VAR_Price>
+    <YLC_List_Price>3129100</YLC_List_Price>
+    <YLC_VAR_Price>2033602.09</YLC_VAR_Price>
+    <QLC_List_Price>938600</QLC_List_Price>
+    <QLC_VAR_Price>609808.42</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>PDM Standard Contributor</Product_Name>
+    <PLC_List_Price>1183000</PLC_List_Price>
+    <PLC_VAR_Price>655145.4</PLC_VAR_Price>
+    <ALC_List_Price>318500</ALC_List_Price>
+    <ALC_New_VAR_Price>176162.35</ALC_New_VAR_Price>
+    <ALC_VAR_Price>144312.35</ALC_VAR_Price>
+    <YLC_List_Price>629200</YLC_List_Price>
+    <YLC_VAR_Price>408476.64</YLC_VAR_Price>
+    <QLC_List_Price>188500</QLC_List_Price>
+    <QLC_VAR_Price>122525</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>PDM Standard Viewer(5 User)</Product_Name>
+    <PLC_List_Price>4247100</PLC_List_Price>
+    <PLC_VAR_Price>2351194.56</PLC_VAR_Price>
+    <ALC_List_Price>1297400</ALC_List_Price>
+    <ALC_New_VAR_Price>718629.86</ALC_New_VAR_Price>
+    <ALC_VAR_Price>588889.86</ALC_VAR_Price>
+    <YLC_List_Price>2415400</YLC_List_Price>
+    <YLC_VAR_Price>1570010</YLC_VAR_Price>
+    <QLC_List_Price>724100</QLC_List_Price>
+    <QLC_VAR_Price>470375.36</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Plastics Premium</Product_Name>
+    <PLC_List_Price>30706000</PLC_List_Price>
+    <PLC_VAR_Price>16919006</PLC_VAR_Price>
+    <ALC_List_Price>7311200</ALC_List_Price>
+    <ALC_New_VAR_Price>4029202.32</ALC_New_VAR_Price>
+    <ALC_VAR_Price>3298082.32</ALC_VAR_Price>
+    <YLC_List_Price>15392000</YLC_List_Price>
+    <YLC_VAR_Price>10004800</YLC_VAR_Price>
+    <QLC_List_Price>4617600</QLC_List_Price>
+    <QLC_VAR_Price>3000978.24</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Plastics Premium Network</Product_Name>
+    <PLC_List_Price>38281100</PLC_List_Price>
+    <PLC_VAR_Price>21092886.1</PLC_VAR_Price>
+    <ALC_List_Price>9167600</ALC_List_Price>
+    <ALC_New_VAR_Price>5053181.12</ALC_New_VAR_Price>
+    <ALC_VAR_Price>4136421.12</ALC_VAR_Price>
+    <YLC_List_Price>19241300</YLC_List_Price>
+    <YLC_VAR_Price>12506845</YLC_VAR_Price>
+    <QLC_List_Price>5772000</QLC_List_Price>
+    <QLC_VAR_Price>3751800</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Plastics Professional</Product_Name>
+    <PLC_List_Price>20468500</PLC_List_Price>
+    <PLC_VAR_Price>10488059.4</PLC_VAR_Price>
+    <ALC_List_Price>4873700</ALC_List_Price>
+    <ALC_New_VAR_Price>2498258.62</ALC_New_VAR_Price>
+    <ALC_VAR_Price>2010888.62</ALC_VAR_Price>
+    <YLC_List_Price>10259600</YLC_List_Price>
+    <YLC_VAR_Price>6668740</YLC_VAR_Price>
+    <QLC_List_Price>3078400</QLC_List_Price>
+    <QLC_VAR_Price>2000960</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Plastics Professional Network</Product_Name>
+    <PLC_List_Price>25517700</PLC_List_Price>
+    <PLC_VAR_Price>13077821.25</PLC_VAR_Price>
+    <ALC_List_Price>6111300</ALC_List_Price>
+    <ALC_New_VAR_Price>3133263.51</ALC_New_VAR_Price>
+    <ALC_VAR_Price>2522133.51</ALC_VAR_Price>
+    <YLC_List_Price>12827100</YLC_List_Price>
+    <YLC_VAR_Price>8337615</YLC_VAR_Price>
+    <QLC_List_Price>3848000</QLC_List_Price>
+    <QLC_VAR_Price>2501200</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Plastics Standard</Product_Name>
+    <PLC_List_Price>6818500</PLC_List_Price>
+    <PLC_VAR_Price>3493799.4</PLC_VAR_Price>
+    <ALC_List_Price>1948700</ALC_List_Price>
+    <ALC_New_VAR_Price>998319.01</ALC_New_VAR_Price>
+    <ALC_VAR_Price>803449.01</ALC_VAR_Price>
+    <YLC_List_Price>3742700</YLC_List_Price>
+    <YLC_VAR_Price>2432380.73</YLC_VAR_Price>
+    <QLC_List_Price>1123200</QLC_List_Price>
+    <QLC_VAR_Price>729518.4</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Plastics Standard Network</Product_Name>
+    <PLC_List_Price>8500700</PLC_List_Price>
+    <PLC_VAR_Price>4355758.68</PLC_VAR_Price>
+    <ALC_List_Price>2444000</ALC_List_Price>
+    <ALC_New_VAR_Price>1251816.8</ALC_New_VAR_Price>
+    <ALC_VAR_Price>1007416.8</ALC_VAR_Price>
+    <YLC_List_Price>4681300</YLC_List_Price>
+    <YLC_VAR_Price>3042845</YLC_VAR_Price>
+    <QLC_List_Price>1404000</QLC_List_Price>
+    <QLC_VAR_Price>912600</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS</Category>
+    <Product_Name>Premium Network</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>3851900</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>1903223.79</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS</Category>
+    <Product_Name>Premium</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>3071900</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>1517211.41</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Premium with Simulation Premium Network</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>7784400</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>3814356</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Premium with Simulation Premium</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>6207500</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>3042295.75</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Premium with Simulation Professional Network</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>5665400</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>2775479.46</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Premium with Simulation Professional</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>4517500</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>2214026.75</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS</Category>
+    <Product_Name>Professional Network</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>2910700</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>1455932.14</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS</Category>
+    <Product_Name>Professional</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>2320500</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>1160946.15</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Routing</Category>
+    <Product_Name>Routing</Product_Name>
+    <PLC_List_Price>4771000</PLC_List_Price>
+    <PLC_VAR_Price>2281492.2</PLC_VAR_Price>
+    <ALC_List_Price>682500</ALC_List_Price>
+    <ALC_New_VAR_Price>375033.75</ALC_New_VAR_Price>
+    <ALC_VAR_Price>304190.25</ALC_VAR_Price>
+    <YLC_List_Price>1938300</YLC_List_Price>
+    <YLC_VAR_Price>1259895</YLC_VAR_Price>
+    <QLC_List_Price>581100</QLC_List_Price>
+    <QLC_VAR_Price>377482.56</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Routing</Category>
+    <Product_Name>Routing Network</Product_Name>
+    <PLC_List_Price>6953700</PLC_List_Price>
+    <PLC_VAR_Price>3326650.08</PLC_VAR_Price>
+    <ALC_List_Price>855400</ALC_List_Price>
+    <ALC_New_VAR_Price>470298.92</ALC_New_VAR_Price>
+    <ALC_VAR_Price>380909.62</ALC_VAR_Price>
+    <YLC_List_Price>2685800</YLC_List_Price>
+    <YLC_VAR_Price>1745770</YLC_VAR_Price>
+    <QLC_List_Price>806000</QLC_List_Price>
+    <QLC_VAR_Price>523900</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Simulation Designer</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>1644500</ALC_List_Price>
+    <ALC_New_VAR_Price>987357.8</ALC_New_VAR_Price>
+    <ALC_VAR_Price>822907.8</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Simulation Designer Network</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>2063100</ALC_List_Price>
+    <ALC_New_VAR_Price>1238478.93</ALC_New_VAR_Price>
+    <ALC_VAR_Price>1032168.93</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Simulation Premium</Product_Name>
+    <PLC_List_Price>22072700</PLC_List_Price>
+    <PLC_VAR_Price>13243620</PLC_VAR_Price>
+    <ALC_List_Price>5255900</ALC_List_Price>
+    <ALC_New_VAR_Price>3154065.59</ALC_New_VAR_Price>
+    <ALC_VAR_Price>2628475.59</ALC_VAR_Price>
+    <YLC_List_Price>11064300</YLC_List_Price>
+    <YLC_VAR_Price>7191795</YLC_VAR_Price>
+    <QLC_List_Price>3318900</QLC_List_Price>
+    <QLC_VAR_Price>2157285</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Simulation Premium Network</Product_Name>
+    <PLC_List_Price>27517100</PLC_List_Price>
+    <PLC_VAR_Price>16510260</PLC_VAR_Price>
+    <ALC_List_Price>6591000</ALC_List_Price>
+    <ALC_New_VAR_Price>3955918.2</ALC_New_VAR_Price>
+    <ALC_VAR_Price>3296818.2</ALC_VAR_Price>
+    <YLC_List_Price>13832000</YLC_List_Price>
+    <YLC_VAR_Price>8990800</YLC_VAR_Price>
+    <QLC_List_Price>4149600</QLC_List_Price>
+    <QLC_VAR_Price>2696825.04</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Simulation Professional</Product_Name>
+    <PLC_List_Price>14264900</PLC_List_Price>
+    <PLC_VAR_Price>8558940</PLC_VAR_Price>
+    <ALC_List_Price>3396900</ALC_List_Price>
+    <ALC_New_VAR_Price>2038819.38</ALC_New_VAR_Price>
+    <ALC_VAR_Price>1699129.38</ALC_VAR_Price>
+    <YLC_List_Price>7151300</YLC_List_Price>
+    <YLC_VAR_Price>4648345</YLC_VAR_Price>
+    <QLC_List_Price>2145000</QLC_List_Price>
+    <QLC_VAR_Price>1394250</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Simulation Professional Network</Product_Name>
+    <PLC_List_Price>17782700</PLC_List_Price>
+    <PLC_VAR_Price>10669620</PLC_VAR_Price>
+    <ALC_List_Price>4258800</ALC_List_Price>
+    <ALC_New_VAR_Price>2555280</ALC_New_VAR_Price>
+    <ALC_VAR_Price>2129400</ALC_VAR_Price>
+    <YLC_List_Price>8938800</YLC_List_Price>
+    <YLC_VAR_Price>5810220</YLC_VAR_Price>
+    <QLC_List_Price>2681900</QLC_List_Price>
+    <QLC_VAR_Price>1743235</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Simulation Standard</Product_Name>
+    <PLC_List_Price>6757400</PLC_List_Price>
+    <PLC_VAR_Price>4054440</PLC_VAR_Price>
+    <ALC_List_Price>1609400</ALC_List_Price>
+    <ALC_New_VAR_Price>965640</ALC_New_VAR_Price>
+    <ALC_VAR_Price>804700</ALC_VAR_Price>
+    <YLC_List_Price>3387800</YLC_List_Price>
+    <YLC_VAR_Price>2189535.14</YLC_VAR_Price>
+    <QLC_List_Price>1016600</QLC_List_Price>
+    <QLC_VAR_Price>660485.02</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Simulation Standard Network</Product_Name>
+    <PLC_List_Price>8424000</PLC_List_Price>
+    <PLC_VAR_Price>5056084.8</PLC_VAR_Price>
+    <ALC_List_Price>2018900</ALC_List_Price>
+    <ALC_New_VAR_Price>1211945.67</ALC_New_VAR_Price>
+    <ALC_VAR_Price>1010055.67</ALC_VAR_Price>
+    <YLC_List_Price>4235400</YLC_List_Price>
+    <YLC_VAR_Price>2753010</YLC_VAR_Price>
+    <QLC_List_Price>1270100</QLC_List_Price>
+    <QLC_VAR_Price>825310.98</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS</Category>
+    <Product_Name>Standard Network</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>2568800</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>1142602.24</ALC_VAR_Price>
+    <YLC_List_Price>5657925</YLC_List_Price>
+    <YLC_VAR_Price>3677651.25</YLC_VAR_Price>
+    <QLC_List_Price>1697378</QLC_List_Price>
+    <QLC_VAR_Price>1102786.49</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS</Category>
+    <Product_Name>Standard</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>2047500</ALC_List_Price>
+    <ALC_New_VAR_Price xml:space="preserve"> </ALC_New_VAR_Price>
+    <ALC_VAR_Price>911342.25</ALC_VAR_Price>
+    <YLC_List_Price>4526340</YLC_List_Price>
+    <YLC_VAR_Price>2927636.71</YLC_VAR_Price>
+    <QLC_List_Price>1357902</QLC_List_Price>
+    <QLC_VAR_Price>882636.3</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Sustainability</Product_Name>
+    <PLC_List_Price>5453500</PLC_List_Price>
+    <PLC_VAR_Price>3020693.65</PLC_VAR_Price>
+    <ALC_List_Price>1683500</ALC_List_Price>
+    <ALC_New_VAR_Price>806733.2</ALC_New_VAR_Price>
+    <ALC_VAR_Price>638383.2</ALC_VAR_Price>
+    <YLC_List_Price>3118700</YLC_List_Price>
+    <YLC_VAR_Price>2026531.26</YLC_VAR_Price>
+    <QLC_List_Price>936000</QLC_List_Price>
+    <QLC_VAR_Price>608400</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>SOLIDWORKS Simulation</Category>
+    <Product_Name>Sustainability Network Add-On</Product_Name>
+    <PLC_List_Price>6799000</PLC_List_Price>
+    <PLC_VAR_Price>3764606.3</PLC_VAR_Price>
+    <ALC_List_Price>2112500</ALC_List_Price>
+    <ALC_New_VAR_Price>1012098.75</ALC_New_VAR_Price>
+    <ALC_VAR_Price>800848.75</ALC_VAR_Price>
+    <YLC_List_Price>3901300</YLC_List_Price>
+    <YLC_VAR_Price>2535845</YLC_VAR_Price>
+    <QLC_List_Price>1170000</QLC_List_Price>
+    <QLC_VAR_Price>760500</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Visualize</Category>
+    <Product_Name>Visualize Boost</Product_Name>
+    <PLC_List_Price>1358500</PLC_List_Price>
+    <PLC_VAR_Price>748125.95</PLC_VAR_Price>
+    <ALC_List_Price>323700</ALC_List_Price>
+    <ALC_New_VAR_Price>177970.26</ALC_New_VAR_Price>
+    <ALC_VAR_Price>145600.26</ALC_VAR_Price>
+    <YLC_List_Price>681200</YLC_List_Price>
+    <YLC_VAR_Price>442235.04</YLC_VAR_Price>
+    <QLC_List_Price>204100</QLC_List_Price>
+    <QLC_VAR_Price>132399.67</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Visualize</Category>
+    <Product_Name>Visualize Boost Network</Product_Name>
+    <PLC_List_Price>1693900</PLC_List_Price>
+    <PLC_VAR_Price>932491.95</PLC_VAR_Price>
+    <ALC_List_Price>405600</ALC_List_Price>
+    <ALC_New_VAR_Price>222552.72</ALC_New_VAR_Price>
+    <ALC_VAR_Price>181992.72</ALC_VAR_Price>
+    <YLC_List_Price>851500</YLC_List_Price>
+    <YLC_VAR_Price>553475</YLC_VAR_Price>
+    <QLC_List_Price>256100</QLC_List_Price>
+    <QLC_VAR_Price>166208.9</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Visualize</Category>
+    <Product_Name>Visualize Professional</Product_Name>
+    <PLC_List_Price>5097300</PLC_List_Price>
+    <PLC_VAR_Price>2804024.73</PLC_VAR_Price>
+    <ALC_List_Price>1220700</ALC_List_Price>
+    <ALC_New_VAR_Price>671995.35</ALC_New_VAR_Price>
+    <ALC_VAR_Price>549925.35</ALC_VAR_Price>
+    <YLC_List_Price>2562300</YLC_List_Price>
+    <YLC_VAR_Price>1665495</YLC_VAR_Price>
+    <QLC_List_Price>768300</QLC_List_Price>
+    <QLC_VAR_Price>499395</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Visualize</Category>
+    <Product_Name>Visualize Professional Network</Product_Name>
+    <PLC_List_Price>4088500</PLC_List_Price>
+    <PLC_VAR_Price>2249492.7</PLC_VAR_Price>
+    <ALC_List_Price>973700</ALC_List_Price>
+    <ALC_New_VAR_Price>535437.63</ALC_New_VAR_Price>
+    <ALC_VAR_Price>438067.63</ALC_VAR_Price>
+    <YLC_List_Price>2050100</YLC_List_Price>
+    <YLC_VAR_Price>1332359.99</YLC_VAR_Price>
+    <QLC_List_Price>614900</QLC_List_Price>
+    <QLC_VAR_Price>399685</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Visualize</Category>
+    <Product_Name>Visualize Standard</Product_Name>
+    <PLC_List_Price>2041000</PLC_List_Price>
+    <PLC_VAR_Price>1123162.3</PLC_VAR_Price>
+    <ALC_List_Price>486200</ALC_List_Price>
+    <ALC_New_VAR_Price>267021.04</ALC_New_VAR_Price>
+    <ALC_VAR_Price>218401.04</ALC_VAR_Price>
+    <YLC_List_Price>1023100</YLC_List_Price>
+    <YLC_VAR_Price>664708.07</YLC_VAR_Price>
+    <QLC_List_Price>306800</QLC_List_Price>
+    <QLC_VAR_Price>199420</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Visualize</Category>
+    <Product_Name>Visualize Standard Network</Product_Name>
+    <PLC_List_Price>2545400</PLC_List_Price>
+    <PLC_VAR_Price>1399715.46</PLC_VAR_Price>
+    <ALC_List_Price>609700</ALC_List_Price>
+    <ALC_New_VAR_Price>335274.03</ALC_New_VAR_Price>
+    <ALC_VAR_Price>274304.03</ALC_VAR_Price>
+    <YLC_List_Price>1279200</YLC_List_Price>
+    <YLC_VAR_Price>830968.32</YLC_VAR_Price>
+    <QLC_List_Price>383500</QLC_List_Price>
+    <QLC_VAR_Price>249275</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>Manage Professional Universal License - 100 Users</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>141820000</ALC_List_Price>
+    <ALC_New_VAR_Price>141820000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>141820000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>Manage Professional Universal License - 200 Users</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>141820000</ALC_List_Price>
+    <ALC_New_VAR_Price>141820000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>141820000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>Manage Professional Universal License - 50 Users</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>52980000</ALC_List_Price>
+    <ALC_New_VAR_Price>52980000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>52980000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>Manage Professional Universal License - 25 Users</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>32600000</ALC_List_Price>
+    <ALC_New_VAR_Price>32600000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>32600000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>PDM Professional Universal License - 100 Users</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>50950000</ALC_List_Price>
+    <ALC_New_VAR_Price>50950000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>50950000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>PDM Professional Universal License - 200 Users</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>81510000</ALC_List_Price>
+    <ALC_New_VAR_Price>81510000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>81510000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>PDM Professional Universal License - 50 Users</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>28520000</ALC_List_Price>
+    <ALC_New_VAR_Price>28520000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>28520000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>PDM</Category>
+    <Product_Name>PDM Professional Universal License - 25 Users</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>16300000</ALC_List_Price>
+    <ALC_New_VAR_Price>16300000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>16300000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>xPMWorks</Category>
+    <Product_Name>xPMWorks Professional</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>80000</ALC_List_Price>
+    <ALC_New_VAR_Price>80000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>80000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>xPMWorks</Category>
+    <Product_Name>xPMWorks Standard</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>50000</ALC_List_Price>
+    <ALC_New_VAR_Price>50000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>50000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>GEARTRAX</Category>
+    <Product_Name>CamTrax</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>320000</ALC_List_Price>
+    <ALC_New_VAR_Price>320000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>320000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>GEARTRAX</Category>
+    <Product_Name>CamTrax SNL</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>650000</ALC_List_Price>
+    <ALC_New_VAR_Price>650000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>650000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>GEARTRAX</Category>
+    <Product_Name>Gear Trax</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>320000</ALC_List_Price>
+    <ALC_New_VAR_Price>320000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>320000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>GEARTRAX</Category>
+    <Product_Name>Gear Trax Pro</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>320000</ALC_List_Price>
+    <ALC_New_VAR_Price>320000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>320000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>GEARTRAX</Category>
+    <Product_Name>Gear Trax Pro SNL</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>650000</ALC_List_Price>
+    <ALC_New_VAR_Price>650000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>650000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>GEARTRAX</Category>
+    <Product_Name>Gear Trax SNL</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>650000</ALC_List_Price>
+    <ALC_New_VAR_Price>650000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>650000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>GEARTRAX</Category>
+    <Product_Name>GearTeq</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>320000</ALC_List_Price>
+    <ALC_New_VAR_Price>320000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>320000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>GEARTRAX</Category>
+    <Product_Name>GearTeq SNL</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>650000</ALC_List_Price>
+    <ALC_New_VAR_Price>650000</ALC_New_VAR_Price>
+    <ALC_VAR_Price>650000</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Smap3D</Category>
+    <Product_Name>Smap3D P&amp;ID – Full version Floating License</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>0</ALC_List_Price>
+    <ALC_New_VAR_Price>0</ALC_New_VAR_Price>
+    <ALC_VAR_Price>0</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Smap3D</Category>
+    <Product_Name>Smap3D P&amp;ID – Full version Node Locked License</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>0</ALC_List_Price>
+    <ALC_New_VAR_Price>0</ALC_New_VAR_Price>
+    <ALC_VAR_Price>0</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Smap3D</Category>
+    <Product_Name>Smap3D Piping – Floating License</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>0</ALC_List_Price>
+    <ALC_New_VAR_Price>0</ALC_New_VAR_Price>
+    <ALC_VAR_Price>0</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Smap3D</Category>
+    <Product_Name>Smap3D Piping – Node Locked License</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>0</ALC_List_Price>
+    <ALC_New_VAR_Price>0</ALC_New_VAR_Price>
+    <ALC_VAR_Price>0</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Smap3D</Category>
+    <Product_Name>Smap3D PipingISO – Floating License</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>0</ALC_List_Price>
+    <ALC_New_VAR_Price>0</ALC_New_VAR_Price>
+    <ALC_VAR_Price>0</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>Smap3D</Category>
+    <Product_Name>Smap3D PipingISO – Node Locked License</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>0</ALC_List_Price>
+    <ALC_New_VAR_Price>0</ALC_New_VAR_Price>
+    <ALC_VAR_Price>0</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+  <_x0032_023.07.01-PLC_x002B_ALC>
+    <Category>ETC</Category>
+    <Product_Name>Geomagic for SOLIDWORKS</Product_Name>
+    <PLC_List_Price xml:space="preserve"> </PLC_List_Price>
+    <PLC_VAR_Price xml:space="preserve"> </PLC_VAR_Price>
+    <ALC_List_Price>0</ALC_List_Price>
+    <ALC_New_VAR_Price>0</ALC_New_VAR_Price>
+    <ALC_VAR_Price>0</ALC_VAR_Price>
+    <YLC_List_Price>0</YLC_List_Price>
+    <YLC_VAR_Price>0</YLC_VAR_Price>
+    <QLC_List_Price>0</QLC_List_Price>
+    <QLC_VAR_Price>0</QLC_VAR_Price>
+  </_x0032_023.07.01-PLC_x002B_ALC>
+</NewDataSet>

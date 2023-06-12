@@ -1,0 +1,215 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="ko">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>견적서 조회</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:BundleReference runat="server" Path="/Content/css" />
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <link href="/Content/cnext.css" rel="stylesheet" type="text/css" />
+
+    <!-- grid cursor -->
+    <style type="text/css">
+        .DataRow:hover, .DataRowAlt:hover
+        {
+            background-color: #FFF5E0;
+        }
+        .DataRow.even:hover, .DataRowAlt.even:hover
+        {
+            background-color: #FFF5E0;
+        }
+        .DataRow.odd:hover, .DataRowAlt.odd:hover
+        {
+            background-color: #FFF5E0;
+        }
+        .minWidth100
+        {
+            min-width:100px;
+        }
+        .minWidth200
+        {
+            min-width:200px;
+        }
+        .minWidth300
+        {
+            min-width:300px;
+        }
+        .minWidth400
+        {
+            min-width:400px;
+        }
+    </style>
+
+    <!-- wait hourglass -->
+    <script>
+        function LoadingWithMask() {
+            var maskHeight = $(document).height();
+            var maskWidth  = window.document.body.clientWidth;
+            var mask       = "<div id='mask' style='position:absolute; z-index:9000; background-color:#000000; display:none; left:0; top:0;'></div>";
+            var loadingImg = '';
+            loadingImg += " <div id='loadingImg' style='background-color:rgba(255,255,255,1.0);'>";
+            //loadingImg += " <img id='loadingImg3' src='./images/loading3.gif' />";
+            //loadingImg += " <img id='loadingImg3' src='./images/loading4.gif' />";
+            //loadingImg += " <img id='loadingImg3' src='./images/loading5.gif' />";
+            loadingImg += " <img id='loadingImg3' src='./images/loading6.gif' />";
+            loadingImg += " </div>";
+            $('body')
+                .append(mask)
+                .append(loadingImg)
+            $('#mask').css({
+                    'width' : maskWidth,
+                    'height': maskHeight,
+                    'opacity' : '0.0'
+            }); 
+            $('#mask').show();
+            var centerTop  = Math.max(0, $(window).height() / 2 + $(window).scrollTop());
+            var centerLeft = window.document.body.clientWidth / 2;
+            $('img#loadingImg3').css({
+                'position': 'absolute',
+                'display': 'block',
+                'margin': 'auto',
+                'transform': 'translate(-50%, -50%)',
+                'width': '160px',
+                'height': '120px',
+                'top' : centerTop,
+                'left': centerLeft,
+                'opacity': '0.4'
+            }); 
+            $('#loadingImg').show();
+        }
+        function LoadingWithMaskDark() {
+            var maskHeight = $(document).height();
+            var maskWidth  = window.document.body.clientWidth;
+            var mask       = "<div id='mask' style='position:absolute; z-index:9000; background-color:#000000; display:none; left:0; top:0;'></div>";
+            var loadingImg = '';
+            loadingImg += " <div id='loadingImg' style='background-color:rgba(255,255,255,1.0);'>";
+            //loadingImg += " <img id='loadingImg3' src='./images/loading3.gif' />";
+            //loadingImg += " <img id='loadingImg3' src='./images/loading4.gif' />";
+            //loadingImg += " <img id='loadingImg3' src='./images/loading5.gif' />";
+            loadingImg += " <img id='loadingImg3' src='./images/loading6.gif' />";
+            loadingImg += " </div>";
+            $('body')
+                .append(mask)
+                .append(loadingImg)
+            $('#mask').css({
+                    'width' : maskWidth,
+                    'height': maskHeight,
+                    'opacity' : '0.3'
+            }); 
+            $('#mask').show();
+            var centerTop  = Math.max(0, $(window).height() / 2 + $(window).scrollTop());
+            var centerLeft = window.document.body.clientWidth / 2;
+            $('img#loadingImg3').css({
+                'position': 'absolute',
+                'display': 'block',
+                'margin': 'auto',
+                'transform': 'translate(-50%, -50%)',
+                'width': '160px',
+                'height': '120px',
+                'top' : centerTop,
+                'left': centerLeft,
+                'opacity': '0.4'
+            }); 
+            $('#loadingImg').show();
+        }
+        function CloseLoadingWithMask() {
+            $('#mask, #loadingImg').hide();
+            $('#mask, #loadingImg').empty();  
+        }
+     </script>
+
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+            <Scripts>
+                <%--ScriptManager의 스크립트 번들에 대한 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=301884를 참조하십시오. --%>
+                <%--프레임워크 스크립트--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--사이트 스크립트--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="/">SOLKO</a>
+                </div>
+
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <%--<li><a runat="server" href="/">홈</a></li>--%>
+                        <%--<li><a runat="server" href="/Update">Update</a></li>--%>
+                        <%--<li><a runat="server" href="/FileList">파일목록</a></li>--%>
+                        <%--<li><a runat="server" href="/ClientHistory">클라이언트 정보</a></li>--%>
+                        <%--<li><a runat="server" href="/RequestList">라이선스 요청관리</a></li>--%>
+                        <%--<li><a runat="server" href="/LicenseList">라이선스 발급관리</a></li>--%>
+                        <%--<li><a runat="server" href="/Usage">사용율</a></li>--%>
+                        <%--<li><a runat="server" href="/UsageSum">사용율(집계)</a></li>--%>
+
+                        <li><a runat="server" href="/OS_CampaignList">재계약 요청 메일</a></li>
+                        <li><a runat="server" href="/OS_AccountList">견적서 산출 작성</a></li>
+                        <%--<li><a runat="server" href="/OS_Calculate">견적계산</a></li>--%>
+                        <%--<li><a runat="server" href="/OS_Execute">견적발행</a></li>--%>
+                        <%--<li><a runat="server" href="/OS_FileContent">단가표</a></li>--%>
+                        <%--<li><a runat="server" href="/OS_CRMRead">CRM License</a></li>--%>
+
+                    </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="/Account/Register">등록</a></li>
+                                <li><a runat="server" href="/Account/Login">로그인</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %>!</a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="로그오프" LogoutPageUrl="/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid body-content" style="padding-left: 100px; padding-right: 100px">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; SOLKO Subscription Quotation System</p>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>

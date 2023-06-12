@@ -1,0 +1,253 @@
+﻿<!doctype html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Use the latest (edge) version of IE rendering engine -->
+    <title>유지보수 안내 메일</title>
+    <!-- The title tag shows in email notifications, like Android 4.4. -->
+    <!-- Please use an inliner tool to convert all CSS to inline as inpage or external CSS is removed by email clients -->
+    <!-- important in CSS is used to prevent the styles of currently inline CSS from overriding the ones mentioned in media queries when corresponding screen sizes are encountered -->
+
+    <!-- CSS Reset -->
+    <style type="text/css">
+/* What it does: Remove spaces around the email design added by some email clients. */
+      /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+html,  body {
+	margin: 0 !important;
+	padding: 0 !important;
+	height: 100% !important;
+	width: 100% !important;
+}
+/* What it does: Stops email clients resizing small text. */
+* {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+/* What it does: Forces Outlook.com to display emails full width. */
+.ExternalClass {
+	width: 100%;
+}
+/* What is does: Centers email on Android 4.4 */
+div[style*="margin: 16px 0"] {
+	margin: 0 !important;
+}
+/* What it does: Stops Outlook from adding extra spacing to tables. */
+table,  td {
+	mso-table-lspace: 0pt !important;
+	mso-table-rspace: 0pt !important;
+}
+/* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+table {
+	border-spacing: 0 !important;
+	border-collapse: collapse !important;
+	table-layout: fixed !important;
+	margin: 0 auto !important;
+}
+table table table {
+	table-layout: auto;
+}
+/* What it does: Uses a better rendering method when resizing images in IE. */
+img {
+	-ms-interpolation-mode: bicubic;
+}
+/* What it does: Overrides styles added when Yahoo's auto-senses a link. */
+.yshortcuts a {
+	border-bottom: none !important;
+}
+/* What it does: Another work-around for iOS meddling in triggered links. */
+a[x-apple-data-detectors] {
+	color: inherit !important;
+}
+    </style>
+
+    <!-- Progressive Enhancements -->
+    <style type="text/css">
+        
+        /* What it does: Hover styles for buttons */
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+        .button-td:hover,
+        .button-a:hover {
+            background: #555555 !important;
+            border-color: #555555 !important;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 650px) {
+
+            .email-container {
+                width: 100% !important;
+            }
+
+            /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+            .fluid,
+            .fluid-centered {
+                max-width: 100% !important;
+                height: auto !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            /* And center justify these ones. */
+            .fluid-centered {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            /* What it does: Forces table cells into full-width rows. */
+            .stack-column,
+            .stack-column-center {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                direction: ltr !important;
+            }
+            /* And center justify these ones. */
+            .stack-column-center {
+                text-align: center !important;
+            }
+        
+            /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+            .center-on-narrow {
+                text-align: center !important;
+                display: block !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                float: none !important;
+            }
+            table.center-on-narrow {
+                display: inline-block !important;
+            }
+                
+        }
+
+    .email-container tr td p {
+    font-family: "맑은 고딕";
+}
+    .email-container tr td hr {
+    font-family: "맑은 고딕";
+}
+    .email-container tr td table tbody tr th {
+    font-family: "맑은 고딕";
+}
+    .email-container tr td table tr .button-td .button-a {
+    font-family: "맑은 고딕";
+}
+    .email-container tr td table tr .button-td .button-a {
+    font-family: "맑은 고딕";
+}
+    .email-container tr td table tr .button-td .button-a {
+    font-family: "맑은 고딕";
+}
+    .email-container tr td table tr .button-td .button-a {
+    font-family: "맑은 고딕";
+}
+    .email-container tr td table tr .button-td .button-a {
+    font-family: "맑은 고딕";
+}
+    body,td,th {
+    font-family: "맑은 고딕";
+    font-size: 12px;
+}
+    .email-container tr td {
+    font-family: "맑은 고딕";
+}
+    </style>
+    </head>
+    <body bgcolor="#777777" style="margin: 0px 0px 0px 0px; padding:0px 0px 0px 0px;background-color: #777777" yahoo="yahoo">
+
+<!--
+<table cellspacing="0" cellpadding="0" border="0" align="center" class="email-container"  bgcolor="#777777" width="100%" style="border-collapse:collapse; margin:0; padding:0; width:100%; border-spacing:0px; border:0px; border-collapse:collapse;border-style:none; ">
+<tbody class="email-container"  style="border:0px; border-collapse:collapse; margin:0px; padding:0px; border-style:none; border-spacing:0px;">
+<tr class="email-container"  style="border:0px; border-collapse:collapse; margin:0px; padding:0px; border-style:none; border-spacing:0px;">
+<td>
+-->
+
+    <table cellspacing="0" cellpadding="0" border="0" align="center" class="email-container" width="650px" bgcolor="#ffffff" style="border-collapse:collapse; margin:0; padding:0; border-spacing:0px; border-style:none; border:0px; border-collapse:collapse; width:650px;">
+
+			<tr>
+			<td width="650px"  style="border:0px; border-collapse:collapse; margin:0px; padding:0px; border-style:none; border-spacing:0px; width:650px;">
+            <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: '맑은 고딕';"> 유지보수 및 라이선스 재계약 안내 메일입니다 </div>
+            <img src="https://solidkorea.co.kr/uploaded/summernote/202304/30f648ce3ba193b58aea03cc08566ee8.png" width="100%" height="60px" alt="유지보수 및 라이선스 재계약 안내" align="center" border="0" style="margin:0; padding:0; display:block; overflow:hidden;font-size:0px; width:100%; height:60px;">
+			</td>
+			</tr>
+
+
+            <!-- 1 Column Text : BEGIN -->
+            <tr>
+            <td style="padding: 10px; text-align: center; font-family: '맑은 고딕'; font-size: 25px; mso-height-rule: exactly; line-height: 20px; color: #555555;"><p><br><br>유지보수 및 라이선스 재계약 안내
+			</p>
+			</td>
+			</tr>
+            
+			<tr>
+            <td style="padding: 30px; text-align: left; font-family: '맑은 고딕'; font-size: 14px; mso-height-rule: exactly; line-height: 20px; color: #555555;"><p>안녕하세요, 솔코입니다.<br>
+                  보유하고 계신 다쏘시스템 제품의 계약 갱신 기간이 도래하여 안내 드립니다.<br>
+                  유지보수 및 라이선스가 만료되기 전 갱신 계약을 통하여 최신의 소프트웨어와 최상의 기술지원 혜택을 누리세요!</p>
+                  <p>관련 문의 사항은 아래 솔코 담당자를 통해서 문의해 주시기 바랍니다.<br>
+                  ####userdata####
+				           </p>
+			</td>
+			</tr>
+
+			<tr>
+            <td style="padding: 30px; text-align: left; font-family: '맑은 고딕'; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;border-style:none; border-spacing:0px;border:0px; border-collapse:collapse; "><hr><br><br>
+				<p>
+				회사명 : ####accountname#### <br>
+                주소 : ####accountaddress#### <br>
+                </p>
+
+
+                  ####tablebody1####
+
+                  ####tablebody2####
+
+                  ####tablebody3####
+				  
+               <br>
+				<br><br>
+				<table class="email-container" cellspacing="0" cellpadding="0" border="0" align="center" width="350" style="margin: auto;">
+                <tr>
+                    <td style="border-radius: 3px; background: #115ba0; text-align: center;" class="button-td"><a href="https://solidkorea.co.kr/sub/sub05_01.php?utm_source=expire&utm_medium=email" style="background: #115ba0; border: 15px solid #115ba0; padding: 0 70px;color: #ffffff; font-family: '맑은 고딕'; font-size: 16px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a"> 
+                      <!--[if mso]>&nbsp;&nbsp;&nbsp;&nbsp;<![endif]-->유지보수 혜택 안내<!--[if mso]>&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--> 
+                      </a></td>
+                </tr>
+                </table>
+               <br>
+
+                <table class="email-container" cellspacing="0" cellpadding="0" border="0" align="center" width="350" style="margin: auto">
+                <tr>
+                    <td style="border-radius: 3px; background: #115ba0; text-align: center;" class="button-td"><a href="http://pf.kakao.com/_xnWwUC/chat" style="background: #115ba0; border: 15px solid #115ba0; padding: 0 58px;color: #ffffff; font-family: '맑은 고딕'; font-size: 16px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a"> 
+                      <!--[if mso]>&nbsp;&nbsp;&nbsp;&nbsp;<![endif]-->카카오톡으로 문의하기<!--[if mso]>&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--> 
+                    </a></td>
+                </tr>
+                </table>
+				
+				<br><br>
+				<br>
+		  </td>
+		  </tr>
+    </table>
+              <!-- Email Body : END --> 
+
+            
+              <!-- Email Footer : BEGIN -->
+              <table align="center" width="650" class="email-container">
+              <tr>
+              <td style="padding: 20px 10px;width: 100%;font-size: 12px; font-family: '맑은 고딕'; mso-height-rule: exactly; line-height:18px; text-align: center; color: #888888;"><span style="padding: 20px; text-align: center; font-family: '맑은 고딕'; font-size: 11px; mso-height-rule: exactly; line-height: 20px; color: #555555;">본 메일은 유지보수 및 라이선스 재계약 안내를 위해 이메일 수신동의 여부와 관계 없이 발송되었습니다.</span>
+			  </td>
+              </tr>
+              </table>
+              <!-- Email Footer : END -->
+
+<!--
+</td></tr></tbody></table>
+-->
+
+</body>
+</html>

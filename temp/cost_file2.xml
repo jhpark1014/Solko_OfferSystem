@@ -1,0 +1,585 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="ProductMap">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CRM_Product_Category" type="xs:string" minOccurs="0" />
+                <xs:element name="CRM_Product_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="XLS_Product_Name" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <ProductMap>
+    <CRM_Product_Category>CAM</CRM_Product_Category>
+    <CRM_Product_Name>CAM Standard</CRM_Product_Name>
+    <XLS_Product_Name>CAM Standard</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>CAM</CRM_Product_Category>
+    <CRM_Product_Name>CAM Professional</CRM_Product_Name>
+    <XLS_Product_Name>CAM Professional</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>COMPOSER</CRM_Product_Category>
+    <CRM_Product_Name>Composer</CRM_Product_Name>
+    <XLS_Product_Name>Composer</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>COMPOSER</CRM_Product_Category>
+    <CRM_Product_Name>Composer Player Pro</CRM_Product_Name>
+    <XLS_Product_Name>Composer Player Pro</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>COMPOSER</CRM_Product_Category>
+    <CRM_Product_Name>Composer Sync</CRM_Product_Name>
+    <XLS_Product_Name>Composer Sync</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>COMPOSER</CRM_Product_Category>
+    <CRM_Product_Name>Composer Network</CRM_Product_Name>
+    <XLS_Product_Name>Composer Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>COMPOSER</CRM_Product_Category>
+    <CRM_Product_Name>Composer Player Pro Network</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>COMPOSER</CRM_Product_Category>
+    <CRM_Product_Name>Composer Sync Network</CRM_Product_Name>
+    <XLS_Product_Name>Composer Sync Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>DraftSight</CRM_Product_Category>
+    <CRM_Product_Name>DraftSight Professional</CRM_Product_Name>
+    <XLS_Product_Name>DraftSight Professional</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>DraftSight</CRM_Product_Category>
+    <CRM_Product_Name>DraftSight Premium</CRM_Product_Name>
+    <XLS_Product_Name>DraftSight Premium</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>DraftSight</CRM_Product_Category>
+    <CRM_Product_Name>DraftSight Enterprise Plus Network</CRM_Product_Name>
+    <XLS_Product_Name>DraftSight Enterprise Plus Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>DraftSight</CRM_Product_Category>
+    <CRM_Product_Name>DraftSight Enterprise Network</CRM_Product_Name>
+    <XLS_Product_Name>DraftSight Enterprise Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>DraftSight</CRM_Product_Category>
+    <CRM_Product_Name>DraftSight Mechanical Network</CRM_Product_Name>
+    <XLS_Product_Name>DraftSight Mechanical Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>eDRAWING</CRM_Product_Category>
+    <CRM_Product_Name>eDrawings Professional</CRM_Product_Name>
+    <XLS_Product_Name>eDrawings Professional</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>eDRAWING</CRM_Product_Category>
+    <CRM_Product_Name>eDrawings Professional Network</CRM_Product_Name>
+    <XLS_Product_Name>eDrawings Professional Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>ELECTRICAL</CRM_Product_Category>
+    <CRM_Product_Name>Electrical Schematic Professional</CRM_Product_Name>
+    <XLS_Product_Name>Electrical Schematic Professional</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>ELECTRICAL</CRM_Product_Category>
+    <CRM_Product_Name>Electrical 3D</CRM_Product_Name>
+    <XLS_Product_Name>Electrical 3D</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>ELECTRICAL</CRM_Product_Category>
+    <CRM_Product_Name>Electrical Professional</CRM_Product_Name>
+    <XLS_Product_Name>Electrical Professional</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>ELECTRICAL</CRM_Product_Category>
+    <CRM_Product_Name>Electrical Schematic Professional Network</CRM_Product_Name>
+    <XLS_Product_Name>Electrical Schematic Professional Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>ELECTRICAL</CRM_Product_Category>
+    <CRM_Product_Name>Electrical 3D Network Add-On</CRM_Product_Name>
+    <XLS_Product_Name>Electrical 3D Network Add-On</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>ELECTRICAL</CRM_Product_Category>
+    <CRM_Product_Name>Electrical Professional Network Add-On</CRM_Product_Name>
+    <XLS_Product_Name>Electrical Professional Network Add-On</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>ETC</CRM_Product_Category>
+    <CRM_Product_Name>Geomagic for SOLIDWORKS</CRM_Product_Name>
+    <XLS_Product_Name>Geomagic for SOLIDWORKS</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>GEARTRAX</CRM_Product_Category>
+    <CRM_Product_Name>GearTeq</CRM_Product_Name>
+    <XLS_Product_Name>GearTeq</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>GEARTRAX</CRM_Product_Category>
+    <CRM_Product_Name>CamTrax</CRM_Product_Name>
+    <XLS_Product_Name>CamTrax</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>GEARTRAX</CRM_Product_Category>
+    <CRM_Product_Name>Gear Trax</CRM_Product_Name>
+    <XLS_Product_Name>Gear Trax</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>GEARTRAX</CRM_Product_Category>
+    <CRM_Product_Name>Gear Trax Pro</CRM_Product_Name>
+    <XLS_Product_Name>Gear Trax Pro</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>GEARTRAX</CRM_Product_Category>
+    <CRM_Product_Name>GearTeq SNL</CRM_Product_Name>
+    <XLS_Product_Name>GearTeq SNL</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>GEARTRAX</CRM_Product_Category>
+    <CRM_Product_Name>CamTrax SNL</CRM_Product_Name>
+    <XLS_Product_Name>CamTrax SNL</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>GEARTRAX</CRM_Product_Category>
+    <CRM_Product_Name>Gear Trax SNL</CRM_Product_Name>
+    <XLS_Product_Name>Gear Trax SNL</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>GEARTRAX</CRM_Product_Category>
+    <CRM_Product_Name>Gear Trax Pro SNL</CRM_Product_Name>
+    <XLS_Product_Name>Gear Trax Pro SNL</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>INSPECTION</CRM_Product_Category>
+    <CRM_Product_Name>Inspection Standard</CRM_Product_Name>
+    <XLS_Product_Name>Inspection Standard</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>INSPECTION</CRM_Product_Category>
+    <CRM_Product_Name>Inspection Professional</CRM_Product_Name>
+    <XLS_Product_Name>Inspection Professional</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>MBD</CRM_Product_Category>
+    <CRM_Product_Name>MBD Standard</CRM_Product_Name>
+    <XLS_Product_Name>MBD Standard</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>MBD</CRM_Product_Category>
+    <CRM_Product_Name>MBD Standard Network</CRM_Product_Name>
+    <XLS_Product_Name>MBD Standard Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>PDM Professional CAD Editor</CRM_Product_Name>
+    <XLS_Product_Name>PDM Professional CAD Editor</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>PDM Professional Contributor</CRM_Product_Name>
+    <XLS_Product_Name>PDM Professional Contributor</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>PDM Professional Viewer(5 User)</CRM_Product_Name>
+    <XLS_Product_Name>PDM Professional Viewer(5 User)</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>PDM Standard Contributor</CRM_Product_Name>
+    <XLS_Product_Name>PDM Standard Contributor</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>PDM Standard Viewer(5 User)</CRM_Product_Name>
+    <XLS_Product_Name>PDM Standard Viewer(5 User)</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>PDM Professional Universal License - 25 Users</CRM_Product_Name>
+    <XLS_Product_Name>PDM Professional Universal License - 25 Users</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>PDM Professional Universal License - 50 Users</CRM_Product_Name>
+    <XLS_Product_Name>PDM Professional Universal License - 50 Users</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>PDM Professional Universal License - 100 Users</CRM_Product_Name>
+    <XLS_Product_Name>PDM Professional Universal License - 100 Users</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>Workgroup PDM</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>Workgroup PDM Network</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>Manage Professional CAD Editor</CRM_Product_Name>
+    <XLS_Product_Name>Manage Professional CAD Editor</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>Manage Professional Contributor</CRM_Product_Name>
+    <XLS_Product_Name>Manage Professional Contributor</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>Manage Professional Viewer(5 User)</CRM_Product_Name>
+    <XLS_Product_Name>Manage Professional Viewer(5 User)</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>Manage Professional Universal License - 25 Users</CRM_Product_Name>
+    <XLS_Product_Name>Manage Professional Universal License - 25 Users</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>Manage Professional Universal License - 50 Users</CRM_Product_Name>
+    <XLS_Product_Name>Manage Professional Universal License - 50 Users</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>PDM</CRM_Product_Category>
+    <CRM_Product_Name>Manage Professional Universal License - 100 Users</CRM_Product_Name>
+    <XLS_Product_Name>Manage Professional Universal License - 100 Users</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud 3D Design</CRM_Product_Category>
+    <CRM_Product_Name>3D Creator</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud 3D Design</CRM_Product_Category>
+    <CRM_Product_Name>3D Sulptor</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud 3DEXPERIENCE platform</CRM_Product_Category>
+    <CRM_Product_Name>Business Innovation</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud 3DEXPERIENCE platform</CRM_Product_Category>
+    <CRM_Product_Name>Industry Innovation</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud 3DEXPERIENCE platform</CRM_Product_Category>
+    <CRM_Product_Name>Platform Extended Storage</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud Governance/Lifecycle</CRM_Product_Category>
+    <CRM_Product_Name>3D Component Designer</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud Governance/Lifecycle</CRM_Product_Category>
+    <CRM_Product_Name>Product Planner</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud Governance/Lifecycle</CRM_Product_Category>
+    <CRM_Product_Name>Change Management</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud Governance/Lifecycle</CRM_Product_Category>
+    <CRM_Product_Name>Product Release Engineer</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud Governance/Lifecycle</CRM_Product_Category>
+    <CRM_Product_Name>3D Product Architect</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud Governance/Lifecycle</CRM_Product_Category>
+    <CRM_Product_Name>3D Markup Engineer</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud Simulation</CRM_Product_Category>
+    <CRM_Product_Name>Simulation Foundation</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud Simulation</CRM_Product_Category>
+    <CRM_Product_Name>Structural Professional Engineer</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Public Cloud Simulation</CRM_Product_Category>
+    <CRM_Product_Name>Compute Credit Pack</CRM_Product_Name>
+    <XLS_Product_Name>#N/A</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Simulation Standard</CRM_Product_Name>
+    <XLS_Product_Name>Simulation Standard</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Sustainability</CRM_Product_Name>
+    <XLS_Product_Name>Sustainability</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Simulation Professional</CRM_Product_Name>
+    <XLS_Product_Name>Simulation Professional</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Sustainability Network Add-On</CRM_Product_Name>
+    <XLS_Product_Name>Sustainability Network Add-On</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Simulation Premium</CRM_Product_Name>
+    <XLS_Product_Name>Simulation Premium</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Simulation Designer</CRM_Product_Name>
+    <XLS_Product_Name>Simulation Designer</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Flow Simulation</CRM_Product_Name>
+    <XLS_Product_Name>Flow Simulation</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Flow Simulation Electronic Cooling Module</CRM_Product_Name>
+    <XLS_Product_Name>Flow Simulation Electronic Cooling Module</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Flow Simulation HVAC Module</CRM_Product_Name>
+    <XLS_Product_Name>Flow Simulation HVAC Module</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Plastics Standard</CRM_Product_Name>
+    <XLS_Product_Name>Plastics Standard</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Plastics Professional</CRM_Product_Name>
+    <XLS_Product_Name>Plastics Professional</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Plastics Premium</CRM_Product_Name>
+    <XLS_Product_Name>Plastics Premium</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Sustainability</CRM_Product_Name>
+    <XLS_Product_Name>Sustainability</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Simulation Standard Network</CRM_Product_Name>
+    <XLS_Product_Name>Simulation Standard Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Simulation Professional Network</CRM_Product_Name>
+    <XLS_Product_Name>Simulation Professional Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Simulation Premium Network</CRM_Product_Name>
+    <XLS_Product_Name>Simulation Premium Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Simulation Designer Network</CRM_Product_Name>
+    <XLS_Product_Name>Simulation Designer Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Flow Simulation Network</CRM_Product_Name>
+    <XLS_Product_Name>Flow Simulation Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Flow Simulation Electronic Cooling Module Network Add-On</CRM_Product_Name>
+    <XLS_Product_Name>Flow Simulation Electronic Cooling Module Network Add-On</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Flow Simulation HVAC Module Network Add-On</CRM_Product_Name>
+    <XLS_Product_Name>Flow Simulation HVAC Module Network Add-On</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Plastics Standard Network</CRM_Product_Name>
+    <XLS_Product_Name>Plastics Standard Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Plastics Professional Network</CRM_Product_Name>
+    <XLS_Product_Name>Plastics Professional Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Plastics Premium Network</CRM_Product_Name>
+    <XLS_Product_Name>Plastics Premium Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Premium with Simulation Premium Network</CRM_Product_Name>
+    <XLS_Product_Name>Premium with Simulation Premium Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Premium with Simulation Premium</CRM_Product_Name>
+    <XLS_Product_Name>Premium with Simulation Premium</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Premium with Simulation Professional Network</CRM_Product_Name>
+    <XLS_Product_Name>Premium with Simulation Professional Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SIMULATION</CRM_Product_Category>
+    <CRM_Product_Name>Premium with Simulation Professional</CRM_Product_Name>
+    <XLS_Product_Name>Premium with Simulation Professional</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Smap3D</CRM_Product_Category>
+    <CRM_Product_Name>Smap3D P&amp;ID – Full version Node Locked License</CRM_Product_Name>
+    <XLS_Product_Name>Smap3D P&amp;ID – Full version Node Locked License</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Smap3D</CRM_Product_Category>
+    <CRM_Product_Name>Smap3D P&amp;ID – Full version Floating License</CRM_Product_Name>
+    <XLS_Product_Name>Smap3D P&amp;ID – Full version Floating License</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Smap3D</CRM_Product_Category>
+    <CRM_Product_Name>Smap3D PipingISO – Floating License</CRM_Product_Name>
+    <XLS_Product_Name>Smap3D PipingISO – Floating License</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Smap3D</CRM_Product_Category>
+    <CRM_Product_Name>Smap3D Piping – Floating License</CRM_Product_Name>
+    <XLS_Product_Name>Smap3D Piping – Floating License</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Smap3D</CRM_Product_Category>
+    <CRM_Product_Name>Smap3D PipingISO – Node Locked License</CRM_Product_Name>
+    <XLS_Product_Name>Smap3D PipingISO – Node Locked License</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>Smap3D</CRM_Product_Category>
+    <CRM_Product_Name>Smap3D Piping – Node Locked License</CRM_Product_Name>
+    <XLS_Product_Name>Smap3D Piping – Node Locked License</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SOLIDWORKS</CRM_Product_Category>
+    <CRM_Product_Name>Standard</CRM_Product_Name>
+    <XLS_Product_Name>Standard</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SOLIDWORKS</CRM_Product_Category>
+    <CRM_Product_Name>Professional</CRM_Product_Name>
+    <XLS_Product_Name>Professional</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SOLIDWORKS</CRM_Product_Category>
+    <CRM_Product_Name>Premium</CRM_Product_Name>
+    <XLS_Product_Name>Premium</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SOLIDWORKS</CRM_Product_Category>
+    <CRM_Product_Name>Routing</CRM_Product_Name>
+    <XLS_Product_Name>Routing</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SOLIDWORKS</CRM_Product_Category>
+    <CRM_Product_Name>Standard Network</CRM_Product_Name>
+    <XLS_Product_Name>Standard Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SOLIDWORKS</CRM_Product_Category>
+    <CRM_Product_Name>Professional Network</CRM_Product_Name>
+    <XLS_Product_Name>Professional Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SOLIDWORKS</CRM_Product_Category>
+    <CRM_Product_Name>Premium Network</CRM_Product_Name>
+    <XLS_Product_Name>Premium Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>SOLIDWORKS</CRM_Product_Category>
+    <CRM_Product_Name>Routing Network</CRM_Product_Name>
+    <XLS_Product_Name>Routing Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>VISUALIZE</CRM_Product_Category>
+    <CRM_Product_Name>Visualize Standard</CRM_Product_Name>
+    <XLS_Product_Name>Visualize Standard</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>VISUALIZE</CRM_Product_Category>
+    <CRM_Product_Name>Visualize Professional</CRM_Product_Name>
+    <XLS_Product_Name>Visualize Professional</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>VISUALIZE</CRM_Product_Category>
+    <CRM_Product_Name>Visualize Boost</CRM_Product_Name>
+    <XLS_Product_Name>Visualize Boost</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>VISUALIZE</CRM_Product_Category>
+    <CRM_Product_Name>Visualize Standard Network</CRM_Product_Name>
+    <XLS_Product_Name>Visualize Standard Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>VISUALIZE</CRM_Product_Category>
+    <CRM_Product_Name>Visualize Professional Network</CRM_Product_Name>
+    <XLS_Product_Name>Visualize Professional Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>VISUALIZE</CRM_Product_Category>
+    <CRM_Product_Name>Visualize Boost Network</CRM_Product_Name>
+    <XLS_Product_Name>Visualize Boost Network</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>xPMWorks</CRM_Product_Category>
+    <CRM_Product_Name>xPMWorks Professional</CRM_Product_Name>
+    <XLS_Product_Name>xPMWorks Professional</XLS_Product_Name>
+  </ProductMap>
+  <ProductMap>
+    <CRM_Product_Category>xPMWorks</CRM_Product_Category>
+    <CRM_Product_Name>xPMWorks Standard</CRM_Product_Name>
+    <XLS_Product_Name>xPMWorks Standard</XLS_Product_Name>
+  </ProductMap>
+</NewDataSet>
