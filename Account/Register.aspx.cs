@@ -11,6 +11,8 @@ public partial class Account_Register : Page
         var manager = new UserManager();
         var user = new ApplicationUser() { UserName = UserName.Text };
         IdentityResult result = manager.Create(user, Password.Text);
+        manager.SetPhoneNumber(user.Id, UserPhone.Text);
+        manager.SetEmail(user.Id, UserEmail.Text);
         if (result.Succeeded)
         {
             IdentityHelper.SignIn(manager, user, isPersistent: false);

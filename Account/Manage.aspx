@@ -58,7 +58,7 @@
                 </asp:PlaceHolder>
 
                 <asp:PlaceHolder runat="server" ID="changePasswordHolder" Visible="false">
-                    <p>(으)로 로그인되어 있습니다 <strong><%: User.Identity.GetUserName() %></strong>.</p>
+                    <strong><%: User.Identity.GetUserName() %></strong><p>(으)로 로그인되어 있습니다.</p>
                     <div class="form-horizontal">
                         <h4>암호 양식 변경</h4>
                         <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />

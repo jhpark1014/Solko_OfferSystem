@@ -30,6 +30,10 @@ using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using System.Drawing;
 using OfficeOpenXml.Drawing;
 using System.Data.Entity.Core.Mapping;
+using Microsoft.AspNet.Identity;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
+using xPMWorksWeb;
+using System.Runtime.Remoting.Contexts;
 
 public partial class RequestList : System.Web.UI.Page
 {
@@ -1599,7 +1603,6 @@ public partial class RequestList : System.Web.UI.Page
             GridViewRow headerRow = GridView2.HeaderRow;
 
 
-
             // 날짜 넣기
             workSheet.Cells[2, 7].Value = "Date: " + DateTime.Now.ToString("yyyy-MM-dd");
             EPP_CellStyle(workSheet.Cells[2, 7], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, verBottom, horCenter, false, true, 10);
@@ -1620,11 +1623,56 @@ public partial class RequestList : System.Web.UI.Page
             workSheet.Cells[7, 2].Value = "VAR: ";
             workSheet.Cells[7, 3].Value = "(주)솔코";
             workSheet.Cells[8, 2].Value = "Rep.: ";
+            workSheet.Cells[8, 3].Value = Context.User.Identity.GetUserName();
             workSheet.Cells[9, 2].Value = "Tel: ";
-            workSheet.Cells[9, 3].Value = "031-8069-8306 || ";
+
+            //SqlParameter param = new SqlParameter("@userName", Context.User.Identity.GetUserName());
+            string sqlcmd = "SELECT PhoneNumber, Email FROM dbo.AspNetUsers;";
+            DB DB = new DB();
+            SqlConnection dbConn = DB.DbOpen();
+            SqlCommand cmd = new SqlCommand(sqlcmd, dbConn);
+            //cmd.Parameters.Add(param);
+            //cmd.Parameters["@userName"].Value = Context.User.Identity.GetUserName();
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            string test11 = "";
+            string test2 = "";
+            int j = 0;
+            if (dr.Read())
+            {
+                //for (int i = 0; i < 8; i++)
+                //{
+                //    System.Diagnostics.Debug.WriteLine("asdfasdf: ",j, "  " + dr[i].ToString());
+                //}
+                test11 = dr[0].ToString();
+                Debug.WriteLine("test11: " + test11);
+                test2 = dr[1].ToString();
+                Debug.WriteLine("test2: " + test2);
+                j++;
+            }
+            else
+            {
+                Debug.WriteLine("i: " + j + "XXX");
+                j++;
+            }
+                
+            //foreach (object drrr in dr)
+            //{
+            //    System.Diagnostics.Debug.WriteLine("asdfasdf: ", drrr);
+            //}
+
+            Debug.WriteLine(cmd.CommandText);
+
+            string userNumber = dr[0].ToString();
+            //userNumber.Split(2, 5);
+            string userEmail = dr[1].ToString();
+            dbConn.Close();
+            //UserManager.FindAsync(Context.User.Identity., Context.User.
+            workSheet.Cells[9, 3].Value = "031-8069-8306 || " + userNumber;
             workSheet.Cells[10, 2].Value = "Fax: ";
             workSheet.Cells[10, 3].Value = "031-8069-8301";
             workSheet.Cells[11, 2].Value = "Email: ";
+            workSheet.Cells[11, 3].Value = userEmail;
 
             // 고객 정보
             workSheet.Cells[7, 6].Value = "Customer: ";
@@ -1934,7 +1982,7 @@ public partial class RequestList : System.Web.UI.Page
             workSheet.Cells[16, 2, 16, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
             workSheet.Cells[last_table_row + 7, 2, last_table_row + 7, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
             workSheet.Cells[last_table_row + 4, 3, last_table_row + 5, 3].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#8EA9DB"));
-            workSheet.Cells[last_table_row + 4, 3].Value = "∙ Note ";
+            workSheet.Cells[last_table_row + 4, 3].Value = "  ∙ Note ";
             workSheet.Cells[last_table_row + 4, 3, last_table_row + 4, 4].Style.Font.Bold = true;
 
             for (int i = 0; i < listSubSum.Count; i++)
@@ -2725,14 +2773,12 @@ public partial class RequestList : System.Web.UI.Page
         {
             DateTime dStart = DateTime.Parse(txtLicStart.Text);
             DateTime dEnd = DateTime.Parse(txtLicEnd.Text);
-
         }
         catch
         {
             msgb("입력된 날짜가 정상적인 범위를 벗어났습니다(해당 월의 마지막 일자를 확인하여 주세요)");
             return;
         }
-
 
 
         int licType = 1;
@@ -2785,7 +2831,6 @@ public partial class RequestList : System.Web.UI.Page
         queryString += DB.convSql(txtprgName.Text, true);
         queryString += DB.convSql(txtprgVer.Text, false);
         queryString += ");";
-
 
 
         DB.QueryInsert(dbConn, queryString);

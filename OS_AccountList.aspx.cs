@@ -97,7 +97,6 @@ public partial class RequestList : System.Web.UI.Page
             //    //System.Diagnostics.Debug.WriteLine("finishdate" + finDate);
             //}
 
-
             QueryExpression query = new QueryExpression(entityName);
             query.ColumnSet = columnSet;
 

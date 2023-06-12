@@ -1,4 +1,4 @@
-ï»¿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using System.Web;
@@ -7,13 +7,13 @@ using xPMWorksWeb;
 
 namespace xPMWorksWeb
 {
-    // ì‚¬ìš©ì í´ë˜ìŠ¤ì— ë” ë§ì€ ì†ì„±ì„ ì¶”ê°€í•˜ì—¬ ì‚¬ìš©ìì— ëŒ€í•œ ì‚¬ìš©ì ë°ì´í„°ë¥¼ ì¶”ê°€í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤. ìì„¸íˆ ì•Œì•„ë³´ë ¤ë©´ http://go.microsoft.com/fwlink/?LinkID=317594ë¥¼ ë°©ë¬¸í•˜ì‹­ì‹œì˜¤.
+    // »ç¿ëÀÚ Å¬·¡½º¿¡ ´õ ¸¹Àº ¼Ó¼ºÀ» Ãß°¡ÇÏ¿© »ç¿ëÀÚ¿¡ ´ëÇÑ »ç¿ëÀÚ µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÒ ¼ö ÀÖ½À´Ï´Ù. ÀÚ¼¼È÷ ¾Ë¾Æº¸·Á¸é http://go.microsoft.com/fwlink/?LinkID=317594¸¦ ¹æ¹®ÇÏ½Ê½Ã¿À.
     public class ApplicationUser : IdentityUser
     {
-        // ì¶”ê°€í•œê±°!!!!
-        public string usersName { get; set; }
-        public string userPhone { get; set; }
-        public string userEmail { get; set; }
+        // Ãß°¡ÇÑ°Å!!!!
+        //public string user_Name { get; set; }
+        //public string userPhone { get; set; }
+        //public string userEmail { get; set; }
 
     }
 
@@ -25,7 +25,7 @@ namespace xPMWorksWeb
         }
     }
 
-    #region ë„ìš°ë¯¸
+    #region µµ¿ì¹Ì
     public class UserManager : UserManager<ApplicationUser>
     {
         public UserManager()
@@ -39,7 +39,7 @@ namespace xPMWorksWeb
 {
     public static class IdentityHelper
     {
-        // ì™¸ë¶€ ë¡œê·¸ì¸ì„ ì—°ê²°í•  ë•Œ XSRFì— ì‚¬ìš©ë¨
+        // ¿ÜºÎ ·Î±×ÀÎÀ» ¿¬°áÇÒ ¶§ XSRF¿¡ »ç¿ëµÊ
         public const string XsrfKey = "XsrfId";
 
         public static void SignIn(UserManager manager, ApplicationUser user, bool isPersistent)

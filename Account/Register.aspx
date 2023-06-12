@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="UserPhone" CssClass="col-md-2 control-label">사용자 전화번호</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="UserPhone" CssClass="col-md-2 control-label">사용자 전화번호 (000-0000-0000 형식으로 작성해주세요.) </asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="UserPhone" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
