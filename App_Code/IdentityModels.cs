@@ -4,6 +4,7 @@ using Microsoft.Owin.Security;
 using System.Web;
 using System;
 using xPMWorksWeb;
+using System.DirectoryServices.AccountManagement;
 
 namespace xPMWorksWeb
 {
@@ -11,7 +12,7 @@ namespace xPMWorksWeb
     public class ApplicationUser : IdentityUser
     {
         // 추가한거!!!!
-        //public string user_Name { get; set; }
+        //public string User_Name { get; set; }
         //public string userPhone { get; set; }
         //public string userEmail { get; set; }
 
@@ -19,10 +20,24 @@ namespace xPMWorksWeb
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        // original
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
         }
+
+        //private readonly DbContextOptions _options;
+
+        //public ApplicationDbContext(DbContextOptions options) : base(options)
+        //{
+        //    _options = options;
+        //}
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+
+        //}
     }
 
     #region 도우미
@@ -31,6 +46,10 @@ namespace xPMWorksWeb
         public UserManager()
             : base(new UserStore<ApplicationUser>(new ApplicationDbContext()))
         {
+            // 추가
+            PasswordValidator = new MinimumLengthValidator(4);
+            UserValidator = new UserValidator<ApplicationUser>(this)
+            { AllowOnlyAlphanumericUserNames = false };
         }
     }
 }

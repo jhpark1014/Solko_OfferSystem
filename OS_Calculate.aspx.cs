@@ -34,6 +34,7 @@ using Microsoft.AspNet.Identity;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using xPMWorksWeb;
 using System.Runtime.Remoting.Contexts;
+using System.Data.Entity;
 
 public partial class RequestList : System.Web.UI.Page
 {
@@ -423,7 +424,7 @@ public partial class RequestList : System.Web.UI.Page
             dt.Rows[i * 3 + 2]["new_i_qty"] = "";
 
             // 기간요약 출력 
-            dt.Rows[i * 3 + 0]["기간요약"] = newOffer.ToString() + " (" + (newOffer.GetBackdatingAsMonth(mOfferDate) + newOffer.GetForwardAsMonth(mOfferDate, newExpireDate)) + "개월)"; //  dt.Rows[i * 3]["new_l_product_category"];
+            dt.Rows[i * 3 + 0]["기간요약"] = newOffer.ToString() + " Service Renewal (" + (newOffer.GetBackdatingAsMonth(mOfferDate) + newOffer.GetForwardAsMonth(mOfferDate, newExpireDate)) + "개월)"; //  dt.Rows[i * 3]["new_l_product_category"];
             dt.Rows[i * 3 + 1]["기간요약"] = "           " + newOffer.GetForwardAsDescription(mOfferDate, newExpireDate);   //   "&nbsp&nbsp&nbsp" + forwarddata;
             dt.Rows[i * 3 + 2]["기간요약"] = "           " + newOffer.GetBackdatingAsDescription(mOfferDate);//"&nbsp&nbsp&nbsp" + backdata;
 
@@ -1584,23 +1585,308 @@ public partial class RequestList : System.Web.UI.Page
     protected void estimatebtn_Click(object sender, EventArgs e)
     {
         DataTable dts = (DataTable)Session["GridData"];
+        DataTable dts_copy = dts.Copy();
         string compName = (string)Session["BK_companyName"];
         DataSet ds = new DataSet();
-        ds.Tables.Add(dts);
-        string filePath = string.Format("C:/VS/Offer_{0}_{1}.xlsx", compName, DateTime.Now.ToShortDateString());
+        ds.Tables.Add(dts_copy);
+
+        string templatePath = AppDomain.CurrentDomain.BaseDirectory + "\\Template\\견적서_양식.xlsx";
+        FileInfo tempateInfo = new FileInfo(templatePath);
 
         int totalCols = GridView2.Columns.Count;
         int totalRows = GridView2.Rows.Count;
 
         Debug.WriteLine("totalcols" + totalCols + "totalrows" + totalRows);
 
+        ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
+        using (ExcelPackage pck = new ExcelPackage(tempateInfo))
+        {
+            ExcelWorksheet workSheet = pck.Workbook.Worksheets[0];
+
+            // 날짜 넣기
+            workSheet.Cells[2, 7].Value = "Date: " + DateTime.Now.ToString("yyyy-MM-dd");
+
+            // 라이센스 데이터 추가 테스트
+            {
+                // 라이센스별 소계의 row index ==> 제일 아래의 합계에 목록으로 주기 위함 
+                List<int> listSubSum = new List<int>();
+
+                // 엑셀 row
+                // 견적서 출력되는 본문의 엑셀 시작위치(17 = 컬럼헤더 바로 아랫줄)
+                int tableStartRowIndex = 17;
+                int tableTemplateHeadRowIndex = 19; // 엑셀의 실제 row위치보다 -1 
+                int tableTemplateBodyRowIndex = 20; // 엑셀의 실제 row위치보다 -1 
+                // 견적서 출력 데이터의 index increment 
+                int excelRowIndex = 1;
+
+
+                // 솔코 정보
+                // 사용자 정보 DB에서 정보 가져오기
+                string sqlcmd = "SELECT PhoneNumber, Email FROM dbo.AspNetUsers WHERE userName = @userName;";
+                DB DB = new DB();
+                SqlConnection dbConn = DB.DbOpen();
+                SqlCommand cmd = new SqlCommand(sqlcmd, dbConn);
+                SqlParameter param = new SqlParameter("@userName", Context.User.Identity.GetUserName());
+                cmd.Parameters.Add(param);
+                //cmd.Parameters["@userName"].Value = Context.User.Identity.GetUserName();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                try 
+                {
+                    dr.Read();
+                    string info = dr[0].ToString();
+                    string[] infos = info.Split('*');
+                    string userName = infos[0];     // 사용자 이름 (Rep.)
+                    string userPhone = infos[1];    // 사용자 유선 번호
+                    string userMobile = infos[2];   // 사용자 핸드폰번호
+
+                    workSheet.Cells[8, 3].Value = userName; 
+                    workSheet.Cells[9, 3].Value = userPhone + " || " + userMobile;
+
+                    // Email
+                    string email = dr[1].ToString();
+                    workSheet.Cells[11, 3].Value = email;
+                }
+                catch (Exception exception)
+                {
+                    workSheet.Cells[9, 3].Value = "031-8069-8306 || ";
+                    workSheet.Cells[11, 3].Value = "";
+                    Console.WriteLine("Exception " + exception);
+                }
+                dbConn.Close();
+
+                // 고객사 이름
+                workSheet.Cells[7, 7].Value = (string)Session["BK_companyName"];
+
+                // Cell에 값 넣기
+                for (var readRowIndex = 1; readRowIndex <= totalRows - 2; readRowIndex++)
+                {
+
+                    // backdating에 원가/견적 금액이 없는 경우 ==> 줄 출력하지 않기 
+                    if (readRowIndex % 3 == 0)
+                    {
+                        string sBackDating = GridView2.Rows[readRowIndex - 1].Cells[1].Text;
+                        if (sBackDating.Trim().Equals("BackDating = 0", StringComparison.OrdinalIgnoreCase))
+                        {
+                            continue;
+                        }
+                    }
+
+                    // NO
+                    {
+                        int colIndex = 1; // NO
+
+                        string product = GridView2.Rows[readRowIndex - 1].Cells[colIndex - 1].Text;
+
+                        // Blank Cell 일 경우
+                        if (IsNull(product))
+                        { 
+                            // 각 라이센스의 상세줄 
+                            workSheet.InsertRow(excelRowIndex + tableStartRowIndex, 1, tableTemplateBodyRowIndex + excelRowIndex);
+                            
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 1].Value = " ";
+                            workSheet.Row(excelRowIndex + tableStartRowIndex).Height = (double)20.0;
+                        }
+                        else
+                        { 
+                            // 각 라이센스의 헤드 
+                            workSheet.InsertRow(excelRowIndex + tableStartRowIndex, 1, tableTemplateHeadRowIndex + excelRowIndex);
+
+                            int iVal = int.Parse(NormalizeToDecimal(product));
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 1].Value = iVal;
+                            workSheet.Row(excelRowIndex + tableStartRowIndex).Height = (double)20.0;
+
+                            // Description Column, Customer RRP Column Bold체 처리
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 2].Style.Font.Bold = true;
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 4].Style.Font.Bold = true;
+
+                            // 소계 row index 저장 
+                            listSubSum.Add(tableStartRowIndex + excelRowIndex);
+                        }
+                    }
+
+
+                    // 기간요약
+                    {
+                        int colIndex = 2;
+
+                        string product = GridView2.Rows[readRowIndex - 1].Cells[colIndex - 1].Text;
+                        //Debug.WriteLine("product: " + product);
+
+                        // Blank Cell 일 경우
+                        if (IsNull(product))
+                        {
+                            product = " ";
+                        }
+
+                        workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 1].Value = product;
+
+                    }
+
+                    // 종료일자 --> 엑셀에 출력하지 않음으로 뺌.
+                    {
+                    }
+
+
+                    // 수량
+                    {
+                        int colIndex = 4;
+
+                        string product = GridView2.Rows[readRowIndex - 1].Cells[colIndex - 1].Text;
+
+                        // Blank Cell 일 경우
+                        if (IsNull(product))
+                        {
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex].Value = " ";
+                        }
+                        else
+                        {
+                            int iVal = int.Parse(NormalizeToDecimal(product));
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex].Value = iVal;
+                        }
+
+                    }
+
+
+                    // 소비자 단가
+                    {
+                        int colIndex = 5;
+
+                        string product = GridView2.Rows[readRowIndex - 1].Cells[colIndex - 1].Text;
+
+                        // Blank Cell 일 경우
+                        if (IsNull(product))
+                        {
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex].Value = " ";
+                        }
+                        else
+                        {
+                            long iVal = long.Parse(NormalizeToDecimal(product));
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex].Value = iVal;
+                        }
+                    }
+
+
+                    // 제안 단가
+                    {
+                        int colIndex = 6;
+
+                        string product = GridView2.Rows[readRowIndex - 1].Cells[colIndex - 1].Text;
+
+                        // Blank Cell 일 경우
+                        if (IsNull(product))
+                        {
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex].Value = " ";
+                        }
+                        else
+                        {
+                            long iVal = long.Parse(NormalizeToDecimal(product));
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex].Value = iVal;
+                        }
+                    }
+
+
+                    // 최종 견적가
+                    {
+                        int colIndex = 7;
+
+                        string product = GridView2.Rows[readRowIndex - 1].Cells[colIndex - 1].Text;
+
+                        // Blank Cell 일 경우
+                        if (IsNull(product))
+                        {
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex].Value = " ";
+                        }
+                        else
+                        {
+                            string form_final_RRP = string.Format("D{0} * F{0}", excelRowIndex + tableStartRowIndex);
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex].Formula = form_final_RRP;
+
+                            //long iVal = long.Parse(NormalizeToDecimal(product));
+                            //workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex].Value = iVal;
+                        }
+                    }
+
+                    excelRowIndex++;
+                }
+
+                // Row 4개 삭제하기
+                workSheet.DeleteRow(excelRowIndex + tableStartRowIndex);
+                workSheet.DeleteRow(excelRowIndex + tableStartRowIndex);
+                workSheet.DeleteRow(excelRowIndex + tableStartRowIndex);
+                workSheet.DeleteRow(excelRowIndex + tableStartRowIndex);
+
+                // SOLKO SUBSCRIPTION SERVICE Row에 No. 삽입
+                workSheet.Cells[excelRowIndex + tableStartRowIndex + 1, 2].Value = listSubSum.Count + 1;
+
+                // Table의 마지막 줄
+                int last_table_row = listSubSum[listSubSum.Count - 1];
+
+
+                // Sub Total Row
+                // 소비자 단가
+                string form = "";
+                StringBuilder sbRows = new StringBuilder();
+                // 최종 견적가
+                string form_final = "";
+                StringBuilder sbRows_final = new StringBuilder();
+                for (int i = 0; i < listSubSum.Count; i++)
+                {
+                    if (sbRows.Length > 0)
+                    {
+                        sbRows.Append(", ");
+                        sbRows_final.Append(", ");
+                    }
+
+                    sbRows.Append(string.Format("D{0} * E{0}", listSubSum[i]));
+                    sbRows_final.Append(string.Format("G{0}", listSubSum[i]));
+                }
+
+                form = sbRows.ToString();
+                form_final = sbRows_final.ToString();
+                // 소비자단가_Sub Total
+                workSheet.Cells[last_table_row + 5, 5].Formula = "SUM(" + form + ")";
+                // 최종 견적가_Sub Total
+                workSheet.Cells[last_table_row + 5, 7].Formula = "SUM(" + form_final + ")";
+
+                // SOLKO 직인 넣기
+                //System.Drawing.Image stamp = System.Drawing.Image.FromFile("C:\\Users\\solko\\Desktop\\solko_stamp.png");
+                //FileInfo stamp = new FileInfo("C:\\Users\\solko\\Desktop\\solko_stamp.png");
+                //var solkoStamp = workSheet.Drawings.AddPicture("solkoStamp", stamp);
+                //solkoStamp.SetPosition(last_table_row + 21, 0, 5, 0);
+                //solkoStamp.SetSize(70, 65);
+
+                // listSubSum 넣기
+                //StringBuilder sb2 = new StringBuilder();
+                //foreach (int a in listSubSum)
+                //    sb2.Append(string.Format(", {0}", a));
+                //workSheet.Cells[1, 1].Value = sb2;
+            }
+
+
+            // 결과파일을 사용자에게 스트림으로 회신 
+            string excelName = string.Format("Offer_{0}_{1}", compName, DateTime.Now.ToLongDateString());
+            using (var memoryStream = new MemoryStream())
+            {
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", "attachment; filename=" + excelName + ".xlsx");
+                pck.SaveAs(memoryStream);
+                memoryStream.WriteTo(Response.OutputStream);
+                Response.Flush();
+                Response.End();
+            }
+        }
+
+
+        if(false)
         using (ExcelPackage pck = new ExcelPackage())
         {
-            ExcelWorksheet workSheet = pck.Workbook.Worksheets.Add(dts.TableName);
+            ExcelWorksheet workSheet = pck.Workbook.Worksheets.Add(dts_copy.TableName);
 
-            Debug.WriteLine("totalcols" + totalCols + "totalrows" + totalRows);
+            //Debug.WriteLine("totalcols" + totalCols + "totalrows" + totalRows);
             GridViewRow headerRow = GridView2.HeaderRow;
+
 
 
             // 날짜 넣기
@@ -1609,9 +1895,9 @@ public partial class RequestList : System.Web.UI.Page
 
             // Solko Logo 넣기
             System.Drawing.Image logo = System.Drawing.Image.FromFile("C:\\Users\\solko\\Desktop\\solko_logo.jpg");
-            var solkoLogo = workSheet.Drawings.AddPicture("solkoLogo", logo);
-            solkoLogo.SetPosition(2, 0, 1, 0);
-            solkoLogo.SetSize(252, 46);
+            //var solkoLogo = workSheet.Drawings.AddPicture("solkoLogo", logo);
+            //solkoLogo.SetPosition(2, 0, 1, 0);
+            //solkoLogo.SetSize(252, 46);
 
             // Sales Quotation
             workSheet.Cells[3, 1].Value = "Sales Quotation";
@@ -1655,7 +1941,7 @@ public partial class RequestList : System.Web.UI.Page
                 Debug.WriteLine("i: " + j + "XXX");
                 j++;
             }
-                
+
             //foreach (object drrr in dr)
             //{
             //    System.Diagnostics.Debug.WriteLine("asdfasdf: ", drrr);
@@ -1681,7 +1967,7 @@ public partial class RequestList : System.Web.UI.Page
             workSheet.Cells[9, 6].Value = "Tel: ";
             workSheet.Cells[10, 6].Value = "Email: ";
 
-            workSheet.Cells["B7:G11"].Style.Font.Size = 10;
+            workSheet.Cells["B7:G11"].Style.Font.Size = 11;
             workSheet.Cells["B7:B11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
             workSheet.Cells["C7:C11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
             workSheet.Cells["F7:F11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
@@ -1696,11 +1982,11 @@ public partial class RequestList : System.Web.UI.Page
 
             // 견적서 Table
             workSheet.Cells[15, 2].Value = "1. Solution";
-            workSheet.Cells[15, 2].Style.Font.Size = 10;
+            workSheet.Cells[15, 2].Style.Font.Size = 12;
             workSheet.Cells[15, 2].Style.Font.Bold = true;
 
             workSheet.Cells[15, 7].Value = "(Unit: WON)";
-            workSheet.Cells[15, 7].Style.Font.Size = 8;
+            workSheet.Cells[15, 7].Style.Font.Size = 9;
             workSheet.Cells[15, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
 
             workSheet.Cells[16, 2].Value = "No.";
@@ -1973,17 +2259,18 @@ public partial class RequestList : System.Web.UI.Page
             workSheet.Cells[last_table_row + 9, 2, last_table_row + 9, 7].Style.Border.Top.Style = ExcelBorderStyle.Thin;
             workSheet.Cells[last_table_row + 9, 2, last_table_row + 9, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
             //workSheet.Cells[16, 2, totalRows + 23, 7].Style.Border.Bottom.Color.SetColor(ColorTranslator.FromHtml("#808080"));
-            workSheet.Cells[17, 2, last_table_row + 3, 7].Style.Font.Name = "Calibri";
 
             // Set style
             workSheet.Cells.Style.Font.Name = "맑은 고딕";
             workSheet.Cells[1, 1, last_table_row + 26, 8].Style.Fill.PatternType = ExcelFillStyle.Solid;
             workSheet.Cells[1, 1, last_table_row + 26, 8].Style.Fill.BackgroundColor.SetColor(Color.White);
-            workSheet.Cells[16, 2, 16, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
+            workSheet.Cells[16, 2, 16, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#9BC2E6"));
             workSheet.Cells[last_table_row + 7, 2, last_table_row + 7, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
-            workSheet.Cells[last_table_row + 4, 3, last_table_row + 5, 3].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#8EA9DB"));
-            workSheet.Cells[last_table_row + 4, 3].Value = "  ∙ Note ";
-            workSheet.Cells[last_table_row + 4, 3, last_table_row + 4, 4].Style.Font.Bold = true;
+            workSheet.Cells[last_table_row + 4, 2, last_table_row + 5, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#8EA9DB"));
+            workSheet.Cells[last_table_row + 4, 3].Value = "  ∙ xPMWorks Standard (SOLIDWORKS 속성 일괄편집기) : 솔코 개발 소프트웨어 ";
+            workSheet.Cells[last_table_row + 5, 3].Value = "   (유지보수 기간 내 제공, 소비자가 30만원 상당)";
+            workSheet.Cells[last_table_row + 4, 3, last_table_row + 5, 4].Style.Font.Bold = true;
+            workSheet.Cells[17, 2, last_table_row + 3, 7].Style.Font.Name = "Calibri";
 
             for (int i = 0; i < listSubSum.Count; i++)
             {
@@ -2009,7 +2296,7 @@ public partial class RequestList : System.Web.UI.Page
             // 2. Detail Condition
             workSheet.Cells[last_table_row + 11, 2].Value = "2. Detail Condition";
             workSheet.Cells[last_table_row + 11, 2].Style.Font.Bold = true;
-            workSheet.Cells[last_table_row + 11, 2].Style.Font.Size = 10;
+            workSheet.Cells[last_table_row + 11, 2].Style.Font.Size = 12;
             workSheet.Cells[last_table_row + 12, 2].Value = "   1) 본 견적(구매) 건은 정상 구매 조건이며, 불법 사용에 관련된 구매 건과는 별 건임을 알려드립니다.";
             var cell = workSheet.Cells[last_table_row + 13, 2];
             cell.IsRichText = true;
@@ -2022,16 +2309,16 @@ public partial class RequestList : System.Web.UI.Page
             var part3 = cell.RichText.Add("(고객께서 \"숙지하였음\" 필사와  \"서명\" 부탁드립니다.)");
             part3.Bold = false;
             part3.Size = 9;
-            workSheet.Cells[last_table_row + 13, 2].Style.Font.Size = 9;
+            workSheet.Cells[last_table_row + 13, 2].Style.Font.Size = 12;
             //workSheet.Cells[totalRows + 27, 2].Value = "   2) Subscription 가입은 필수 계약 사항입니다.  숙 지 하 였 음 (서명) (고객께서 \"숙지하였음\" 필사와  \"서명\" 부탁 드립니다.)";
             workSheet.Cells[last_table_row + 14, 2].Value = "     : 제품 보완, 최신버전, 기술지원을 위한 필수적인 사항이며, 미 갱신으로 인한 제품 사용에 대한 불편이 발생 시 지원이 불가 합니다.";
             workSheet.Cells[last_table_row + 15, 2].Value = "   3) 납품 후 30일 이내 현금 지불 조건입니다.";
             workSheet.Cells[last_table_row + 16, 2].Value = "   4) 상기 가격은 공급사인 다쏘시스템 솔리드웍스의 가격 정책에 따라 예고 없이 변경될 수 있습니다.";
             workSheet.Cells[last_table_row + 17, 2].Value = "   5) 상기 견적은 발행일로부터 14일간 유효합니다.";
-            workSheet.Cells[last_table_row + 12, 2, last_table_row + 17, 2].Style.Font.Size = 9;
+            workSheet.Cells[last_table_row + 12, 2, last_table_row + 17, 2].Style.Font.Size = 11;
 
             // 공인리셀러 정보
-            workSheet.Cells[last_table_row + 20, 2].Style.Font.Size = 10;
+            workSheet.Cells[last_table_row + 20, 2].Style.Font.Size = 12;
             workSheet.Cells[last_table_row + 20, 2].Style.Font.UnderLine = true;
             workSheet.Cells[last_table_row + 20, 2].Value = "공인리셀러 정보";
             workSheet.Cells[last_table_row + 20, 2, last_table_row + 20, 7].Merge = true;
@@ -2053,19 +2340,19 @@ public partial class RequestList : System.Web.UI.Page
             workSheet.Cells[last_table_row + 22, 4].Value = "• 법인등록번호  :  135811-0163732";
             workSheet.Cells[last_table_row + 23, 4].Value = "• 대표이사  :  박 광 수                        (인)";
             workSheet.Cells[last_table_row + 24, 4].Value = "• 종      목  :  기술, 설계용역, 컴퓨터 및 주변장치, 소프트웨어자문, 개발 및 공급";
-            workSheet.Cells[last_table_row + 22, 2, last_table_row + 35, 4].Style.Font.Size = 9;
+            workSheet.Cells[last_table_row + 22, 2, last_table_row + 35, 4].Style.Font.Size = 11;
 
             // 직인 넣기
-            System.Drawing.Image stamp = System.Drawing.Image.FromFile("C:\\Users\\solko\\Desktop\\solko_stamp.png");
-            var solkoStamp = workSheet.Drawings.AddPicture("solkoStamp", stamp);
-            solkoStamp.SetPosition(last_table_row + 21, 0, 5, 0);
-            solkoStamp.SetSize(75, 68);
+            //System.Drawing.Image stamp = System.Drawing.Image.FromFile("C:\\Users\\solko\\Desktop\\solko_stamp.png");
+            //var solkoStamp = workSheet.Drawings.AddPicture("solkoStamp", stamp);
+            //solkoStamp.SetPosition(last_table_row + 21, 0, 5, 0);
+            //solkoStamp.SetSize(70, 65);
 
 
             // 컬럼 폭 조정
             workSheet.Column(1).Width = (double)3.75;
             workSheet.Column(2).Width = (double)12.63;
-            workSheet.Column(3).Width = (double)70.13;
+            workSheet.Column(3).Width = (double)71.00;
             workSheet.Column(4).Width = (double)6.50;
             workSheet.Column(5).Width = (double)20.13;
             workSheet.Column(6).Width = (double)20.13;
@@ -2101,6 +2388,14 @@ public partial class RequestList : System.Web.UI.Page
         }
     }
 
+    public class MyDbContext : DbContext
+    {
+        public MyDbContext()
+        {
+
+        }
+    }
+
     protected void estimatebtn_Template(object sender, EventArgs e)
     {
         var excelToExport = new FileInfo("C:\\Users\\solko\\Desktop\\template.xlsx");
@@ -2117,341 +2412,341 @@ public partial class RequestList : System.Web.UI.Page
         }
     }
 
-    protected void estimatebtn_Click2(object sender, EventArgs e)
-    {
-        DataTable dts = (DataTable)Session["GridData"];
-        string compName = (string)Session["BK_companyName"];
-        DataSet ds = new DataSet();
-        ds.Tables.Add(dts);
-        string filePath = string.Format("C:/VS/Offer_{0}_{1}.xlsx", compName, DateTime.Now.ToShortDateString());
+    //protected void estimatebtn_Click2(object sender, EventArgs e)
+    //{
+    //    DataTable dts = (DataTable)Session["GridData"];
+    //    string compName = (string)Session["BK_companyName"];
+    //    DataSet ds = new DataSet();
+    //    ds.Tables.Add(dts);
+    //    string filePath = string.Format("C:/VS/Offer_{0}_{1}.xlsx", compName, DateTime.Now.ToShortDateString());
 
-        int totalCols = GridView2.Columns.Count;
-        int totalRows = GridView2.Rows.Count;
-        //Debug.WriteLine("totalcols" + totalCols + "totalrows" + totalRows);
+    //    int totalCols = GridView2.Columns.Count;
+    //    int totalRows = GridView2.Rows.Count;
+    //    //Debug.WriteLine("totalcols" + totalCols + "totalrows" + totalRows);
 
-        using (ExcelPackage pck = new ExcelPackage())
-        {
-            ExcelWorksheet workSheet = pck.Workbook.Worksheets.Add(dts.TableName);
+    //    using (ExcelPackage pck = new ExcelPackage())
+    //    {
+    //        ExcelWorksheet workSheet = pck.Workbook.Worksheets.Add(dts.TableName);
 
-            Debug.WriteLine("totalcols" + totalCols + "totalrows" + totalRows);
-            GridViewRow headerRow = GridView2.HeaderRow;
+    //        Debug.WriteLine("totalcols" + totalCols + "totalrows" + totalRows);
+    //        GridViewRow headerRow = GridView2.HeaderRow;
 
-            //Set style
-            workSheet.Cells.Style.Font.Name = "맑은 고딕";
-            workSheet.Cells[1, 1, totalRows + 40, 8].Style.Fill.PatternType = ExcelFillStyle.Solid;
-            workSheet.Cells[1, 1, totalRows + 40, 8].Style.Fill.BackgroundColor.SetColor(Color.White);
+    //        //Set style
+    //        workSheet.Cells.Style.Font.Name = "맑은 고딕";
+    //        workSheet.Cells[1, 1, totalRows + 40, 8].Style.Fill.PatternType = ExcelFillStyle.Solid;
+    //        workSheet.Cells[1, 1, totalRows + 40, 8].Style.Fill.BackgroundColor.SetColor(Color.White);
 
-            //날짜 넣기
-            workSheet.Cells[2, 7].Value = "Date: " + DateTime.Now.ToString("yyyy-MM-dd");
-            EPP_CellStyle(workSheet.Cells[2, 7], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, verBottom, horCenter, false, true, 10);
+    //        //날짜 넣기
+    //        workSheet.Cells[2, 7].Value = "Date: " + DateTime.Now.ToString("yyyy-MM-dd");
+    //        EPP_CellStyle(workSheet.Cells[2, 7], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, verBottom, horCenter, false, true, 10);
 
-            //Solko Logo 넣기
-            System.Drawing.Image logo = System.Drawing.Image.FromFile("C:\\Users\\solko\\Desktop\\solko_logo.jpg");
-            var solkoLogo = workSheet.Drawings.AddPicture("solkoLogo", logo);
-            solkoLogo.SetPosition(2, 0, 1, 0);
-            solkoLogo.SetSize(252, 46);
+    //        //Solko Logo 넣기
+    //        System.Drawing.Image logo = System.Drawing.Image.FromFile("C:\\Users\\solko\\Desktop\\solko_logo.jpg");
+    //        var solkoLogo = workSheet.Drawings.AddPicture("solkoLogo", logo);
+    //        solkoLogo.SetPosition(2, 0, 1, 0);
+    //        solkoLogo.SetSize(252, 46);
 
-            //Sales Quotation
-            workSheet.Cells[3, 1].Value = "Sales Quotation";
-            EPP_CellStyle(workSheet.Cells[3, 1], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, verBottom, horCenter, false, true, 28);
-            workSheet.Cells[3, 1].Style.Font.UnderLine = true;
-            workSheet.Cells[3, 1, 3, 8].Merge = true;
+    //        //Sales Quotation
+    //        workSheet.Cells[3, 1].Value = "Sales Quotation";
+    //        EPP_CellStyle(workSheet.Cells[3, 1], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, verBottom, horCenter, false, true, 28);
+    //        workSheet.Cells[3, 1].Style.Font.UnderLine = true;
+    //        workSheet.Cells[3, 1, 3, 8].Merge = true;
 
-            //Solko 정보
-            workSheet.Cells[7, 2].Value = "VAR: ";
-            workSheet.Cells[7, 3].Value = "(주)솔코";
-            workSheet.Cells[8, 2].Value = "Rep: ";
-            workSheet.Cells[9, 2].Value = "Tel: ";
-            workSheet.Cells[9, 3].Value = "031-8069-8306 || ";
-            workSheet.Cells[10, 2].Value = "Fax: ";
-            workSheet.Cells[10, 3].Value = "031-8069-8301";
-            workSheet.Cells[11, 2].Value = "Email: ";
+    //        //Solko 정보
+    //        workSheet.Cells[7, 2].Value = "VAR: ";
+    //        workSheet.Cells[7, 3].Value = "(주)솔코";
+    //        workSheet.Cells[8, 2].Value = "Rep: ";
+    //        workSheet.Cells[9, 2].Value = "Tel: ";
+    //        workSheet.Cells[9, 3].Value = "031-8069-8306 || ";
+    //        workSheet.Cells[10, 2].Value = "Fax: ";
+    //        workSheet.Cells[10, 3].Value = "031-8069-8301";
+    //        workSheet.Cells[11, 2].Value = "Email: ";
 
-            //고객 정보
-            workSheet.Cells[7, 6].Value = "Customer: ";
-            workSheet.Cells[7, 7].Value = (string)Session["BK_companyName"];
-            workSheet.Cells[8, 6].Value = "Rep: ";
-            workSheet.Cells[9, 6].Value = "Tel: ";
-            workSheet.Cells[10, 6].Value = "Email: ";
+    //        //고객 정보
+    //        workSheet.Cells[7, 6].Value = "Customer: ";
+    //        workSheet.Cells[7, 7].Value = (string)Session["BK_companyName"];
+    //        workSheet.Cells[8, 6].Value = "Rep: ";
+    //        workSheet.Cells[9, 6].Value = "Tel: ";
+    //        workSheet.Cells[10, 6].Value = "Email: ";
 
-            workSheet.Cells["B7:G11"].Style.Font.Size = 10;
-            workSheet.Cells["B7:B11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-            workSheet.Cells["C7:C11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-            workSheet.Cells["F7:F11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-            workSheet.Cells["G7:G11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+    //        workSheet.Cells["B7:G11"].Style.Font.Size = 12;
+    //        workSheet.Cells["B7:B11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+    //        workSheet.Cells["C7:C11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+    //        workSheet.Cells["F7:F11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+    //        workSheet.Cells["G7:G11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
 
-            workSheet.Cells[1, 6].Value = "Forwarding D/C";
-            workSheet.Cells[1, 7].Value = forwardDiscount.Text + "%";
+    //        workSheet.Cells[1, 6].Value = "Forwarding D/C";
+    //        workSheet.Cells[1, 7].Value = forwardDiscount.Text + "%";
 
-            workSheet.Cells[2, 6].Value = "Backdating D/C";
-            workSheet.Cells[2, 7].Value = backDiscount.Text + "%";
+    //        workSheet.Cells[2, 6].Value = "Backdating D/C";
+    //        workSheet.Cells[2, 7].Value = backDiscount.Text + "%";
 
-            //Proposed Price
-            workSheet.Cells[13, 2].Value = "▶ Proposed Price  :  ";
-            workSheet.Cells[13, 2].Style.Font.Size = 14;
-            workSheet.Cells[13, 2].Style.Font.Bold = true;
+    //        //Proposed Price
+    //        workSheet.Cells[13, 2].Value = "▶ Proposed Price  :  ";
+    //        workSheet.Cells[13, 2].Style.Font.Size = 14;
+    //        workSheet.Cells[13, 2].Style.Font.Bold = true;
 
-            //견적서 Table
-            workSheet.Cells[15, 2].Value = "1. Solution";
-            workSheet.Cells[15, 2].Style.Font.Size = 10;
-            workSheet.Cells[15, 2].Style.Font.Bold = true;
+    //        //견적서 Table
+    //        workSheet.Cells[15, 2].Value = "1. Solution";
+    //        workSheet.Cells[15, 2].Style.Font.Size = 11;
+    //        workSheet.Cells[15, 2].Style.Font.Bold = true;
 
-            workSheet.Cells[15, 7].Value = "(Unit: WON)";
-            workSheet.Cells[15, 7].Style.Font.Size = 8;
-            workSheet.Cells[15, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+    //        workSheet.Cells[15, 7].Value = "(Unit: WON)";
+    //        workSheet.Cells[15, 7].Style.Font.Size = 9;
+    //        workSheet.Cells[15, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
 
-            workSheet.Cells[16, 2].Value = "No.";
-            workSheet.Cells[16, 3].Value = "Description";
-            workSheet.Cells[16, 4].Value = "Seats";
-            workSheet.Cells[16, 5].Value = "Customer RRP" + ((char)10).ToString() + "(소비자 단가)";
-            workSheet.Cells[16, 6].Value = "Proposed Price" + ((char)10).ToString() + "(제안 단가)";
-            workSheet.Cells[16, 7].Value = "Proposed Price" + ((char)10).ToString() + "(최종 견적가)";
+    //        workSheet.Cells[16, 2].Value = "No.";
+    //        workSheet.Cells[16, 3].Value = "Description";
+    //        workSheet.Cells[16, 4].Value = "Seats";
+    //        workSheet.Cells[16, 5].Value = "Customer RRP" + ((char)10).ToString() + "(소비자 단가)";
+    //        workSheet.Cells[16, 6].Value = "Proposed Price" + ((char)10).ToString() + "(제안 단가)";
+    //        workSheet.Cells[16, 7].Value = "Proposed Price" + ((char)10).ToString() + "(최종 견적가)";
 
-            workSheet.Row(17).Height = (double)7.00;
+    //        workSheet.Row(17).Height = (double)7.00;
 
-            using (var range = workSheet.Cells[16, 2, 16, 7])
-            {
-                EPP_CellStyle(range, lineThin, lineThin, lineThin, lineThin, verCenter, horCenter, false, true, 10);
-                EPP_CellStyle(workSheet.Cells[16, 2], lineThin, ExcelBorderStyle.None, lineThin, lineThin, verCenter, horCenter, false, true, 10);
-                EPP_CellStyle(workSheet.Cells[16, 7], lineThin, lineThin, lineThin, ExcelBorderStyle.None, verCenter, horCenter, false, true, 10);
-                range.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                range.Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#9BC2E6"));
-                workSheet.Row(16).Height = (double)50.0;
-            }
+    //        using (var range = workSheet.Cells[16, 2, 16, 7])
+    //        {
+    //            EPP_CellStyle(range, lineThin, lineThin, lineThin, lineThin, verCenter, horCenter, false, true, 10);
+    //            EPP_CellStyle(workSheet.Cells[16, 2], lineThin, ExcelBorderStyle.None, lineThin, lineThin, verCenter, horCenter, false, true, 10);
+    //            EPP_CellStyle(workSheet.Cells[16, 7], lineThin, lineThin, lineThin, ExcelBorderStyle.None, verCenter, horCenter, false, true, 10);
+    //            range.Style.Fill.PatternType = ExcelFillStyle.Solid;
+    //            range.Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#9BC2E6"));
+    //            workSheet.Row(16).Height = (double)50.0;
+    //        }
 
-            //Total Columns
-            workSheet.Cells[totalRows + 21, 2].Value = "Sub Total";
-            workSheet.Cells[totalRows + 21, 2, totalRows + 21, 4].Merge = true;
-            workSheet.Cells[totalRows + 21, 2, totalRows + 21, 7].Style.Fill.PatternType = ExcelFillStyle.Solid;
-            //workSheet.Cells[totalRows + 21, 2, totalRows + 21, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
-            workSheet.Cells[totalRows + 22, 2].Value = "VAT";
-            workSheet.Cells[totalRows + 22, 2, totalRows + 22, 4].Style.Font.Bold = true;
-            workSheet.Cells[totalRows + 22, 2, totalRows + 22, 4].Merge = true;
-            workSheet.Cells[totalRows + 22, 2, totalRows + 22, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-            workSheet.Cells[totalRows + 23, 2].Value = "Total Price";
-            workSheet.Cells[totalRows + 23, 2, totalRows + 23, 4].Style.Font.Bold = true;
-            workSheet.Cells[totalRows + 23, 2, totalRows + 23, 4].Merge = true;
-            workSheet.Cells[totalRows + 23, 3, totalRows + 23, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+    //        //Total Columns
+    //        workSheet.Cells[totalRows + 21, 2].Value = "Sub Total";
+    //        workSheet.Cells[totalRows + 21, 2, totalRows + 21, 4].Merge = true;
+    //        workSheet.Cells[totalRows + 21, 2, totalRows + 21, 7].Style.Fill.PatternType = ExcelFillStyle.Solid;
+    //        //workSheet.Cells[totalRows + 21, 2, totalRows + 21, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
+    //        workSheet.Cells[totalRows + 22, 2].Value = "VAT";
+    //        workSheet.Cells[totalRows + 22, 2, totalRows + 22, 4].Style.Font.Bold = true;
+    //        workSheet.Cells[totalRows + 22, 2, totalRows + 22, 4].Merge = true;
+    //        workSheet.Cells[totalRows + 22, 2, totalRows + 22, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+    //        workSheet.Cells[totalRows + 23, 2].Value = "Total Price";
+    //        workSheet.Cells[totalRows + 23, 2, totalRows + 23, 4].Style.Font.Bold = true;
+    //        workSheet.Cells[totalRows + 23, 2, totalRows + 23, 4].Merge = true;
+    //        workSheet.Cells[totalRows + 23, 3, totalRows + 23, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
 
-            EPP_CellStyle(workSheet.Cells[totalRows + 21, 2, totalRows + 23, 4], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, lineThin, verCenter, horRight, false, true, 10);
+    //        EPP_CellStyle(workSheet.Cells[totalRows + 21, 2, totalRows + 23, 4], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, lineThin, verCenter, horRight, false, true, 10);
 
-            //Cell에 값 넣기
-            for (var j = 1; j <= totalRows - 2; j++)
-            {
-                for (var i = 1; i <= 2; i++)
-                {
+    //        //Cell에 값 넣기
+    //        for (var j = 1; j <= totalRows - 2; j++)
+    //        {
+    //            for (var i = 1; i <= 2; i++)
+    //            {
 
-                    string product = GridView2.Rows[j - 1].Cells[i - 1].Text;
-                    Debug.WriteLine("product: " + product);
+    //                string product = GridView2.Rows[j - 1].Cells[i - 1].Text;
+    //                Debug.WriteLine("product: " + product);
 
-                    //Blank Cell 일 경우
-                    if (product == "&nbsp;")
-                    {
-                        product = " ";
-                    }
-                    workSheet.Cells[j + 17, i + 1].Value = product;
-                }
+    //                //Blank Cell 일 경우
+    //                if (product == "&nbsp;")
+    //                {
+    //                    product = " ";
+    //                }
+    //                workSheet.Cells[j + 17, i + 1].Value = product;
+    //            }
 
-                for (var i = 4; i <= 7; i++)
-                {
-                    string product = GridView2.Rows[j - 1].Cells[i - 1].Text;
+    //            for (var i = 4; i <= 7; i++)
+    //            {
+    //                string product = GridView2.Rows[j - 1].Cells[i - 1].Text;
 
-                    //Blank Cell 일 경우
-                    if (product == "&nbsp;")
-                    {
-                        product = " ";
-                    }
-                    workSheet.Cells[j + 17, i].Value = product;
+    //                //Blank Cell 일 경우
+    //                if (product == "&nbsp;")
+    //                {
+    //                    product = " ";
+    //                }
+    //                workSheet.Cells[j + 17, i].Value = product;
 
-                    if (i == 7)
-                    {
-                        workSheet.Cells[j + 17, i].Style.Font.Color.SetColor(ColorTranslator.FromHtml("#FF0000"));
-                    }
-                }
+    //                if (i == 7)
+    //                {
+    //                    workSheet.Cells[j + 17, i].Style.Font.Color.SetColor(ColorTranslator.FromHtml("#FF0000"));
+    //                }
+    //            }
 
-            }
+    //        }
 
-            //Customer RRP 계산하기
-            //제품 개수
-            int num_of_prod = (totalRows - 2) / 3;
+    //        //Customer RRP 계산하기
+    //        //제품 개수
+    //        int num_of_prod = (totalRows - 2) / 3;
 
-            string form = "D18 * E18";
-            for (var i = 1; i < num_of_prod + 1; i++)
-            {
-                form += ", D" + (18 + 3 * i) + "* E" + (18 + 3 * i);
-            }
-            workSheet.Cells[totalRows + 21, 5].Formula = "ROUND(SUM(" + form + "), -3)";
-            workSheet.Cells[totalRows + 22, 5].Formula = "ROUND(E" + (totalRows + 21) + "* 0.1, -3)";
-            workSheet.Cells[totalRows + 23, 5].Formula = "ROUND(SUM(E" + (totalRows + 21) + ", E" + (totalRows + 22) + "), -3)";
+    //        string form = "D18 * E18";
+    //        for (var i = 1; i < num_of_prod + 1; i++)
+    //        {
+    //            form += ", D" + (18 + 3 * i) + "* E" + (18 + 3 * i);
+    //        }
+    //        workSheet.Cells[totalRows + 21, 5].Formula = "ROUND(SUM(" + form + "), -3)";
+    //        workSheet.Cells[totalRows + 22, 5].Formula = "ROUND(E" + (totalRows + 21) + "* 0.1, -3)";
+    //        workSheet.Cells[totalRows + 23, 5].Formula = "ROUND(SUM(E" + (totalRows + 21) + ", E" + (totalRows + 22) + "), -3)";
 
-            //최종 견적가 계산하기
-            string final_form = "D18 * E18";
-            for (var i = 1; i < num_of_prod + 1; i++)
-            {
-                final_form += ", D" + (18 + 3 * i) + "* E" + (18 + 3 * i);
-            }
-            workSheet.Cells[totalRows + 21, 7].Formula = "ROUND(SUM(" + final_form + "), -3)";
-            workSheet.Cells[totalRows + 22, 7].Formula = "ROUND(E" + (totalRows + 21) + "* 0.1, -3)";
-            workSheet.Cells[totalRows + 23, 7].Formula = "ROUND(SUM(E" + (totalRows + 21) + ", E" + (totalRows + 22) + "), -3)";
-
-
-            int total = Int32.Parse(GridView2.Rows[totalRows - 1].Cells[5].Text, System.Globalization.NumberStyles.AllowThousands);
-            double vat = total * 0.1;
-            workSheet.Cells[totalRows + 21, 5].Value = total.ToString("N0");
-            //workSheet.Cells[totalRows + 21, 5].Style.Font.Bold = true;
-            workSheet.Cells[totalRows + 22, 5].Value = vat.ToString("N0"); ;
-            workSheet.Cells[totalRows + 23, 5].Value = (total + vat).ToString("N0"); ;
-            workSheet.Cells[totalRows + 23, 5].Style.Font.Bold = true;
-            using (var range = workSheet.Cells[totalRows + 21, 5, totalRows + 23, 7])
-            {
-                EPP_CellStyle(range, lineThin, lineThin, lineThin, lineThin, verCenter, horRight, false, true, 10);
-            }
-
-            workSheet.Cells[totalRows + 22, 5, totalRows + 22, 7].Style.Font.Bold = false;
-
-            //Table Style
-            EPP_CellStyle(workSheet.Cells[17, 2, totalRows + 20, 2], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, lineThin, verCenter, horCenter, false, false, 10);
-            EPP_CellStyle(workSheet.Cells[17, 3, totalRows + 20, 3], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, lineThin, verCenter, horLeft, false, false, 10);
-            EPP_CellStyle(workSheet.Cells[17, 4, totalRows + 20, 4], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, lineThin, verCenter, horCenter, false, false, 10);
-            EPP_CellStyle(workSheet.Cells[17, 5, totalRows + 20, 5], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, lineThin, verCenter, horRight, false, false, 10);
-            EPP_CellStyle(workSheet.Cells[17, 6, totalRows + 20, 6], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, lineThin, verCenter, horRight, false, false, 10);
-            EPP_CellStyle(workSheet.Cells[17, 7, totalRows + 20, 7], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, ExcelBorderStyle.None, verCenter, horRight, false, false, 10);
-            workSheet.Cells[totalRows + 21, 2, totalRows + 21, 7].Style.Border.Top.Style = ExcelBorderStyle.Thin;
-            workSheet.Cells[totalRows + 22, 2, totalRows + 22, 7].Style.Border.Top.Style = ExcelBorderStyle.Thin;
-            workSheet.Cells[totalRows + 23, 2, totalRows + 23, 7].Style.Border.Top.Style = ExcelBorderStyle.Thin;
-            workSheet.Cells[totalRows + 23, 2, totalRows + 23, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
-            workSheet.Cells[16, 2, totalRows + 23, 7].Style.Border.Bottom.Color.SetColor(ColorTranslator.FromHtml("#808080"));
-            workSheet.Cells[17, 2, totalRows + 17, 7].Style.Font.Name = "Calibri";
-            workSheet.Cells[16, 2, 16, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
-            workSheet.Cells[totalRows + 21, 2, totalRows + 21, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
-
-            //발주 확인
-            workSheet.Cells[totalRows + 25, 6].Value = "발주 확인 (회사명판)";
-            workSheet.Cells[totalRows + 25, 6].Style.Font.Size = 10;
-            workSheet.Cells[totalRows + 25, 6].Style.Font.Bold = true;
-            workSheet.Cells[totalRows + 25, 6, totalRows + 25, 7].Merge = true;
-            EPP_CellStyle(workSheet.Cells[totalRows + 25, 6, totalRows + 25, 7], lineThin, ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, verCenter, horCenter, false, true, 10);
-            workSheet.Cells[totalRows + 25, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            workSheet.Cells[totalRows + 25, 6].Style.Fill.PatternType = ExcelFillStyle.Solid;
-            workSheet.Cells[totalRows + 25, 6].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
-
-            workSheet.Cells[totalRows + 26, 6].Value = "결제 예정일";
-            EPP_CellStyle(workSheet.Cells[totalRows + 26, 6], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, lineThin, verCenter, horCenter, false, false, 9);
-
-            workSheet.Cells[totalRows + 27, 6, totalRows + 33, 7].Style.Border.BorderAround(ExcelBorderStyle.Medium);
-
-            //2.Detail Condition
-            workSheet.Cells[totalRows + 25, 2].Value = "2. Detail Condition";
-            workSheet.Cells[totalRows + 25, 2].Style.Font.Bold = true;
-            workSheet.Cells[totalRows + 25, 2].Style.Font.Size = 10;
-            workSheet.Cells[totalRows + 26, 2].Value = "   1) 본 견적(구매)건은 정상 구매 조건이며, 불법 사용에 관련된 구매 건과는 별 건임을 알려드립니다.";
-            var cell = workSheet.Cells[totalRows + 27, 2];
-            cell.IsRichText = true;
-            var part1 = cell.RichText.Add("   2) Subscription 가입은 필수 계약 사항입니다.  ");
-            part1.Bold = false;
-            part1.Size = 9;
-            var part2 = cell.RichText.Add("숙 지 하 였 음 (서명) ");
-            part2.Bold = true;
-            part2.Size = 9;
-            var part3 = cell.RichText.Add("(고객께서 \"숙지하였음\" 필사와  \"서명\" 부탁 드립니다.)");
-            part3.Bold = false;
-            part3.Size = 9;
-            workSheet.Cells[totalRows + 27, 2].Style.Font.Size = 9;
-            workSheet.Cells[totalRows + 27, 2].Value = "   2) Subscription 가입은 필수 계약 사항입니다.  숙 지 하 였 음 (서명) (고객께서 \"숙지하였음\" 필사와  \"서명\" 부탁 드립니다.)";
-            workSheet.Cells[totalRows + 28, 2].Value = "     : 제품 보완, 최신버전, 기술지원을 위한 필수적인 사항이며, 미 갱신으로 인한 제품 사용에 대한 불편이 발생 시 지원이 불가 합니다.";
-            workSheet.Cells[totalRows + 29, 2].Value = "   3) 납품후 30일 이내 현금 지불 조건입니다.";
-            workSheet.Cells[totalRows + 30, 2].Value = "   4) 상기 가격은 공급사인 다쏘시스템 솔리드웍스의 가격 정책에 따라 예고 없이 변경될 수 있습니다.";
-            workSheet.Cells[totalRows + 31, 2].Value = "   5) 상기 견적은 발행일로부터 14일 간 유효 합니다.";
-            workSheet.Cells[totalRows + 26, 2, totalRows + 31, 2].Style.Font.Size = 9;
-
-            //공인리셀러 정보
-            workSheet.Cells[totalRows + 34, 2].Value = "공인리셀러 정보";
-            workSheet.Cells[totalRows + 34, 2].Style.Font.Size = 10;
-            workSheet.Cells[totalRows + 34, 2].Style.Font.Bold = true;
-            workSheet.Cells[totalRows + 34, 2].Style.Font.UnderLine = true;
-            workSheet.Cells[totalRows + 34, 2, totalRows + 34, 7].Merge = true;
-            workSheet.Cells[totalRows + 34, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+    //        //최종 견적가 계산하기
+    //        string final_form = "D18 * E18";
+    //        for (var i = 1; i < num_of_prod + 1; i++)
+    //        {
+    //            final_form += ", D" + (18 + 3 * i) + "* E" + (18 + 3 * i);
+    //        }
+    //        workSheet.Cells[totalRows + 21, 7].Formula = "ROUND(SUM(" + final_form + "), -3)";
+    //        workSheet.Cells[totalRows + 22, 7].Formula = "ROUND(E" + (totalRows + 21) + "* 0.1, -3)";
+    //        workSheet.Cells[totalRows + 23, 7].Formula = "ROUND(SUM(E" + (totalRows + 21) + ", E" + (totalRows + 22) + "), -3)";
 
 
-            for (var i = 0; i < 4; i++)
-            {
-                workSheet.Cells[totalRows + 36 + i, 2].Value = "•";
-                workSheet.Cells[totalRows + 36 + i, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-            }
+    //        int total = Int32.Parse(GridView2.Rows[totalRows - 1].Cells[5].Text, System.Globalization.NumberStyles.AllowThousands);
+    //        double vat = total * 0.1;
+    //        workSheet.Cells[totalRows + 21, 5].Value = total.ToString("N0");
+    //        //workSheet.Cells[totalRows + 21, 5].Style.Font.Bold = true;
+    //        workSheet.Cells[totalRows + 22, 5].Value = vat.ToString("N0"); ;
+    //        workSheet.Cells[totalRows + 23, 5].Value = (total + vat).ToString("N0"); ;
+    //        workSheet.Cells[totalRows + 23, 5].Style.Font.Bold = true;
+    //        using (var range = workSheet.Cells[totalRows + 21, 5, totalRows + 23, 7])
+    //        {
+    //            EPP_CellStyle(range, lineThin, lineThin, lineThin, lineThin, verCenter, horRight, false, true, 10);
+    //        }
 
-            workSheet.Cells[totalRows + 36, 3].Value = "사업자 등록번호 : 135-86-01726";
-            workSheet.Cells[totalRows + 37, 3].Value = "상      호  :  ㈜솔코";
-            workSheet.Cells[totalRows + 38, 3].Value = "업      태  :  서비스(사업관련)업 도소매";
-            workSheet.Cells[totalRows + 39, 3].Value = "주      소  :  경기도 의왕시 이미로 40, C-414 (포일동, 인덕원아이티밸리)";
+    //        workSheet.Cells[totalRows + 22, 5, totalRows + 22, 7].Style.Font.Bold = false;
 
-            workSheet.Cells[totalRows + 36, 4].Value = "• 법인등록번호  :  135811-0163732";
-            workSheet.Cells[totalRows + 37, 4].Value = "• 대표이사  :  박 광 수                        (인)";
-            workSheet.Cells[totalRows + 38, 4].Value = "• 종      목  :  기술, 설계용역, 컴퓨터 및 주변장치, 소프트웨어자문, 개발 및 공급";
-            workSheet.Cells[totalRows + 36, 2, totalRows + 39, 4].Style.Font.Size = 9;
+    //        //Table Style
+    //        EPP_CellStyle(workSheet.Cells[17, 2, totalRows + 20, 2], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, lineThin, verCenter, horCenter, false, false, 10);
+    //        EPP_CellStyle(workSheet.Cells[17, 3, totalRows + 20, 3], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, lineThin, verCenter, horLeft, false, false, 10);
+    //        EPP_CellStyle(workSheet.Cells[17, 4, totalRows + 20, 4], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, lineThin, verCenter, horCenter, false, false, 10);
+    //        EPP_CellStyle(workSheet.Cells[17, 5, totalRows + 20, 5], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, lineThin, verCenter, horRight, false, false, 10);
+    //        EPP_CellStyle(workSheet.Cells[17, 6, totalRows + 20, 6], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, lineThin, verCenter, horRight, false, false, 10);
+    //        EPP_CellStyle(workSheet.Cells[17, 7, totalRows + 20, 7], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, ExcelBorderStyle.None, verCenter, horRight, false, false, 10);
+    //        workSheet.Cells[totalRows + 21, 2, totalRows + 21, 7].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+    //        workSheet.Cells[totalRows + 22, 2, totalRows + 22, 7].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+    //        workSheet.Cells[totalRows + 23, 2, totalRows + 23, 7].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+    //        workSheet.Cells[totalRows + 23, 2, totalRows + 23, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+    //        workSheet.Cells[16, 2, totalRows + 23, 7].Style.Border.Bottom.Color.SetColor(ColorTranslator.FromHtml("#808080"));
+    //        workSheet.Cells[17, 2, totalRows + 17, 7].Style.Font.Name = "Calibri";
+    //        workSheet.Cells[16, 2, 16, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
+    //        workSheet.Cells[totalRows + 21, 2, totalRows + 21, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
 
-            //직인 넣기
-            System.Drawing.Image stamp = System.Drawing.Image.FromFile("C:\\Users\\solko\\Desktop\\solko_stamp.png");
-            var solkoStamp = workSheet.Drawings.AddPicture("solkoStamp", stamp);
-            solkoStamp.SetPosition(totalRows + 34, 0, 5, 0);
-            solkoStamp.SetSize(100, 92);
+    //        //발주 확인
+    //        workSheet.Cells[totalRows + 25, 6].Value = "발주 확인 (회사명판)";
+    //        workSheet.Cells[totalRows + 25, 6].Style.Font.Size = 12;
+    //        workSheet.Cells[totalRows + 25, 6].Style.Font.Bold = true;
+    //        workSheet.Cells[totalRows + 25, 6, totalRows + 25, 7].Merge = true;
+    //        EPP_CellStyle(workSheet.Cells[totalRows + 25, 6, totalRows + 25, 7], lineThin, ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, verCenter, horCenter, false, true, 10);
+    //        workSheet.Cells[totalRows + 25, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+    //        workSheet.Cells[totalRows + 25, 6].Style.Fill.PatternType = ExcelFillStyle.Solid;
+    //        workSheet.Cells[totalRows + 25, 6].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
+
+    //        workSheet.Cells[totalRows + 26, 6].Value = "결제 예정일";
+    //        EPP_CellStyle(workSheet.Cells[totalRows + 26, 6], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, lineThin, verCenter, horCenter, false, false, 9);
+
+    //        workSheet.Cells[totalRows + 27, 6, totalRows + 33, 7].Style.Border.BorderAround(ExcelBorderStyle.Medium);
+
+    //        //2.Detail Condition
+    //        workSheet.Cells[totalRows + 25, 2].Value = "2. Detail Condition";
+    //        workSheet.Cells[totalRows + 25, 2].Style.Font.Bold = true;
+    //        workSheet.Cells[totalRows + 25, 2].Style.Font.Size = 12;
+    //        workSheet.Cells[totalRows + 26, 2].Value = "   1) 본 견적(구매)건은 정상 구매 조건이며, 불법 사용에 관련된 구매 건과는 별 건임을 알려드립니다.";
+    //        var cell = workSheet.Cells[totalRows + 27, 2];
+    //        cell.IsRichText = true;
+    //        var part1 = cell.RichText.Add("   2) Subscription 가입은 필수 계약 사항입니다.  ");
+    //        part1.Bold = false;
+    //        part1.Size = 9;
+    //        var part2 = cell.RichText.Add("숙 지 하 였 음 (서명) ");
+    //        part2.Bold = true;
+    //        part2.Size = 9;
+    //        var part3 = cell.RichText.Add("(고객께서 \"숙지하였음\" 필사와  \"서명\" 부탁 드립니다.)");
+    //        part3.Bold = false;
+    //        part3.Size = 9;
+    //        //workSheet.Cells[totalRows + 27, 2].Style.Font.Size = 10;
+    //        workSheet.Cells[totalRows + 27, 2].Value = "   2) Subscription 가입은 필수 계약 사항입니다.  숙 지 하 였 음 (서명) (고객께서 \"숙지하였음\" 필사와  \"서명\" 부탁 드립니다.)";
+    //        workSheet.Cells[totalRows + 28, 2].Value = "     : 제품 보완, 최신버전, 기술지원을 위한 필수적인 사항이며, 미 갱신으로 인한 제품 사용에 대한 불편이 발생 시 지원이 불가 합니다.";
+    //        workSheet.Cells[totalRows + 29, 2].Value = "   3) 납품후 30일 이내 현금 지불 조건입니다.";
+    //        workSheet.Cells[totalRows + 30, 2].Value = "   4) 상기 가격은 공급사인 다쏘시스템 솔리드웍스의 가격 정책에 따라 예고 없이 변경될 수 있습니다.";
+    //        workSheet.Cells[totalRows + 31, 2].Value = "   5) 상기 견적은 발행일로부터 14일 간 유효 합니다.";
+    //        workSheet.Cells[totalRows + 26, 2, totalRows + 31, 2].Style.Font.Size = 10;
+
+    //        //공인리셀러 정보
+    //        workSheet.Cells[totalRows + 34, 2].Value = "공인리셀러 정보";
+    //        workSheet.Cells[totalRows + 34, 2].Style.Font.Size = 12;
+    //        workSheet.Cells[totalRows + 34, 2].Style.Font.Bold = true;
+    //        workSheet.Cells[totalRows + 34, 2].Style.Font.UnderLine = true;
+    //        workSheet.Cells[totalRows + 34, 2, totalRows + 34, 7].Merge = true;
+    //        workSheet.Cells[totalRows + 34, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
 
-            //컬럼 폭 조정
-            workSheet.Column(1).Width = (double)3.75;
-            workSheet.Column(2).Width = (double)12.63;
-            workSheet.Column(3).Width = (double)70.13;
-            workSheet.Column(4).Width = (double)6.50;
-            workSheet.Column(5).Width = (double)20.13;
-            workSheet.Column(6).Width = (double)20.13;
-            workSheet.Column(7).Width = (double)20.13;
-            workSheet.Column(8).Width = (double)3.75;
+    //        for (var i = 0; i < 4; i++)
+    //        {
+    //            workSheet.Cells[totalRows + 36 + i, 2].Value = "•";
+    //            workSheet.Cells[totalRows + 36 + i, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+    //        }
 
-            //행 폭 조정
-            workSheet.Row(1).Height = (double)21.75;
-            workSheet.Row(2).Height = (double)21.75;
-            workSheet.Row(3).Height = (double)75;
-            workSheet.Row(totalRows + 21).Height = (double)25.5;
-            workSheet.Row(totalRows + 22).Height = (double)20;
-            workSheet.Row(totalRows + 23).Height = (double)20;
+    //        workSheet.Cells[totalRows + 36, 3].Value = "사업자 등록번호 : 135-86-01726";
+    //        workSheet.Cells[totalRows + 37, 3].Value = "상      호  :  ㈜솔코";
+    //        workSheet.Cells[totalRows + 38, 3].Value = "업      태  :  서비스(사업관련)업 도소매";
+    //        workSheet.Cells[totalRows + 39, 3].Value = "주      소  :  경기도 의왕시 이미로 40, C-414 (포일동, 인덕원아이티밸리)";
 
-            //소비자 단가, 제안 단가, 최종 금액 Column
-            foreach (int i in new int[] { 5, 6, 7 })
-            {
-                for (int j = 5; j <= totalRows; j += 3)
-                {
-                    EPP_CellStyle(workSheet.Cells[j, i, j + 2, i], lineThin, lineThin, lineThin, lineThin, verBottom, horRight, true, false);
-                }
-            }
+    //        workSheet.Cells[totalRows + 36, 4].Value = "• 법인등록번호  :  135811-0163732";
+    //        workSheet.Cells[totalRows + 37, 4].Value = "• 대표이사  :  박 광 수                        (인)";
+    //        workSheet.Cells[totalRows + 38, 4].Value = "• 종      목  :  기술, 설계용역, 컴퓨터 및 주변장치, 소프트웨어자문, 개발 및 공급";
+    //        workSheet.Cells[totalRows + 36, 2, totalRows + 39, 4].Style.Font.Size = ;
 
-            string usd = workSheet.Cells[totalRows + 4, 5, totalRows + 4, 5].Value.ToString();
-            string krw = workSheet.Cells[totalRows + 4, 6, totalRows + 4, 6].Value.ToString();
-            string percentage = workSheet.Cells[totalRows + 4, 7, totalRows + 4, 7].Value.ToString();
+    //        //직인 넣기
+    //        System.Drawing.Image stamp = System.Drawing.Image.FromFile("C:\\Users\\solko\\Desktop\\solko_stamp.png");
+    //        var solkoStamp = workSheet.Drawings.AddPicture("solkoStamp", stamp);
+    //        solkoStamp.SetPosition(totalRows + 34, 0, 5, 0);
+    //        solkoStamp.SetSize(100, 92);
 
-            workSheet.Cells[totalRows + 4, 5, totalRows + 4, 5].Value = "USD: " + usd;
-            workSheet.Cells[totalRows + 4, 6, totalRows + 4, 6].Value = "KRW: " + krw;
-            workSheet.Cells[totalRows + 4, 7, totalRows + 4, 7].Value = percentage + "%";
 
-            pck.SaveAs(new FileInfo(filePath));
-            Debug.WriteLine("filepath:" + filePath);
+    //        //컬럼 폭 조정
+    //        workSheet.Column(1).Width = (double)3.75;
+    //        workSheet.Column(2).Width = (double)12.63;
+    //        workSheet.Column(3).Width = (double)70.13;
+    //        workSheet.Column(4).Width = (double)6.50;
+    //        workSheet.Column(5).Width = (double)20.13;
+    //        workSheet.Column(6).Width = (double)20.13;
+    //        workSheet.Column(7).Width = (double)20.13;
+    //        workSheet.Column(8).Width = (double)3.75;
 
-            //Write it back to the client
-            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            Response.AddHeader("content-disposition", "attachment;  filename=ProductDetails.xlsx");
-            Response.BinaryWrite(pck.GetAsByteArray());
+    //        //행 폭 조정
+    //        workSheet.Row(1).Height = (double)21.75;
+    //        workSheet.Row(2).Height = (double)21.75;
+    //        workSheet.Row(3).Height = (double)75;
+    //        workSheet.Row(totalRows + 21).Height = (double)25.5;
+    //        workSheet.Row(totalRows + 22).Height = (double)20;
+    //        workSheet.Row(totalRows + 23).Height = (double)20;
 
-            string excelName = string.Format("Offer_{0}_{1}", compName, DateTime.Now.ToLongDateString());
-            using (var memoryStream = new MemoryStream())
-            {
-                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                Response.AddHeader("content-disposition", "attachment; filename=" + excelName + ".xlsx");
-                pck.SaveAs(memoryStream);
-                memoryStream.WriteTo(Response.OutputStream);
-                Response.Flush();
-                Response.End();
-            }
-        }
+    //        //소비자 단가, 제안 단가, 최종 금액 Column
+    //        foreach (int i in new int[] { 5, 6, 7 })
+    //        {
+    //            for (int j = 5; j <= totalRows; j += 3)
+    //            {
+    //                EPP_CellStyle(workSheet.Cells[j, i, j + 2, i], lineThin, lineThin, lineThin, lineThin, verBottom, horRight, true, false);
+    //            }
+    //        }
 
-    }
+    //        string usd = workSheet.Cells[totalRows + 4, 5, totalRows + 4, 5].Value.ToString();
+    //        string krw = workSheet.Cells[totalRows + 4, 6, totalRows + 4, 6].Value.ToString();
+    //        string percentage = workSheet.Cells[totalRows + 4, 7, totalRows + 4, 7].Value.ToString();
+
+    //        workSheet.Cells[totalRows + 4, 5, totalRows + 4, 5].Value = "USD: " + usd;
+    //        workSheet.Cells[totalRows + 4, 6, totalRows + 4, 6].Value = "KRW: " + krw;
+    //        workSheet.Cells[totalRows + 4, 7, totalRows + 4, 7].Value = percentage + "%";
+
+    //        pck.SaveAs(new FileInfo(filePath));
+    //        Debug.WriteLine("filepath:" + filePath);
+
+    //        //Write it back to the client
+    //        Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    //        Response.AddHeader("content-disposition", "attachment;  filename=ProductDetails.xlsx");
+    //        Response.BinaryWrite(pck.GetAsByteArray());
+
+    //        string excelName = string.Format("Offer_{0}_{1}", compName, DateTime.Now.ToLongDateString());
+    //        using (var memoryStream = new MemoryStream())
+    //        {
+    //            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    //            Response.AddHeader("content-disposition", "attachment; filename=" + excelName + ".xlsx");
+    //            pck.SaveAs(memoryStream);
+    //            memoryStream.WriteTo(Response.OutputStream);
+    //            Response.Flush();
+    //            Response.End();
+    //        }
+    //    }
+
+    //}
 
 
     protected bool IsNull(string val)

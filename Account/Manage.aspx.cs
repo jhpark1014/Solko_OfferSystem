@@ -62,6 +62,7 @@ public partial class Account_Manage : System.Web.UI.Page
     {
         if (IsValid)
         {
+            
             UserManager manager = new UserManager();
             IdentityResult result = manager.ChangePassword(User.Identity.GetUserId(), CurrentPassword.Text, NewPassword.Text);
             if (result.Succeeded)
@@ -76,6 +77,26 @@ public partial class Account_Manage : System.Web.UI.Page
             }
         }
     }
+
+    //protected void ChangePhoneNumber_Click(object sender, EventArgs e)
+    //{
+    //    if (IsValid)
+    //    {
+    //        UserManager manager = new UserManager();
+    //        IdentityResult result = manager.ChangePhoneNumber(User.Identity.GetUserId(), NewPhoneNumber.Text);
+    //        if (result.Succeeded)
+    //        {
+    //            var user = manager.FindById(User.Identity.GetUserId());
+    //            IdentityHelper.SignIn(manager, user, isPersistent: false);
+    //            Response.Redirect("~/Account/Manage?m=ChangePwdSuccess");
+    //        }
+    //        else
+    //        {
+    //            AddErrors(result);
+    //        }
+    //    }
+    //}
+
 
     protected void SetPassword_Click(object sender, EventArgs e)
     {

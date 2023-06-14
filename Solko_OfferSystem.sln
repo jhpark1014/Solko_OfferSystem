@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.33403.129
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Solko_OfferSystem", ".", "{E3B38E49-86E3-48E2-A519-B611DAD17481}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -9,7 +9,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Solko_OfferSystem", ".", "{
 		SccAuxPath = "Svn"
 		SccLocalPath = "Svn"
 		SccProvider = "SubversionScc"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.2"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_58474"
 		Debug.AspNetCompiler.PhysicalPath = "..\Solko_OfferSystem\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58474\"

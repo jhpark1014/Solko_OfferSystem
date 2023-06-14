@@ -58,7 +58,7 @@
                 </asp:PlaceHolder>
 
                 <asp:PlaceHolder runat="server" ID="changePasswordHolder" Visible="false">
-                    <strong><%: User.Identity.GetUserName() %></strong><p>(으)로 로그인되어 있습니다.</p>
+                    <p><strong><%: User.Identity.GetUserName() %></strong>(으)로 로그인되어 있습니다.</p>
                     <div class="form-horizontal">
                         <h4>암호 양식 변경</h4>
                         <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
@@ -81,6 +81,24 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <asp:Label runat="server" ID="NewPhoneNumberLabel" AssociatedControlID="NewPhoneNumber" CssClass="col-md-2 control-label">새 유선 번호</asp:Label>
+                            <div class="col-md-10">
+                                <asp:TextBox runat="server" ID="NewPhoneNumber" CssClass="form-control" />
+                                <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="NewPassword"
+                                    CssClass="text-danger" ErrorMessage="새 암호는 필수입니다."
+                                    ValidationGroup="ChangePassword" />--%>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <asp:Label runat="server" ID="Label1" AssociatedControlID="NewMobileNumber" CssClass="col-md-2 control-label">새 핸드폰 번호</asp:Label>
+                            <div class="col-md-10">
+                                <asp:TextBox runat="server" ID="NewMobileNumber" CssClass="form-control" />
+                                <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="NewPassword"
+                                    CssClass="text-danger" ErrorMessage="새 암호는 필수입니다."
+                                    ValidationGroup="ChangePassword" />--%>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <asp:Label runat="server" ID="ConfirmNewPasswordLabel" AssociatedControlID="ConfirmNewPassword" CssClass="col-md-2 control-label">새 암호 확인</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="ConfirmNewPassword" TextMode="Password" CssClass="form-control" />
@@ -94,13 +112,13 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <asp:Button runat="server" Text="암호 변경" OnClick="ChangePassword_Click" CssClass="btn btn-default" ValidationGroup="ChangePassword" />
+                                <asp:Button runat="server" Text="정보 변경" OnClick="ChangePassword_Click" CssClass="btn btn-default" ValidationGroup="ChangePassword" />
                             </div>
                         </div>
                     </div>
                 </asp:PlaceHolder>
             </section>
-
+            <br /><br />
             <section id="externalLoginsForm">
 
                 <asp:ListView runat="server"

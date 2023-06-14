@@ -60,6 +60,18 @@ public partial class RequestList : System.Web.UI.Page
         QueryDataFilter("new_customer_products", new ColumnSet(true), new List<string>() { "new_l_account", "new_l_products", "new_p_status", "new_l_product_category" });
     }
 
+    protected void ClearData()
+    {
+        if (dt == null)
+        {
+            dt = new DataTable();
+        }
+        else
+        {
+            dt.Rows.Clear();
+        }
+    }
+
     #region "CRM API"
 
     protected void QueryDataFilter(string entityName, ColumnSet columnSet, List<string> relAttrNames)
@@ -246,9 +258,58 @@ public partial class RequestList : System.Web.UI.Page
                     }
                 }
 
+                // (2023.06.08 추가) 만약, 타입(new_p_type)이 널 이면, ALC로 기본값
+                {
+                    object sType = dr["new_p_type"];
+                    if (IsNull(sType))
+                    {
+                        dr["new_p_type"] = "ALC";
+                    }
+                }
+
+                // (2023.06.13 추가) 날짜 정보는 한국시간으로 변경(+9시간 처리)
+                {
+
+                    // expire date
+                    if (dt.Columns.Contains("new_dt_expired"))
+                    {
+                        object sType = dr["new_dt_expired"];
+                        if (!IsNull(sType))
+                        {
+                            string dateTemp = (string)dr["new_dt_expired"];
+                            dateTemp = ToKoreanDate(dateTemp);
+                            dr["new_dt_expired"] = dateTemp;
+                        }
+                    }
+
+                    // end date
+                    if (dt.Columns.Contains("new_dt_end"))
+                    {
+                        object sType = dr["new_dt_end"];
+                        if (!IsNull(sType))
+                        {
+                            string dateTemp = (string)dr["new_dt_end"];
+                            dateTemp = ToKoreanDate(dateTemp);
+                            dr["new_dt_end"] = dateTemp;
+                        }
+                    }
+
+                    // install date
+                    if (dt.Columns.Contains("new_dt_install"))
+                    {
+                        object sType = dr["new_dt_install"];
+                        if (!IsNull(sType))
+                        {
+                            string dateTemp = (string)dr["new_dt_install"];
+                            dateTemp = ToKoreanDate(dateTemp);
+                            dr["new_dt_install"] = dateTemp;
+                        }
+                    }
+                }
 
                 dt.Rows.Add(dr);
             }
+
 
             foreach (DataRow row in dt.Rows)
             {
@@ -256,16 +317,16 @@ public partial class RequestList : System.Web.UI.Page
                 {
                     // End Date / Expired Date Column 형식 변경
                     //string instDate = row["new_dt_install"].ToString();
-                    string endDate = row["new_dt_end"].ToString();
-                    string expDate = row["new_dt_expired"].ToString();
+                    //string endDate = row["new_dt_end"].ToString();
+                    //string expDate = row["new_dt_expired"].ToString();
 
-                    //string[] splitDate1 = instDate.Split(' ');
-                    string[] splitDate2 = endDate.Split(' ');
-                    string[] splitDate3 = expDate.Split(' ');
+                    ////string[] splitDate1 = instDate.Split(' ');
+                    //string[] splitDate2 = endDate.Split(' ');
+                    //string[] splitDate3 = expDate.Split(' ');
 
-                    //row["new_dt_install"] = splitDate1[0];
-                    row["new_dt_end"] = splitDate2[0];
-                    row["new_dt_expired"] = splitDate3[0];
+                    ////row["new_dt_install"] = splitDate1[0];
+                    //row["new_dt_end"] = splitDate2[0];
+                    //row["new_dt_expired"] = splitDate3[0];
 
                     // Serial Number Column 형식 변경
                     // 8+********+뒤8
@@ -669,9 +730,24 @@ public partial class RequestList : System.Web.UI.Page
         InitSessionDataByUIControl();
 
         //BindGridView_MSSQL();
-        BindGridView_CRM();
+        //BindGridView_CRM();
+        ClearData();
         GridView1.DataSource = dt;
         GridView1.DataBind();
+    }
+
+    public string ToKoreanDate(string dateGMT)
+    {
+        try
+        {
+            DateTime date1 = DateTime.Parse(dateGMT);
+            date1 = date1.AddHours(9);
+            return date1.ToString("yyyy-MM-dd");
+        }
+        catch
+        {
+            return "";
+        }
     }
 
 
