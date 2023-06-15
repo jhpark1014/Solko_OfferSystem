@@ -12,7 +12,7 @@ public partial class Account_Register : Page
         //var user = new ApplicationUser() { UserName = UserName.Text };
         var user = new ApplicationUser() { UserName = UserId.Text };
         IdentityResult result = manager.Create(user, Password.Text);
-        manager.SetPhoneNumber(user.Id, UserName.Text + "*" + UserPhone.Text + "*" + UserMobilePhone.Text + "*" +  UserCRMID.Text + "*" + UserCRMPass.Text);
+        manager.SetPhoneNumber(user.Id, UserName.Text + "‡" + UserPhone.Text + "‡" + UserMobilePhone.Text + "‡" +  UserCRMID.Text + "‡" + UserCRMPass.Text);
         manager.SetEmail(user.Id, UserEmail.Text);
         //manager.SetPhoneNumber(user.Id, UserPhone.Text);
         //manager.SetEmail(user.Id, UserEmail.Text);

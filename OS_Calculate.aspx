@@ -34,7 +34,10 @@
         Backdating 할인율(%): 
         <asp:TextBox ID="backDiscount" runat="server" Width="8%" >0</asp:TextBox>
         &nbsp
-        New Expire Date: 
+        Quotation Date (Y/M) : 
+        <asp:TextBox ID="quotation" runat="server" Width="8%" ></asp:TextBox>
+        &nbsp
+        New Expire Date (Y/M) : 
         <asp:TextBox ID="newExpire" runat="server" Width="8%" ></asp:TextBox>
         <%--<asp:Button ID="calendarbtn" runat="server" Width="1%" OnClick="calendarbtn_Click" />--%>
         <%--<asp:Table runat="server">
@@ -49,7 +52,7 @@
         &nbsp
  
         <asp:TextBox ID="chgExchangeRate" runat="server" Width="8%" Visible ="false" >1</asp:TextBox>
-        <asp:Button ID="calcbtn" runat="server" Style="text-align:center;" class="w-50 btn btn-primary btn-small" onClick="calcbtn_Click" text="계산하기" />
+        <asp:Button ID="calcbtn" runat="server" Style="text-align:center; float:right; font-weight:bold;" class="w-50 btn btn-primary btn-small" onClick="calcbtn_Click" text="계산하기" />
     </div>
     <br>
     <asp:Label ID="companyName" runat="server" Font-Size="25px" Font-Bold="true" ></asp:Label>
@@ -88,7 +91,7 @@
                     </asp:GridView>
 
     <div>
-        <asp:Button ID="estimatebtn" runat="server" Style="text-align:center;" class="w-50 btn btn-primary btn-small" onClick="estimatebtn_Click" text="Excel로 저장" />
+        <asp:Button ID="estimatebtn" runat="server" Style="text-align:center; float:right; font-weight:bold;" class="w-50 btn btn-primary btn-small" onClick="estimatebtn_Click" text="Excel로 저장" />
     </div>
        
                         </ContentTemplate>

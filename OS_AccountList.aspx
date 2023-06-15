@@ -35,27 +35,21 @@
         <div>
         업체명: 
         <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
-
-        &nbsp &nbsp &nbsp
-        <asp:Button ID="searchbtn" runat="server" Style="text-align:center;" class="w-50 btn btn-primary btn-small" onClick="searchbtn_Click" text="검색" />
         &nbsp
-        <asp:Button ID="resetbtn" runat="server" Style="text-align:center;" class="w-50 btn btn-primary btn-small" onClick="resetbtn_Click" text="RESET" />
-        <asp:Button ID="calculatebtn" runat="server" Style="text-align:center; float:right" class="w-50 btn btn-primary btn-small" onClick="Calculatebtn_Click" text="견적 계산하기" />
-
-
-        &nbsp
-        &nbsp
-        &nbsp
-        &nbsp
-
         Serial Number:  
         <asp:TextBox ID="serialSearch" runat="server"></asp:TextBox>
-
         &nbsp
-        견적기준 년월 :
+        견적기준 년월 (Y/M) :
         <asp:TextBox ID="startDateSearch" runat="server" Width="8%" ></asp:TextBox>
         ~
         <asp:TextBox ID="finDateSearch" runat="server" Width="8%" ></asp:TextBox>
+
+        &nbsp &nbsp &nbsp
+        <asp:Button ID="searchbtn" runat="server" Style="text-align:center; background-color:deepskyblue; border-color:deepskyblue;" class="w-50 btn btn-primary btn-small" onClick="searchbtn_Click" text="검색" />
+        &nbsp
+        <asp:Button ID="resetbtn" runat="server" Style="text-align:center;  background-color:deepskyblue; border-color:deepskyblue;" class="w-50 btn btn-primary btn-small" onClick="resetbtn_Click" text="RESET" />
+
+        <asp:Button ID="calculatebtn" runat="server" Style="text-align:center; float:right; font-weight:bold;" class="w-50 btn btn-primary btn-small" onClick="Calculatebtn_Click" text="견적 계산하기" />
 
         </div>
     </div>

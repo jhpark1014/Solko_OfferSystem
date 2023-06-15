@@ -139,6 +139,7 @@ public partial class RequestList : System.Web.UI.Page
 
 
             // Calendar Default 날짜 설정
+            quotation.Text = mOfferDate.Year + "/" + mOfferDate.Month;
             newExpire.Text = (mOfferDate.Year + 1) + "/" + mOfferDate.Month;
             //Debug.WriteLine("newexpire" + newExpire.Text);
             string[] newExpireSplit = newExpire.Text.Split('/');
@@ -245,94 +246,6 @@ public partial class RequestList : System.Web.UI.Page
         }
 
         Binding(dt);
-        {
-            // row에 데이터 분배? 하기/ 합계 row 만들기
-            /*
-            int qty = 0;
-            int price = 0;
-            int finalPrice = 0;
-            int no = 1;
-
-            for (int i = 0; i < dt.Rows.Count/3; i++)
-            {
-                // "finalPrice"
-                DataRow row = dt.Rows[i * 3];
-
-                String[] datesplit = (row["new_dt_expired"].ToString()).Split('/');
-                String date = datesplit[0] + "." + datesplit[1] + "." + DateTime.DaysInMonth(Int32.Parse(datesplit[0]), Int32.Parse(datesplit[1]));
-
-                // forward
-                string forwarddata;
-                string backdata;
-                DateTime now = DateTime.Now;
-                string[] newdates = newExpire.Text.Split('.');
-
-                forwarddata = "Forwarding (" + now.Year + "." + (now.Month + 1) + ".1 ~ " + newdates[0] + "." + newdates[1] + "."
-                    + DateTime.DaysInMonth(Convert.ToInt32(newdates[0]) + 1, Convert.ToInt32(newdates[1])) + ") = " + row["Forward"] + "개월";
-
-                // backdating
-                if (Convert.ToInt32(row["BackDate"]) != 0)
-                {
-                    backdata = "BackDating (" + datesplit[0] + "." + (Convert.ToInt32(datesplit[1]) + 1) + ".1" + " ~ "
-                        + DateTime.Now.Year + "." + DateTime.Now.Month + "." + DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)
-                        + ") = " + row["BackDate"] + "개월";
-                }
-                else
-                {
-                    backdata = "BackDating = 0";
-                }
-
-                string final = forwarddata + "<br>" + backdata;
-                //row["기간요약"] = final;
-
-                // 소비자 단가
-                int danga = 10000;
-                long fwd = rounding(danga / 12 * Convert.ToInt32(row["Forward"]));
-                long back = rounding(danga / 12 * Convert.ToInt32(row["BackDate"]));
-
-                dt.Rows[i*3+0]["기간요약"] = dt.Rows[i*3]["new_l_product_category"];
-                dt.Rows[i*3+1]["기간요약"] = "&nbsp&nbsp&nbsp" + forwarddata;
-                dt.Rows[i*3+2]["기간요약"] = "&nbsp&nbsp&nbsp" + backdata;
-
-                dt.Rows[i*3+1]["customerRRP"] = fwd;
-                dt.Rows[i*3+2]["customerRRP"] = back;
-                dt.Rows[i*3+0]["customerRRP"] = Convert.ToInt32(dt.Rows[i*3+1]["customerRRP"]) + Convert.ToInt32(dt.Rows[i*3+2]["customerRRP"]);
-
-                // 제안 단가
-                double fwdPrice = Convert.ToInt32(dt.Rows[i*3+1]["customerRRP"]) * (1 - Convert.ToDouble(forwardDiscount.Text) * 0.01);
-                double backPrice = Convert.ToInt32(dt.Rows[i*3+2]["customerRRP"]) * (1 - Convert.ToInt32(backDiscount.Text) * 0.01);
-
-                long finalFwd = rounding(fwdPrice);
-                long finalBack = rounding(backPrice);
-
-                dt.Rows[i*3+0]["proposalRRP"] = finalFwd + finalBack;
-                dt.Rows[i*3+1]["proposalRRP"] = finalFwd;
-                dt.Rows[i*3+2]["proposalRRP"] = finalBack;
-
-                dt.Rows[i*3+0]["finalPrice"] = (finalFwd + finalBack) * Convert.ToInt32(dt.Rows[i*3+0]["new_i_qty"]);
-
-                // number
-                row["number"] = no;
-                no++;
-                Debug.WriteLine("no: " + no);
-
-                // 합계 구하기
-                qty += Convert.ToInt32(row["new_i_qty"]);
-                price += Convert.ToInt32(row["customerRRP"]) * Convert.ToInt32(row["new_i_qty"]);
-                finalPrice += Convert.ToInt32(row["finalPrice"]);
-            }
-
-            // 합계 row 
-            DataRow newRow = dt.NewRow();
-            newRow[0] = "합계";
-            newRow["new_l_product_category"] = "합계";
-            newRow["new_i_qty"] = qty;
-            newRow["customerRRP"] = price;
-            //newRow["proposalRRP"] = "";
-            newRow["finalPrice"] = finalPrice;
-            dt.Rows.Add(newRow);
-            */
-        }
 
         GridView2.DataBind();
 
@@ -371,6 +284,13 @@ public partial class RequestList : System.Web.UI.Page
         Dictionary<string, long> priceByProductName = (Dictionary<string, long>)Session["BK_priceBook"];
         Dictionary<string, long> dollarByProductName = (Dictionary<string, long>)Session["BK_dollarBook"];
 
+        // 새 견적시작일
+        DateTime quotationDate = DateTime.Now;
+        {
+            string[] quotationdate = quotation.Text.Split('/');
+            string newdate = quotation.Text + "/" + DateTime.DaysInMonth(Convert.ToInt32(quotationdate[0]), Convert.ToInt32(quotationdate[1]));
+            quotationDate = DateTime.ParseExact(newdate, "yyyy/M/dd", null);
+        }
 
         // 새 견적종료일
         DateTime newExpireDate = DateTime.Now;
@@ -424,15 +344,20 @@ public partial class RequestList : System.Web.UI.Page
             dt.Rows[i * 3 + 2]["new_i_qty"] = "";
 
             // 기간요약 출력 
-            dt.Rows[i * 3 + 0]["기간요약"] = newOffer.ToString() + " Service Renewal (" + (newOffer.GetBackdatingAsMonth(mOfferDate) + newOffer.GetForwardAsMonth(mOfferDate, newExpireDate)) + "개월)"; //  dt.Rows[i * 3]["new_l_product_category"];
-            dt.Rows[i * 3 + 1]["기간요약"] = "           " + newOffer.GetForwardAsDescription(mOfferDate, newExpireDate);   //   "&nbsp&nbsp&nbsp" + forwarddata;
-            dt.Rows[i * 3 + 2]["기간요약"] = "           " + newOffer.GetBackdatingAsDescription(mOfferDate);//"&nbsp&nbsp&nbsp" + backdata;
+            //dt.Rows[i * 3 + 0]["기간요약"] = newOffer.ToString() + " Service Renewal (" + (newOffer.GetBackdatingAsMonth(mOfferDate) + newOffer.GetForwardAsMonth(mOfferDate, newExpireDate)) + "개월)"; //  dt.Rows[i * 3]["new_l_product_category"];
+            dt.Rows[i * 3 + 0]["기간요약"] = newOffer.ToString() + " Service Renewal (" + (newOffer.GetBackdatingAsMonth(quotationDate) + newOffer.GetForwardAsMonth(quotationDate, newExpireDate)) + "개월)";
+            //dt.Rows[i * 3 + 1]["기간요약"] = "           " + newOffer.GetForwardAsDescription(mOfferDate, newExpireDate);   //   "&nbsp&nbsp&nbsp" + forwarddata;
+            dt.Rows[i * 3 + 1]["기간요약"] = "           " + newOffer.GetForwardAsDescription(quotationDate, newExpireDate);   //   "&nbsp&nbsp&nbsp" + forwarddata;
+            //dt.Rows[i * 3 + 2]["기간요약"] = "           " + newOffer.GetBackdatingAsDescription(mOfferDate);//"&nbsp&nbsp&nbsp" + backdata;
+            dt.Rows[i * 3 + 2]["기간요약"] = "           " + newOffer.GetBackdatingAsDescription(quotationDate);//"&nbsp&nbsp&nbsp" + backdata;
 
 
             // 제품단가
-            long fwd = newOffer.GetPrice_ForwardCost(mOfferDate, newExpireDate);
+            //long fwd = newOffer.GetPrice_ForwardCost(mOfferDate, newExpireDate);
+            long fwd = newOffer.GetPrice_ForwardCost(quotationDate, newExpireDate);
             //Debug.WriteLine("fwd" + fwd);
-            long back = newOffer.GetPrice_BackCost(mOfferDate);
+            //long back = newOffer.GetPrice_BackCost(mOfferDate);
+            long back = newOffer.GetPrice_BackCost(quotationDate);
             dt.Rows[i * 3 + 1]["customerRRP"] = fwd;
             dt.Rows[i * 3 + 2]["customerRRP"] = back;
             dt.Rows[i * 3 + 0]["customerRRP"] = fwd + back;
@@ -504,8 +429,10 @@ public partial class RequestList : System.Web.UI.Page
             }
 
             // 달러 원가 계산하기
-            double fwdDollar = newOffer.GetPrice_ForwardDollar(mOfferDate, newExpireDate);
-            double backDollar = newOffer.GetPrice_BackDollar(mOfferDate);
+            //double fwdDollar = newOffer.GetPrice_ForwardDollar(mOfferDate, newExpireDate);
+            double fwdDollar = newOffer.GetPrice_ForwardDollar(quotationDate, newExpireDate);
+            //double backDollar = newOffer.GetPrice_BackDollar(mOfferDate);
+            double backDollar = newOffer.GetPrice_BackDollar(quotationDate);
             double totalDollar = newOffer.GetPrice_AmountDollar(fwdDollar + backDollar);
 
             // number
@@ -989,8 +916,17 @@ public partial class RequestList : System.Web.UI.Page
                     long _dollar = GetDollarByProductName(dollarByProductName, _productName);
                     CLicenseOffer newOffer = new CLicenseOffer(_companyName, _productCate, _productName, _endDate, _quantity, _price, _dollar);
 
+                    // 새 견적시작일
+                    DateTime quotationDate = DateTime.Now;
+                    {
+                        string[] quotationdate = quotation.Text.Split('/');
+                        string newdate = quotation.Text + "/" + DateTime.DaysInMonth(Convert.ToInt32(quotationdate[0]), Convert.ToInt32(quotationdate[1]));
+                        quotationDate = DateTime.ParseExact(newdate, "yyyy/M/dd", null);
+                    }
+
                     // back dating 계산
-                    row["BackDate"] = newOffer.GetBackdatingAsMonth(mOfferDate);
+                    //row["BackDate"] = newOffer.GetBackdatingAsMonth(mOfferDate);
+                    row["BackDate"] = newOffer.GetBackdatingAsMonth(quotationDate);
 
                     // 새 견적종료일
                     DateTime newExpireDate = DateTime.Now;
@@ -1001,7 +937,8 @@ public partial class RequestList : System.Web.UI.Page
                     }
 
                     // forward dating계산 
-                    row["Forward"] = newOffer.GetForwardAsMonth(mOfferDate, newExpireDate);
+                    //row["Forward"] = newOffer.GetForwardAsMonth(mOfferDate, newExpireDate);
+                    row["Forward"] = newOffer.GetForwardAsMonth(quotationDate, newExpireDate);
 
                 }
             }
@@ -1636,7 +1573,7 @@ public partial class RequestList : System.Web.UI.Page
                 {
                     dr.Read();
                     string info = dr[0].ToString();
-                    string[] infos = info.Split('*');
+                    string[] infos = info.Split(CConst.splitDiv2);
                     string userName = infos[0];     // 사용자 이름 (Rep.)
                     string userPhone = infos[1];    // 사용자 유선 번호
                     string userMobile = infos[2];   // 사용자 핸드폰번호
@@ -1821,8 +1758,7 @@ public partial class RequestList : System.Web.UI.Page
                 workSheet.Cells[excelRowIndex + tableStartRowIndex + 1, 2].Value = listSubSum.Count + 1;
 
                 // Table의 마지막 줄
-                int last_table_row = listSubSum[listSubSum.Count - 1];
-
+                //int last_table_row = listSubSum[listSubSum.Count - 1];
 
                 // Sub Total Row
                 // 소비자 단가
@@ -1846,16 +1782,9 @@ public partial class RequestList : System.Web.UI.Page
                 form = sbRows.ToString();
                 form_final = sbRows_final.ToString();
                 // 소비자단가_Sub Total
-                workSheet.Cells[last_table_row + 5, 5].Formula = "SUM(" + form + ")";
+                workSheet.Cells[excelRowIndex + tableStartRowIndex + 3, 5].Formula = "SUM(" + form + ")";
                 // 최종 견적가_Sub Total
-                workSheet.Cells[last_table_row + 5, 7].Formula = "SUM(" + form_final + ")";
-
-                // SOLKO 직인 넣기
-                //System.Drawing.Image stamp = System.Drawing.Image.FromFile("C:\\Users\\solko\\Desktop\\solko_stamp.png");
-                //FileInfo stamp = new FileInfo("C:\\Users\\solko\\Desktop\\solko_stamp.png");
-                //var solkoStamp = workSheet.Drawings.AddPicture("solkoStamp", stamp);
-                //solkoStamp.SetPosition(last_table_row + 21, 0, 5, 0);
-                //solkoStamp.SetSize(70, 65);
+                workSheet.Cells[excelRowIndex + tableStartRowIndex + 3, 7].Formula = "SUM(" + form_final + ")";
 
                 // listSubSum 넣기
                 //StringBuilder sb2 = new StringBuilder();
@@ -2395,358 +2324,6 @@ public partial class RequestList : System.Web.UI.Page
 
         }
     }
-
-    protected void estimatebtn_Template(object sender, EventArgs e)
-    {
-        var excelToExport = new FileInfo("C:\\Users\\solko\\Desktop\\template.xlsx");
-        using (var excelPackage = new ExcelPackage(excelToExport))
-        {
-            DataTable dts = (DataTable)Session["GridData"];
-            string compName = (string)Session["BK_companyName"];
-            DataSet ds = new DataSet();
-            ds.Tables.Add(dts);
-            string filePath = string.Format("C:/VS/Offer_{0}_{1}.xlsx", compName, DateTime.Now.ToShortDateString());
-
-
-            excelPackage.Save();
-        }
-    }
-
-    //protected void estimatebtn_Click2(object sender, EventArgs e)
-    //{
-    //    DataTable dts = (DataTable)Session["GridData"];
-    //    string compName = (string)Session["BK_companyName"];
-    //    DataSet ds = new DataSet();
-    //    ds.Tables.Add(dts);
-    //    string filePath = string.Format("C:/VS/Offer_{0}_{1}.xlsx", compName, DateTime.Now.ToShortDateString());
-
-    //    int totalCols = GridView2.Columns.Count;
-    //    int totalRows = GridView2.Rows.Count;
-    //    //Debug.WriteLine("totalcols" + totalCols + "totalrows" + totalRows);
-
-    //    using (ExcelPackage pck = new ExcelPackage())
-    //    {
-    //        ExcelWorksheet workSheet = pck.Workbook.Worksheets.Add(dts.TableName);
-
-    //        Debug.WriteLine("totalcols" + totalCols + "totalrows" + totalRows);
-    //        GridViewRow headerRow = GridView2.HeaderRow;
-
-    //        //Set style
-    //        workSheet.Cells.Style.Font.Name = "맑은 고딕";
-    //        workSheet.Cells[1, 1, totalRows + 40, 8].Style.Fill.PatternType = ExcelFillStyle.Solid;
-    //        workSheet.Cells[1, 1, totalRows + 40, 8].Style.Fill.BackgroundColor.SetColor(Color.White);
-
-    //        //날짜 넣기
-    //        workSheet.Cells[2, 7].Value = "Date: " + DateTime.Now.ToString("yyyy-MM-dd");
-    //        EPP_CellStyle(workSheet.Cells[2, 7], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, verBottom, horCenter, false, true, 10);
-
-    //        //Solko Logo 넣기
-    //        System.Drawing.Image logo = System.Drawing.Image.FromFile("C:\\Users\\solko\\Desktop\\solko_logo.jpg");
-    //        var solkoLogo = workSheet.Drawings.AddPicture("solkoLogo", logo);
-    //        solkoLogo.SetPosition(2, 0, 1, 0);
-    //        solkoLogo.SetSize(252, 46);
-
-    //        //Sales Quotation
-    //        workSheet.Cells[3, 1].Value = "Sales Quotation";
-    //        EPP_CellStyle(workSheet.Cells[3, 1], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, verBottom, horCenter, false, true, 28);
-    //        workSheet.Cells[3, 1].Style.Font.UnderLine = true;
-    //        workSheet.Cells[3, 1, 3, 8].Merge = true;
-
-    //        //Solko 정보
-    //        workSheet.Cells[7, 2].Value = "VAR: ";
-    //        workSheet.Cells[7, 3].Value = "(주)솔코";
-    //        workSheet.Cells[8, 2].Value = "Rep: ";
-    //        workSheet.Cells[9, 2].Value = "Tel: ";
-    //        workSheet.Cells[9, 3].Value = "031-8069-8306 || ";
-    //        workSheet.Cells[10, 2].Value = "Fax: ";
-    //        workSheet.Cells[10, 3].Value = "031-8069-8301";
-    //        workSheet.Cells[11, 2].Value = "Email: ";
-
-    //        //고객 정보
-    //        workSheet.Cells[7, 6].Value = "Customer: ";
-    //        workSheet.Cells[7, 7].Value = (string)Session["BK_companyName"];
-    //        workSheet.Cells[8, 6].Value = "Rep: ";
-    //        workSheet.Cells[9, 6].Value = "Tel: ";
-    //        workSheet.Cells[10, 6].Value = "Email: ";
-
-    //        workSheet.Cells["B7:G11"].Style.Font.Size = 12;
-    //        workSheet.Cells["B7:B11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-    //        workSheet.Cells["C7:C11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-    //        workSheet.Cells["F7:F11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-    //        workSheet.Cells["G7:G11"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-
-    //        workSheet.Cells[1, 6].Value = "Forwarding D/C";
-    //        workSheet.Cells[1, 7].Value = forwardDiscount.Text + "%";
-
-    //        workSheet.Cells[2, 6].Value = "Backdating D/C";
-    //        workSheet.Cells[2, 7].Value = backDiscount.Text + "%";
-
-    //        //Proposed Price
-    //        workSheet.Cells[13, 2].Value = "▶ Proposed Price  :  ";
-    //        workSheet.Cells[13, 2].Style.Font.Size = 14;
-    //        workSheet.Cells[13, 2].Style.Font.Bold = true;
-
-    //        //견적서 Table
-    //        workSheet.Cells[15, 2].Value = "1. Solution";
-    //        workSheet.Cells[15, 2].Style.Font.Size = 11;
-    //        workSheet.Cells[15, 2].Style.Font.Bold = true;
-
-    //        workSheet.Cells[15, 7].Value = "(Unit: WON)";
-    //        workSheet.Cells[15, 7].Style.Font.Size = 9;
-    //        workSheet.Cells[15, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-
-    //        workSheet.Cells[16, 2].Value = "No.";
-    //        workSheet.Cells[16, 3].Value = "Description";
-    //        workSheet.Cells[16, 4].Value = "Seats";
-    //        workSheet.Cells[16, 5].Value = "Customer RRP" + ((char)10).ToString() + "(소비자 단가)";
-    //        workSheet.Cells[16, 6].Value = "Proposed Price" + ((char)10).ToString() + "(제안 단가)";
-    //        workSheet.Cells[16, 7].Value = "Proposed Price" + ((char)10).ToString() + "(최종 견적가)";
-
-    //        workSheet.Row(17).Height = (double)7.00;
-
-    //        using (var range = workSheet.Cells[16, 2, 16, 7])
-    //        {
-    //            EPP_CellStyle(range, lineThin, lineThin, lineThin, lineThin, verCenter, horCenter, false, true, 10);
-    //            EPP_CellStyle(workSheet.Cells[16, 2], lineThin, ExcelBorderStyle.None, lineThin, lineThin, verCenter, horCenter, false, true, 10);
-    //            EPP_CellStyle(workSheet.Cells[16, 7], lineThin, lineThin, lineThin, ExcelBorderStyle.None, verCenter, horCenter, false, true, 10);
-    //            range.Style.Fill.PatternType = ExcelFillStyle.Solid;
-    //            range.Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#9BC2E6"));
-    //            workSheet.Row(16).Height = (double)50.0;
-    //        }
-
-    //        //Total Columns
-    //        workSheet.Cells[totalRows + 21, 2].Value = "Sub Total";
-    //        workSheet.Cells[totalRows + 21, 2, totalRows + 21, 4].Merge = true;
-    //        workSheet.Cells[totalRows + 21, 2, totalRows + 21, 7].Style.Fill.PatternType = ExcelFillStyle.Solid;
-    //        //workSheet.Cells[totalRows + 21, 2, totalRows + 21, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
-    //        workSheet.Cells[totalRows + 22, 2].Value = "VAT";
-    //        workSheet.Cells[totalRows + 22, 2, totalRows + 22, 4].Style.Font.Bold = true;
-    //        workSheet.Cells[totalRows + 22, 2, totalRows + 22, 4].Merge = true;
-    //        workSheet.Cells[totalRows + 22, 2, totalRows + 22, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-    //        workSheet.Cells[totalRows + 23, 2].Value = "Total Price";
-    //        workSheet.Cells[totalRows + 23, 2, totalRows + 23, 4].Style.Font.Bold = true;
-    //        workSheet.Cells[totalRows + 23, 2, totalRows + 23, 4].Merge = true;
-    //        workSheet.Cells[totalRows + 23, 3, totalRows + 23, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-
-    //        EPP_CellStyle(workSheet.Cells[totalRows + 21, 2, totalRows + 23, 4], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, lineThin, verCenter, horRight, false, true, 10);
-
-    //        //Cell에 값 넣기
-    //        for (var j = 1; j <= totalRows - 2; j++)
-    //        {
-    //            for (var i = 1; i <= 2; i++)
-    //            {
-
-    //                string product = GridView2.Rows[j - 1].Cells[i - 1].Text;
-    //                Debug.WriteLine("product: " + product);
-
-    //                //Blank Cell 일 경우
-    //                if (product == "&nbsp;")
-    //                {
-    //                    product = " ";
-    //                }
-    //                workSheet.Cells[j + 17, i + 1].Value = product;
-    //            }
-
-    //            for (var i = 4; i <= 7; i++)
-    //            {
-    //                string product = GridView2.Rows[j - 1].Cells[i - 1].Text;
-
-    //                //Blank Cell 일 경우
-    //                if (product == "&nbsp;")
-    //                {
-    //                    product = " ";
-    //                }
-    //                workSheet.Cells[j + 17, i].Value = product;
-
-    //                if (i == 7)
-    //                {
-    //                    workSheet.Cells[j + 17, i].Style.Font.Color.SetColor(ColorTranslator.FromHtml("#FF0000"));
-    //                }
-    //            }
-
-    //        }
-
-    //        //Customer RRP 계산하기
-    //        //제품 개수
-    //        int num_of_prod = (totalRows - 2) / 3;
-
-    //        string form = "D18 * E18";
-    //        for (var i = 1; i < num_of_prod + 1; i++)
-    //        {
-    //            form += ", D" + (18 + 3 * i) + "* E" + (18 + 3 * i);
-    //        }
-    //        workSheet.Cells[totalRows + 21, 5].Formula = "ROUND(SUM(" + form + "), -3)";
-    //        workSheet.Cells[totalRows + 22, 5].Formula = "ROUND(E" + (totalRows + 21) + "* 0.1, -3)";
-    //        workSheet.Cells[totalRows + 23, 5].Formula = "ROUND(SUM(E" + (totalRows + 21) + ", E" + (totalRows + 22) + "), -3)";
-
-    //        //최종 견적가 계산하기
-    //        string final_form = "D18 * E18";
-    //        for (var i = 1; i < num_of_prod + 1; i++)
-    //        {
-    //            final_form += ", D" + (18 + 3 * i) + "* E" + (18 + 3 * i);
-    //        }
-    //        workSheet.Cells[totalRows + 21, 7].Formula = "ROUND(SUM(" + final_form + "), -3)";
-    //        workSheet.Cells[totalRows + 22, 7].Formula = "ROUND(E" + (totalRows + 21) + "* 0.1, -3)";
-    //        workSheet.Cells[totalRows + 23, 7].Formula = "ROUND(SUM(E" + (totalRows + 21) + ", E" + (totalRows + 22) + "), -3)";
-
-
-    //        int total = Int32.Parse(GridView2.Rows[totalRows - 1].Cells[5].Text, System.Globalization.NumberStyles.AllowThousands);
-    //        double vat = total * 0.1;
-    //        workSheet.Cells[totalRows + 21, 5].Value = total.ToString("N0");
-    //        //workSheet.Cells[totalRows + 21, 5].Style.Font.Bold = true;
-    //        workSheet.Cells[totalRows + 22, 5].Value = vat.ToString("N0"); ;
-    //        workSheet.Cells[totalRows + 23, 5].Value = (total + vat).ToString("N0"); ;
-    //        workSheet.Cells[totalRows + 23, 5].Style.Font.Bold = true;
-    //        using (var range = workSheet.Cells[totalRows + 21, 5, totalRows + 23, 7])
-    //        {
-    //            EPP_CellStyle(range, lineThin, lineThin, lineThin, lineThin, verCenter, horRight, false, true, 10);
-    //        }
-
-    //        workSheet.Cells[totalRows + 22, 5, totalRows + 22, 7].Style.Font.Bold = false;
-
-    //        //Table Style
-    //        EPP_CellStyle(workSheet.Cells[17, 2, totalRows + 20, 2], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, lineThin, verCenter, horCenter, false, false, 10);
-    //        EPP_CellStyle(workSheet.Cells[17, 3, totalRows + 20, 3], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, lineThin, verCenter, horLeft, false, false, 10);
-    //        EPP_CellStyle(workSheet.Cells[17, 4, totalRows + 20, 4], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, lineThin, verCenter, horCenter, false, false, 10);
-    //        EPP_CellStyle(workSheet.Cells[17, 5, totalRows + 20, 5], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, lineThin, verCenter, horRight, false, false, 10);
-    //        EPP_CellStyle(workSheet.Cells[17, 6, totalRows + 20, 6], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, lineThin, verCenter, horRight, false, false, 10);
-    //        EPP_CellStyle(workSheet.Cells[17, 7, totalRows + 20, 7], ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, ExcelBorderStyle.None, verCenter, horRight, false, false, 10);
-    //        workSheet.Cells[totalRows + 21, 2, totalRows + 21, 7].Style.Border.Top.Style = ExcelBorderStyle.Thin;
-    //        workSheet.Cells[totalRows + 22, 2, totalRows + 22, 7].Style.Border.Top.Style = ExcelBorderStyle.Thin;
-    //        workSheet.Cells[totalRows + 23, 2, totalRows + 23, 7].Style.Border.Top.Style = ExcelBorderStyle.Thin;
-    //        workSheet.Cells[totalRows + 23, 2, totalRows + 23, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
-    //        workSheet.Cells[16, 2, totalRows + 23, 7].Style.Border.Bottom.Color.SetColor(ColorTranslator.FromHtml("#808080"));
-    //        workSheet.Cells[17, 2, totalRows + 17, 7].Style.Font.Name = "Calibri";
-    //        workSheet.Cells[16, 2, 16, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
-    //        workSheet.Cells[totalRows + 21, 2, totalRows + 21, 7].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
-
-    //        //발주 확인
-    //        workSheet.Cells[totalRows + 25, 6].Value = "발주 확인 (회사명판)";
-    //        workSheet.Cells[totalRows + 25, 6].Style.Font.Size = 12;
-    //        workSheet.Cells[totalRows + 25, 6].Style.Font.Bold = true;
-    //        workSheet.Cells[totalRows + 25, 6, totalRows + 25, 7].Merge = true;
-    //        EPP_CellStyle(workSheet.Cells[totalRows + 25, 6, totalRows + 25, 7], lineThin, ExcelBorderStyle.None, lineThin, ExcelBorderStyle.None, verCenter, horCenter, false, true, 10);
-    //        workSheet.Cells[totalRows + 25, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-    //        workSheet.Cells[totalRows + 25, 6].Style.Fill.PatternType = ExcelFillStyle.Solid;
-    //        workSheet.Cells[totalRows + 25, 6].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#DDEBF7"));
-
-    //        workSheet.Cells[totalRows + 26, 6].Value = "결제 예정일";
-    //        EPP_CellStyle(workSheet.Cells[totalRows + 26, 6], ExcelBorderStyle.None, ExcelBorderStyle.None, ExcelBorderStyle.None, lineThin, verCenter, horCenter, false, false, 9);
-
-    //        workSheet.Cells[totalRows + 27, 6, totalRows + 33, 7].Style.Border.BorderAround(ExcelBorderStyle.Medium);
-
-    //        //2.Detail Condition
-    //        workSheet.Cells[totalRows + 25, 2].Value = "2. Detail Condition";
-    //        workSheet.Cells[totalRows + 25, 2].Style.Font.Bold = true;
-    //        workSheet.Cells[totalRows + 25, 2].Style.Font.Size = 12;
-    //        workSheet.Cells[totalRows + 26, 2].Value = "   1) 본 견적(구매)건은 정상 구매 조건이며, 불법 사용에 관련된 구매 건과는 별 건임을 알려드립니다.";
-    //        var cell = workSheet.Cells[totalRows + 27, 2];
-    //        cell.IsRichText = true;
-    //        var part1 = cell.RichText.Add("   2) Subscription 가입은 필수 계약 사항입니다.  ");
-    //        part1.Bold = false;
-    //        part1.Size = 9;
-    //        var part2 = cell.RichText.Add("숙 지 하 였 음 (서명) ");
-    //        part2.Bold = true;
-    //        part2.Size = 9;
-    //        var part3 = cell.RichText.Add("(고객께서 \"숙지하였음\" 필사와  \"서명\" 부탁 드립니다.)");
-    //        part3.Bold = false;
-    //        part3.Size = 9;
-    //        //workSheet.Cells[totalRows + 27, 2].Style.Font.Size = 10;
-    //        workSheet.Cells[totalRows + 27, 2].Value = "   2) Subscription 가입은 필수 계약 사항입니다.  숙 지 하 였 음 (서명) (고객께서 \"숙지하였음\" 필사와  \"서명\" 부탁 드립니다.)";
-    //        workSheet.Cells[totalRows + 28, 2].Value = "     : 제품 보완, 최신버전, 기술지원을 위한 필수적인 사항이며, 미 갱신으로 인한 제품 사용에 대한 불편이 발생 시 지원이 불가 합니다.";
-    //        workSheet.Cells[totalRows + 29, 2].Value = "   3) 납품후 30일 이내 현금 지불 조건입니다.";
-    //        workSheet.Cells[totalRows + 30, 2].Value = "   4) 상기 가격은 공급사인 다쏘시스템 솔리드웍스의 가격 정책에 따라 예고 없이 변경될 수 있습니다.";
-    //        workSheet.Cells[totalRows + 31, 2].Value = "   5) 상기 견적은 발행일로부터 14일 간 유효 합니다.";
-    //        workSheet.Cells[totalRows + 26, 2, totalRows + 31, 2].Style.Font.Size = 10;
-
-    //        //공인리셀러 정보
-    //        workSheet.Cells[totalRows + 34, 2].Value = "공인리셀러 정보";
-    //        workSheet.Cells[totalRows + 34, 2].Style.Font.Size = 12;
-    //        workSheet.Cells[totalRows + 34, 2].Style.Font.Bold = true;
-    //        workSheet.Cells[totalRows + 34, 2].Style.Font.UnderLine = true;
-    //        workSheet.Cells[totalRows + 34, 2, totalRows + 34, 7].Merge = true;
-    //        workSheet.Cells[totalRows + 34, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-
-
-    //        for (var i = 0; i < 4; i++)
-    //        {
-    //            workSheet.Cells[totalRows + 36 + i, 2].Value = "•";
-    //            workSheet.Cells[totalRows + 36 + i, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-    //        }
-
-    //        workSheet.Cells[totalRows + 36, 3].Value = "사업자 등록번호 : 135-86-01726";
-    //        workSheet.Cells[totalRows + 37, 3].Value = "상      호  :  ㈜솔코";
-    //        workSheet.Cells[totalRows + 38, 3].Value = "업      태  :  서비스(사업관련)업 도소매";
-    //        workSheet.Cells[totalRows + 39, 3].Value = "주      소  :  경기도 의왕시 이미로 40, C-414 (포일동, 인덕원아이티밸리)";
-
-    //        workSheet.Cells[totalRows + 36, 4].Value = "• 법인등록번호  :  135811-0163732";
-    //        workSheet.Cells[totalRows + 37, 4].Value = "• 대표이사  :  박 광 수                        (인)";
-    //        workSheet.Cells[totalRows + 38, 4].Value = "• 종      목  :  기술, 설계용역, 컴퓨터 및 주변장치, 소프트웨어자문, 개발 및 공급";
-    //        workSheet.Cells[totalRows + 36, 2, totalRows + 39, 4].Style.Font.Size = ;
-
-    //        //직인 넣기
-    //        System.Drawing.Image stamp = System.Drawing.Image.FromFile("C:\\Users\\solko\\Desktop\\solko_stamp.png");
-    //        var solkoStamp = workSheet.Drawings.AddPicture("solkoStamp", stamp);
-    //        solkoStamp.SetPosition(totalRows + 34, 0, 5, 0);
-    //        solkoStamp.SetSize(100, 92);
-
-
-    //        //컬럼 폭 조정
-    //        workSheet.Column(1).Width = (double)3.75;
-    //        workSheet.Column(2).Width = (double)12.63;
-    //        workSheet.Column(3).Width = (double)70.13;
-    //        workSheet.Column(4).Width = (double)6.50;
-    //        workSheet.Column(5).Width = (double)20.13;
-    //        workSheet.Column(6).Width = (double)20.13;
-    //        workSheet.Column(7).Width = (double)20.13;
-    //        workSheet.Column(8).Width = (double)3.75;
-
-    //        //행 폭 조정
-    //        workSheet.Row(1).Height = (double)21.75;
-    //        workSheet.Row(2).Height = (double)21.75;
-    //        workSheet.Row(3).Height = (double)75;
-    //        workSheet.Row(totalRows + 21).Height = (double)25.5;
-    //        workSheet.Row(totalRows + 22).Height = (double)20;
-    //        workSheet.Row(totalRows + 23).Height = (double)20;
-
-    //        //소비자 단가, 제안 단가, 최종 금액 Column
-    //        foreach (int i in new int[] { 5, 6, 7 })
-    //        {
-    //            for (int j = 5; j <= totalRows; j += 3)
-    //            {
-    //                EPP_CellStyle(workSheet.Cells[j, i, j + 2, i], lineThin, lineThin, lineThin, lineThin, verBottom, horRight, true, false);
-    //            }
-    //        }
-
-    //        string usd = workSheet.Cells[totalRows + 4, 5, totalRows + 4, 5].Value.ToString();
-    //        string krw = workSheet.Cells[totalRows + 4, 6, totalRows + 4, 6].Value.ToString();
-    //        string percentage = workSheet.Cells[totalRows + 4, 7, totalRows + 4, 7].Value.ToString();
-
-    //        workSheet.Cells[totalRows + 4, 5, totalRows + 4, 5].Value = "USD: " + usd;
-    //        workSheet.Cells[totalRows + 4, 6, totalRows + 4, 6].Value = "KRW: " + krw;
-    //        workSheet.Cells[totalRows + 4, 7, totalRows + 4, 7].Value = percentage + "%";
-
-    //        pck.SaveAs(new FileInfo(filePath));
-    //        Debug.WriteLine("filepath:" + filePath);
-
-    //        //Write it back to the client
-    //        Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    //        Response.AddHeader("content-disposition", "attachment;  filename=ProductDetails.xlsx");
-    //        Response.BinaryWrite(pck.GetAsByteArray());
-
-    //        string excelName = string.Format("Offer_{0}_{1}", compName, DateTime.Now.ToLongDateString());
-    //        using (var memoryStream = new MemoryStream())
-    //        {
-    //            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    //            Response.AddHeader("content-disposition", "attachment; filename=" + excelName + ".xlsx");
-    //            pck.SaveAs(memoryStream);
-    //            memoryStream.WriteTo(Response.OutputStream);
-    //            Response.Flush();
-    //            Response.End();
-    //        }
-    //    }
-
-    //}
 
 
     protected bool IsNull(string val)

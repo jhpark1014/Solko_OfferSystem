@@ -15,23 +15,23 @@
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="UserId" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="UserId"
-                    CssClass="text-danger" ErrorMessage="사용자 아이디 필드는 필수입니다." />
+                    CssClass="text-danger" ErrorMessage="아이디 필드는 필수입니다." />
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">사용자 이름 + 직함</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">이름 + 직함</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="UserName" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
-                    CssClass="text-danger" ErrorMessage="사용자 이름 필드는 필수입니다." />
+                    CssClass="text-danger" ErrorMessage="이름 필드는 필수입니다." />
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="UserEmail" CssClass="col-md-2 control-label">사용자 이메일</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="UserEmail" CssClass="col-md-2 control-label">이메일</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="UserEmail" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="UserEmail"
-                    CssClass="text-danger" ErrorMessage="사용자 이메일 필드는 필수입니다." />
+                    CssClass="text-danger" ErrorMessage="이메일 필드는 필수입니다." />
             </div>
         </div>
         <div class="form-group">
@@ -71,7 +71,7 @@
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
-                    CssClass="text-danger" ErrorMessage="암호 필드는 필수입니다." />
+                    CssClass="text-danger" ErrorMessage="비밀번호 필드는 필수입니다." />
             </div>
         </div>
         <div class="form-group">
@@ -79,9 +79,9 @@
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
-                    CssClass="text-danger" Display="Dynamic" ErrorMessage="암호 확인 필드는 필수입니다." />
+                    CssClass="text-danger" Display="Dynamic" ErrorMessage="비밀번호 확인 필드는 필수입니다." />
                 <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
-                    CssClass="text-danger" Display="Dynamic" ErrorMessage="암호와 확인 암호가 일치하지 않습니다." />
+                    CssClass="text-danger" Display="Dynamic" ErrorMessage="비밀번호와 일치하지 않습니다." />
             </div>
         </div>
         <div class="form-group">

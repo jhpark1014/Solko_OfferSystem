@@ -17,25 +17,25 @@
                         </p>
                     </asp:PlaceHolder>
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">사용자 이름</asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">아이디</asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="UserName" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
-                                CssClass="text-danger" ErrorMessage="사용자 이름 필드는 필수입니다." />
+                                CssClass="text-danger" ErrorMessage="아이디 필드는 필수입니다." />
                         </div>
                     </div>
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">암호</asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">비밀번호</asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="text-danger" ErrorMessage="암호 필드는 필수입니다." />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="text-danger" ErrorMessage="비밀번호 필드는 필수입니다." />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <div class="checkbox">
                                 <asp:CheckBox runat="server" ID="RememberMe" />
-                                <asp:Label runat="server" AssociatedControlID="RememberMe">사용자 이름 및 암호 저장</asp:Label>
+                                <asp:Label runat="server" AssociatedControlID="RememberMe">아이디 및 비밀번호 저장</asp:Label>
                             </div>
                         </div>
                     </div>

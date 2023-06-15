@@ -139,14 +139,16 @@ public partial class RequestList : System.Web.UI.Page
             if (!string.IsNullOrEmpty(startFilter))
             {
                 startFilter = startFilter + "/01";
-                DateTime stDate = DateTime.ParseExact(startFilter, "yyyy/MM/dd", null);
+                //DateTime stDate = DateTime.ParseExact(startFilter, "yyyy/MM/dd", null);
+                DateTime stDate = DateTime.ParseExact(startFilter, "yyyy/M/dd", null);
                 query.Criteria.AddCondition("new_dt_expired", ConditionOperator.GreaterEqual, stDate);   //  end >= startdate
             }
 
             if (!string.IsNullOrEmpty(finFilter))
             {
                 finFilter = finFilter + "/01";
-                DateTime finDate = DateTime.ParseExact(finFilter, "yyyy/MM/dd", null);
+                //DateTime finDate = DateTime.ParseExact(finFilter, "yyyy/MM/dd", null);
+                DateTime finDate = DateTime.ParseExact(finFilter, "yyyy/M/dd", null);
                 finDate = finDate.AddMonths(+1);
                 finDate = finDate.AddDays(-1);
                 query.Criteria.AddCondition("new_dt_expired", ConditionOperator.LessEqual, finDate);   // end <= finishdate
