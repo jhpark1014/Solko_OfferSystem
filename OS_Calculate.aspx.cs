@@ -81,7 +81,7 @@ public partial class RequestList : System.Web.UI.Page
             if (IsTransferedOtherPage("FROMMAIN", "T"))
             {
                 id_list = (string)GetValue_Session("sendIDList");
-                System.Diagnostics.Debug.WriteLine("다른 페이지에서 호출된 것임");
+                //System.Diagnostics.Debug.WriteLine("다른 페이지에서 호출된 것임");
                 //System.Diagnostics.Debug.WriteLine("id_list" + id_list);
                 //System.Diagnostics.Debug.WriteLine("idlist length" + id_list.Length);
                 //TextBox1.Text = "다른 페이지에서 호출된 것임";
@@ -91,7 +91,7 @@ public partial class RequestList : System.Web.UI.Page
             else
             {
                 id_list = "";
-                System.Diagnostics.Debug.WriteLine("직접 열린 페이지");
+                //System.Diagnostics.Debug.WriteLine("직접 열린 페이지");
                 //System.Diagnostics.Debug.WriteLine(id_list.Length);
                 //TextBox1.Text = "직접 열린 페이지";
                 //TextBox2.Text = "";
@@ -109,7 +109,6 @@ public partial class RequestList : System.Web.UI.Page
 
 
             // 단가표 읽어서 dictionary로 만들기
-
             Dictionary<string, long> priceByProductName = new Dictionary<string, long>();
             Dictionary<string, long> dollarByProductName = new Dictionary<string, long>();
             {
@@ -132,7 +131,6 @@ public partial class RequestList : System.Web.UI.Page
                     }
                 }
             }
-
 
             Session["BK_priceBook"] = priceByProductName;
             Session["BK_dollarBook"] = dollarByProductName;
@@ -345,7 +343,7 @@ public partial class RequestList : System.Web.UI.Page
 
             // 기간요약 출력 
             //dt.Rows[i * 3 + 0]["기간요약"] = newOffer.ToString() + " Service Renewal (" + (newOffer.GetBackdatingAsMonth(mOfferDate) + newOffer.GetForwardAsMonth(mOfferDate, newExpireDate)) + "개월)"; //  dt.Rows[i * 3]["new_l_product_category"];
-            dt.Rows[i * 3 + 0]["기간요약"] = newOffer.ToString() + " Service Renewal (" + (newOffer.GetBackdatingAsMonth(quotationDate) + newOffer.GetForwardAsMonth(quotationDate, newExpireDate)) + "개월)";
+            dt.Rows[i * 3 + 0]["기간요약"] = newOffer.ToString() + " Service Renewal - " + (newOffer.GetBackdatingAsMonth(quotationDate) + newOffer.GetForwardAsMonth(quotationDate, newExpireDate)) + "개월";
             //dt.Rows[i * 3 + 1]["기간요약"] = "           " + newOffer.GetForwardAsDescription(mOfferDate, newExpireDate);   //   "&nbsp&nbsp&nbsp" + forwarddata;
             dt.Rows[i * 3 + 1]["기간요약"] = "           " + newOffer.GetForwardAsDescription(quotationDate, newExpireDate);   //   "&nbsp&nbsp&nbsp" + forwarddata;
             //dt.Rows[i * 3 + 2]["기간요약"] = "           " + newOffer.GetBackdatingAsDescription(mOfferDate);//"&nbsp&nbsp&nbsp" + backdata;
@@ -384,48 +382,6 @@ public partial class RequestList : System.Web.UI.Page
             catch
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('숫자를 입력해 주세요')", true);
-            }
-
-            {
-                //int danga = 10000;
-                //try
-                //{
-                //    // 소비자 단가
-                //    long fwd = rounding(danga / 12 * Convert.ToInt32(row["Forward"]));
-                //    long back = rounding(danga / 12 * Convert.ToInt32(row["BackDate"]));
-
-                //    dt.Rows[i * 3 + 1]["customerRRP"] = fwd;
-                //    dt.Rows[i * 3 + 2]["customerRRP"] = back;
-                //    dt.Rows[i * 3 + 0]["customerRRP"] = Convert.ToInt32(dt.Rows[i * 3 + 1]["customerRRP"]) + Convert.ToInt32(dt.Rows[i * 3 + 2]["customerRRP"]);
-
-
-
-                //    // 제안 단가
-                //    double fwdPrice = Convert.ToInt32(dt.Rows[i * 3 + 1]["customerRRP"]) * (1 - Convert.ToDouble(forwardDiscount.Text) * 0.01);
-                //    double backPrice = Convert.ToInt32(dt.Rows[i * 3 + 2]["customerRRP"]) * (1 - Convert.ToInt32(backDiscount.Text) * 0.01);
-
-                //    long finalFwd = rounding(fwdPrice);
-                //    long finalBack = rounding(backPrice);
-
-                //    dt.Rows[i * 3 + 0]["proposalRRP"] = finalFwd + finalBack;
-                //    dt.Rows[i * 3 + 1]["proposalRRP"] = finalFwd;
-                //    dt.Rows[i * 3 + 2]["proposalRRP"] = finalBack;
-
-                //    // 최종금액 
-                //    dt.Rows[i * 3 + 0]["finalPrice"] = (finalFwd + finalBack) * Convert.ToInt32(dt.Rows[i * 3 + 0]["new_i_qty"]);
-                //}
-                //catch
-                //{
-                //    dt.Rows[i * 3 + 1]["customerRRP"] = "";
-                //    dt.Rows[i * 3 + 2]["customerRRP"] = "";
-                //    dt.Rows[i * 3 + 0]["customerRRP"] = "";
-
-                //    dt.Rows[i * 3 + 0]["proposalRRP"] = "";
-                //    dt.Rows[i * 3 + 1]["proposalRRP"] = "";
-                //    dt.Rows[i * 3 + 2]["proposalRRP"] = "";
-
-                //    dt.Rows[i * 3 + 0]["finalPrice"] = "";
-                //}
             }
 
             // 달러 원가 계산하기
@@ -949,282 +905,6 @@ public partial class RequestList : System.Web.UI.Page
 
     #region "CRM API"
 
-    // Old Query Function
-    /*
-    protected void QueryDataFilter2(string entityName, ColumnSet columnSet, List<string> relAttrNames, string id_list)
-    {
-        //DataSet ds = new DataSet();
-
-        if (connected(crmSvc))
-        {
-            //DataTable dt = ds.Tables.Add();
-            if (dt == null)
-                dt = new DataTable();
-
-            dt.Rows.Clear();
-            dt.Columns.Clear();
-
-            string sname = entityName;
-
-            // query entity data
-            List<string> idList = new List<string>(id_list.Split(CCommon.splitSpace, StringSplitOptions.RemoveEmptyEntries));
-
-            //if (!string.IsNullOrEmpty(startFilter))
-            //{
-            //    startFilter = startFilter + "/01";
-            //    DateTime stDate = DateTime.ParseExact(startFilter, "yyyy/MM/dd", null);
-            //    //System.Diagnostics.Debug.WriteLine("startdate" + stDate);
-            //}
-            //if (!string.IsNullOrEmpty(finFilter))
-            //{
-            //    finFilter = finFilter + "/31";
-            //    DateTime finDate = DateTime.ParseExact(finFilter, "yyyy/MM/dd", null);
-            //    //System.Diagnostics.Debug.WriteLine("finishdate" + finDate);
-            //}
-
-
-            QueryExpression query = new QueryExpression(entityName);
-            query.ColumnSet = columnSet;
-
-            // filter link condition style 1.
-            //LinkEntity customerRef = query.AddLink("account", "new_l_account", "accountid");
-            //customerRef.LinkCriteria.AddCondition("name", ConditionOperator.Equal, "필옵틱스");
-
-            // filter by id(primary key)
-            if ( idList.Count > 0 )
-            {
-                query.Criteria.AddCondition("new_customer_productsid", ConditionOperator.In, idList.ToArray());
-            }
-
-            // filter condition setup example
-            //query.Criteria = new FilterExpression();
-            //query.Criteria.AddCondition(new ConditionExpression("new_l_account", ConditionOperator.Equal, "c13d6c87-73c3-eb11-bacc-00224816b187"));
-
-            int pageNumber = 1;
-            string pageCookie = string.Empty;
-            EntityCollection ec;
-            List<Entity> resultList = new List<Entity>();
-
-            do
-            {
-                Debug.WriteLine(string.Format("page = {0}", pageNumber));
-
-                if (pageNumber != 1)
-                {
-                    query.PageInfo.PageNumber = pageNumber;
-                    query.PageInfo.PagingCookie = pageCookie;
-                }
-                ec = crmSvc.RetrieveMultiple(query);
-                if (ec.MoreRecords)
-                {
-                    pageNumber++;
-                    pageCookie = ec.PagingCookie;
-                }
-
-                resultList.AddRange(ec.Entities);
-            } while (ec.MoreRecords);
-
-
-            // column list build
-            List<string> keyNames = new List<string>();
-            foreach (var item in ec.Entities)
-            {
-                foreach (KeyValuePair<String, Object> attribute in item.Attributes)
-                    keyNames.Add(attribute.Key);
-
-                break;
-            }
-
-            // sort column by name
-            keyNames.Sort();
-            foreach (string aName in keyNames)
-            {
-                dt.Columns.Add(aName);
-                //Debug.WriteLine(string.Format("column name = {0}", aName));
-            }
-
-            // row list to datatable
-            foreach (var item in resultList)
-            {
-                DataRow dr = dt.NewRow();
-
-                string saveData = "";
-                string key = "";
-
-                Dictionary<string, int> combine = new Dictionary<string, int>();
-                foreach (string aName in keyNames)
-                {
-                    saveData = "";
-
-                    if (item.Attributes.Contains(aName))
-                    {
-                        if (relAttrNames.Contains(aName))
-                        {
-                            // get reference to value
-                            object val = GetAttributeValue1(item.Attributes[aName]);
-                            if (val == null) saveData = "";
-                            else saveData = val.ToString();
-                        }
-                        else
-                        {
-                            // get reference to id
-                            object val = GetAttributeValue2(item.Attributes[aName]);
-                            if (val == null) saveData = "";
-                            else saveData = val.ToString();
-                        }
-                    }
-
-                    dr[aName] = saveData;
-                   
-                    
-                }
-
-                dt.Rows.Add(dr);
-            }
-
-            {
-            foreach (DataRow row in dt.Rows)
-            {
-                try
-                {
-                    string expdate = row["new_dt_expired"].ToString();
-                    string[] splitDate = expdate.Split('-');
-                    row["new_dt_expired"] = splitDate[0] + "/" + splitDate[1];
-
-                    // Convert.ToInt32(row["단가"])
-                    }
-                catch
-                {
-                    row["new_dt_expired"] = "";
-                }
-
-                try
-                {
-                    string category = row["new_l_product_category"].ToString();
-                    string product = row["new_l_products"].ToString();
-                    row["new_l_product_category"] = category + " " + product;
-                    //GridView2.Columns.Insert(2, );
-                }
-                catch
-                {
-                    row["new_l_product_category"] = "";
-                }
-            }
-
-
-            dt.Columns.Add("BackDate");
-            foreach (DataRow row in dt.Rows)
-            {
-                //String endDate = ((string) row["new_dt_expired"]) + "/31";
-                //row["Backdating"] = CalcBackDate(DateTime.ParseExact(endDate, "yyyy/MM/dd", null));
-                //row["Backdating"] = "";
-
-                String[] datesplit = (row["new_dt_expired"].ToString()).Split('/');
-
-                try
-                {
-                    string date = datesplit[0] + "/" + datesplit[1] + "/" + DateTime.DaysInMonth(Int32.Parse(datesplit[0]), Int32.Parse(datesplit[1]));
-                    DateTime endDate = DateTime.ParseExact(date, "yyyy/M/dd", null);
-                    row["BackDate"] = CalcBackDate(endDate);
-                }
-                catch
-                {
-                    System.Diagnostics.Debug.WriteLine("backdate exception: " + row[4].ToString());
-                    //System.Diagnostics.Debug.WriteLine("backdate exception: " + row["CustomerName"].ToString());
-                    row["BackDate"] = "";
-                }
-
-            }
-            
-            dt.Columns.Add("Forward");
-            foreach (DataRow row in dt.Rows)
-            {
-
-                String[] datesplit = (row["new_dt_expired"].ToString()).Split('/');
-
-                try
-                {
-                    string date = datesplit[0] + "/" + datesplit[1] + "/" + DateTime.DaysInMonth(Int32.Parse(datesplit[0]), Int32.Parse(datesplit[1]));
-                    DateTime endDate = DateTime.ParseExact(date, "yyyy/M/dd", null);
-                    row["Forward"] = CalcForwardDate(endDate);
-                }
-                catch
-                {
-                    row["Forward"] = "";
-                }
-
-            }
-
-            dt.Columns.Add("기간요약");
-            foreach (DataRow row in dt.Rows)
-            {
-                try
-                {
-                    String[] datesplit = (row["new_dt_expired"].ToString()).Split('/');
-                    String date = datesplit[0] + "." + datesplit[1] + "." + DateTime.DaysInMonth(Int32.Parse(datesplit[0]), Int32.Parse(datesplit[1]));
-                    string forwarddata;
-
-                    if (Convert.ToInt32(row["Forward"]) == 12)
-                    {
-                        DateTime now = DateTime.Now;
-                        forwarddata = "Forward (" + now.Year + "." + (now.Month+1) + ".1 ~ " + (now.Year+1) + "." + now.Month + "." + DateTime.DaysInMonth(now.Year+1, now.Month) + ") = " + row["Forward"];
-                    }
-                    else
-                    {
-                        forwarddata = "Forward (" + DateTime.Now.Year + "." + DateTime.Now.Month + ".1 ~ " + date + ") = " + row["Forward"];
-                    }
-                    string backdata = "BackDate (" + date + " ~ " + DateTime.Now.Year + "." + DateTime.Now.Month + "." +
-                                DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) + ") = " + row["BackDate"];
-
-                    string final = forwarddata + "<br>" + backdata;
-                    row["기간요약"] = final;
-                }
-                catch
-                {
-                    row["기간요약"] = "";
-                }
-            }
-
-
-            dt.Columns.Add("customerRRP", typeof(int));
-            //foreach (GridViewRow row in GridView2.Rows)
-            //{
-            //    WebControls.Label val = (WebControls.Label)row.FindControl("ProductType");
-            //    //row.Cells[8].Text = string.Format("{0}", 10000);
-            //    row.Cells[8].Text = "10000";
-            //    //row.Cells[8].Text = 0;
-            //}
-            foreach (DataRow row in dt.Rows)
-            {
-                row["customerRRP"] = 10000;
-                // Convert.ToInt32(row["단가"])
-            }
-
-
-            dt.Columns.Add("proposalRRP", typeof(int));
-            foreach (DataRow row in dt.Rows)
-            {
-                row["proposalRRP"] = Convert.ToInt32(row["customerRRP"]) * Convert.ToInt32(row["new_i_qty"]);
-                // Convert.ToInt32(row["단가"])
-            }
-
-
-            dt.Columns.Add("finalPrice");
-            foreach (DataRow row in dt.Rows)
-            {
-                double fwdPrice = Convert.ToInt32(row["proposalRRP"]) * (1 - Convert.ToDouble(forwardDiscount.Text) * 0.01) / 12 * Convert.ToInt32(row["Forward"]);
-                double backPrice = Convert.ToInt32(row["proposalRRP"]) * (1 - Convert.ToInt32(backDiscount.Text) * 0.01) / 12 * Convert.ToInt32(row["BackDate"]);
-
-                string final = "Forward Price: " + fwdPrice.ToString() + "<br>" + "BackDate Price: " + backPrice.ToString() + "<br>" + "Total: " + (fwdPrice + backPrice);
-                row["finalPrice"] = final;
-            }
-            }
-        }
-
-        //return ds;
-    }
-    */
-
     protected bool connected(CrmServiceClient svc)
     {
         if (svc == null)
@@ -1304,6 +984,16 @@ public partial class RequestList : System.Web.UI.Page
     }
 
     #endregion
+
+    public string GetDescription(DateTime expireDate, DateTime newExpireDate) //GetDescription(BackDating 시작날짜, New Expire Date)
+    {
+        //DateTime d2 = expireDate.AddMonths(1);
+        string dateFrom = string.Format("{0}년 {1}월 1일", expireDate.Year, expireDate.Month);
+        string dateUntil = string.Format("{0}년 {1}월 {2}일", newExpireDate.Year, newExpireDate.Month, DateTime.DaysInMonth(newExpireDate.Year, newExpireDate.Month));
+
+        string result = string.Format("   기간 : {0} ~ {1}", dateFrom, dateUntil);
+        return result;
+    }
 
 
     protected int CalcBackDate(DateTime expDate, DateTime offerDate)
@@ -1521,11 +1211,19 @@ public partial class RequestList : System.Web.UI.Page
 
     protected void estimatebtn_Click(object sender, EventArgs e)
     {
+        //DataTable grid = (DataTable)Session[""]
         DataTable dts = (DataTable)Session["GridData"];
         DataTable dts_copy = dts.Copy();
         string compName = (string)Session["BK_companyName"];
         DataSet ds = new DataSet();
         ds.Tables.Add(dts_copy);
+
+        DateTime newExpireDate = DateTime.Now;
+        {
+            string[] newexpdate = newExpire.Text.Split('/');
+            string newdate = newExpire.Text + "/" + DateTime.DaysInMonth(Convert.ToInt32(newexpdate[0]), Convert.ToInt32(newexpdate[1]));
+            newExpireDate = DateTime.ParseExact(newdate, "yyyy/M/dd", null);
+        }
 
         string templatePath = AppDomain.CurrentDomain.BaseDirectory + "\\Template\\견적서_양식.xlsx";
         FileInfo tempateInfo = new FileInfo(templatePath);
@@ -1547,7 +1245,10 @@ public partial class RequestList : System.Web.UI.Page
             // 라이센스 데이터 추가 테스트
             {
                 // 라이센스별 소계의 row index ==> 제일 아래의 합계에 목록으로 주기 위함 
-                List<int> listSubSum = new List<int>();
+                //List<int> listSubSum = new List<int>();
+
+                // 견적 내는 Product 개수
+                int numOfProducts = 0;
 
                 // 엑셀 row
                 // 견적서 출력되는 본문의 엑셀 시작위치(17 = 컬럼헤더 바로 아랫줄)
@@ -1599,16 +1300,84 @@ public partial class RequestList : System.Web.UI.Page
                 // Cell에 값 넣기
                 for (var readRowIndex = 1; readRowIndex <= totalRows - 2; readRowIndex++)
                 {
-
-                    // backdating에 원가/견적 금액이 없는 경우 ==> 줄 출력하지 않기 
-                    if (readRowIndex % 3 == 0)
+                    // 기간요약 줄 출력
                     {
-                        string sBackDating = GridView2.Rows[readRowIndex - 1].Cells[1].Text;
-                        if (sBackDating.Trim().Equals("BackDating = 0", StringComparison.OrdinalIgnoreCase))
+                        int colIndex = 2;
+                        //Debug.WriteLine("ReadRowIndex: " + readRowIndex);
+                        // Row 삽입
+                        //workSheet.InsertRow(excelRowIndex + tableStartRowIndex, 1, tableTemplateBodyRowIndex + excelRowIndex);
+
+                        // Body 줄 출력
+                        DateTime oldExpireDate = new DateTime();
+                        if (readRowIndex % 3 == 0) // Backdate Row
                         {
-                            continue;
+                            string sBackDating = GridView2.Rows[readRowIndex - 1].Cells[1].Text;
+                            if (sBackDating.Trim().Equals("BackDating = 0", StringComparison.OrdinalIgnoreCase))
+                            {
+                                oldExpireDate = DateTime.ParseExact(quotation.Text + "/01", "yyyy/M/dd", null);
+                                //continue;
+                            }
+                            else
+                            {
+                                //sBackDating = sBackDating.Trim();
+                                string[] backDating = sBackDating.Split('(');
+                                string[] backDate = backDating[1].Split('~');
+                                string[] bbackdate = backDate[0].Split(' ');
+                                oldExpireDate = DateTime.ParseExact(bbackdate[0], "yyyy.M.d", null);
+                            }
+
+                            string product = GetDescription(oldExpireDate, newExpireDate);
+                            workSheet.InsertRow(excelRowIndex + tableStartRowIndex, 1, tableTemplateBodyRowIndex + excelRowIndex);
+
+                            // Blank Cell 일 경우
+                            if (IsNull(product))
+                            {
+                                product = " ";
+                            }
+                            else
+                            {
+                                // Body Row
+                                workSheet.Cells[excelRowIndex + tableStartRowIndex - 1, colIndex + 1].Value = product;
+                                //Debug.WriteLine("Body: " + (excelRowIndex + tableStartRowIndex));
+                            }
                         }
+                        else if (readRowIndex % 3 == 2) // Forward Row
+                        {
+                            string product = GridView2.Rows[readRowIndex - 1].Cells[colIndex - 1].Text;
+                            workSheet.InsertRow(excelRowIndex + tableStartRowIndex, 1, tableTemplateBodyRowIndex + excelRowIndex);
+
+                            if (IsNull(product))
+                            {
+                                product = " ";
+                            }
+                            else
+                            {
+                                workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 1].Value = "";
+                                workSheet.Row(excelRowIndex + tableStartRowIndex).Height = (double)39.0;
+                                //Debug.WriteLine("Forward: " + (excelRowIndex + tableStartRowIndex));
+                            }
+                        }
+                        else // Head Row (readRowIndex % 3 == 1)
+                        {
+                            string product = GridView2.Rows[readRowIndex - 1].Cells[colIndex - 1].Text;
+                            workSheet.InsertRow(excelRowIndex + tableStartRowIndex, 1, tableTemplateHeadRowIndex + excelRowIndex);
+
+                            // Blank Cell 일 경우
+                            if (IsNull(product))
+                            {
+                                product = " ";
+                            }
+
+                            // Head Row
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 1].Value = product;
+                            workSheet.Row(excelRowIndex + tableStartRowIndex).Height = (double)20.0;
+                            // Description Head Column Bold체 처리
+                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 1].Style.Font.Bold = true;
+                            //Debug.WriteLine("Head: " + (excelRowIndex + tableStartRowIndex));
+                        }
+
                     }
+
 
                     // NO
                     {
@@ -1620,46 +1389,23 @@ public partial class RequestList : System.Web.UI.Page
                         if (IsNull(product))
                         { 
                             // 각 라이센스의 상세줄 
-                            workSheet.InsertRow(excelRowIndex + tableStartRowIndex, 1, tableTemplateBodyRowIndex + excelRowIndex);
-                            
                             workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 1].Value = " ";
-                            workSheet.Row(excelRowIndex + tableStartRowIndex).Height = (double)20.0;
                         }
                         else
                         { 
                             // 각 라이센스의 헤드 
-                            workSheet.InsertRow(excelRowIndex + tableStartRowIndex, 1, tableTemplateHeadRowIndex + excelRowIndex);
+                            //workSheet.InsertRow(excelRowIndex + tableStartRowIndex, 1, tableTemplateHeadRowIndex + excelRowIndex);
 
                             int iVal = int.Parse(NormalizeToDecimal(product));
                             workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 1].Value = iVal;
-                            workSheet.Row(excelRowIndex + tableStartRowIndex).Height = (double)20.0;
-
-                            // Description Column, Customer RRP Column Bold체 처리
-                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 2].Style.Font.Bold = true;
-                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 4].Style.Font.Bold = true;
 
                             // 소계 row index 저장 
-                            listSubSum.Add(tableStartRowIndex + excelRowIndex);
+                            //listSubSum.Add(tableStartRowIndex + excelRowIndex);
+
+                            numOfProducts++;
                         }
                     }
 
-
-                    // 기간요약
-                    {
-                        int colIndex = 2;
-
-                        string product = GridView2.Rows[readRowIndex - 1].Cells[colIndex - 1].Text;
-                        //Debug.WriteLine("product: " + product);
-
-                        // Blank Cell 일 경우
-                        if (IsNull(product))
-                        {
-                            product = " ";
-                        }
-
-                        workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex + 1].Value = product;
-
-                    }
 
                     // 종료일자 --> 엑셀에 출력하지 않음으로 뺌.
                     {
@@ -1699,8 +1445,11 @@ public partial class RequestList : System.Web.UI.Page
                         }
                         else
                         {
-                            long iVal = long.Parse(NormalizeToDecimal(product));
-                            workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex].Value = iVal;
+                            if (readRowIndex % 3 == 1) // Head Row일 시
+                            {
+                                long iVal = long.Parse(NormalizeToDecimal(product));
+                                workSheet.Cells[excelRowIndex + tableStartRowIndex, colIndex].Value = iVal;
+                            }
                         }
                     }
 
@@ -1754,8 +1503,26 @@ public partial class RequestList : System.Web.UI.Page
                 workSheet.DeleteRow(excelRowIndex + tableStartRowIndex);
                 workSheet.DeleteRow(excelRowIndex + tableStartRowIndex);
 
-                // SOLKO SUBSCRIPTION SERVICE Row에 No. 삽입
-                workSheet.Cells[excelRowIndex + tableStartRowIndex + 1, 2].Value = listSubSum.Count + 1;
+                Debug.WriteLine("where: " + excelRowIndex + tableStartRowIndex);
+
+                // backdating 줄 삭제하기
+                for (int rowIndex = excelRowIndex + tableStartRowIndex - 1; rowIndex >= 20; rowIndex -= 3)
+                {
+                    workSheet.DeleteRow(rowIndex);
+                    Debug.WriteLine("rowindex: " + rowIndex);
+                }
+                    //if (readRowIndex % 3 == 0)
+                    //{
+                    //    //string sBackDating = GridView2.Rows[readRowIndex - 1].Cells[1].Text;
+                    //    //if (sBackDating.Trim().Equals("BackDating = 0", StringComparison.OrdinalIgnoreCase))
+                    //    //{
+                    //    continue;
+                    //    //}
+                    //}
+
+                    // SOLKO SUBSCRIPTION SERVICE Row에 No. 삽입
+                    // tableStartRowIndex(17) + 1인 18번째 줄 부터 제품 개수 * 2 한 줄을 더한 후 + 2
+                    workSheet.Cells[tableStartRowIndex + 1 + (numOfProducts * 2) + 1, 2].Value = (numOfProducts + 1);
 
                 // Table의 마지막 줄
                 //int last_table_row = listSubSum[listSubSum.Count - 1];
@@ -1767,7 +1534,7 @@ public partial class RequestList : System.Web.UI.Page
                 // 최종 견적가
                 string form_final = "";
                 StringBuilder sbRows_final = new StringBuilder();
-                for (int i = 0; i < listSubSum.Count; i++)
+                for (int i = 0; i < numOfProducts; i++)
                 {
                     if (sbRows.Length > 0)
                     {
@@ -1775,16 +1542,30 @@ public partial class RequestList : System.Web.UI.Page
                         sbRows_final.Append(", ");
                     }
 
-                    sbRows.Append(string.Format("D{0} * E{0}", listSubSum[i]));
-                    sbRows_final.Append(string.Format("G{0}", listSubSum[i]));
+                    sbRows.Append(string.Format("D{0} * E{0}", 18 + (i * 2)));
+                    sbRows_final.Append(string.Format("G{0}", 18 + (i * 2)));
                 }
+                //for (int i = 0; i < listSubSum.Count; i++)
+                //{
+                //    if (sbRows.Length > 0)
+                //    {
+                //        sbRows.Append(", ");
+                //        sbRows_final.Append(", ");
+                //    }
+
+                //    sbRows.Append(string.Format("D{0} * E{0}", listSubSum[i]));
+                //    sbRows_final.Append(string.Format("G{0}", listSubSum[i]));
+                //}
 
                 form = sbRows.ToString();
                 form_final = sbRows_final.ToString();
+
+                Debug.WriteLine("ㅗㅗㅗ: " + tableStartRowIndex + 1 + (numOfProducts * 2));
+
                 // 소비자단가_Sub Total
-                workSheet.Cells[excelRowIndex + tableStartRowIndex + 3, 5].Formula = "SUM(" + form + ")";
+                workSheet.Cells[tableStartRowIndex + 1 + (numOfProducts * 2) + 3, 5].Formula = "SUM(" + form + ")";
                 // 최종 견적가_Sub Total
-                workSheet.Cells[excelRowIndex + tableStartRowIndex + 3, 7].Formula = "SUM(" + form_final + ")";
+                workSheet.Cells[tableStartRowIndex + 1 + (numOfProducts * 2) + 3, 7].Formula = "SUM(" + form_final + ")";
 
                 // listSubSum 넣기
                 //StringBuilder sb2 = new StringBuilder();

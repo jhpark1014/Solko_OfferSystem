@@ -12,7 +12,7 @@ public class CLicenseOffer
     //public string SiteName { get; }
     public string ProductCategory { get; }
     public string ProductName { get; }
-    public DateTime EndDate { get; }
+    public DateTime EndDate { get; } // 현재 Expire Date
     public int Quantity { get; }
 
     public long Cost { get; }
@@ -179,7 +179,7 @@ public class CLicenseOffer
     public long GetPrice_DiscountedCost(long cost, double discountPercent)
     {
         double price1 = (double)cost * (1.0 - discountPercent * 0.01);
-        long price1000 = RoundingCut1000(price1);
+        long price1000 = FloorCut1000(price1);
         return price1000;
     }
 
@@ -268,6 +268,21 @@ public class CLicenseOffer
         double v2 = price * 0.001;
 
         double v3 = Math.Round(v2);
+
+        long v4 = (long)v3;
+
+        long v5 = v4 * 1000;
+
+        return v5;
+    }
+
+    private long FloorCut1000(double price)
+    {
+        //double v1 = double.Parse(price);
+
+        double v2 = price * 0.001;
+
+        double v3 = Math.Floor(v2);
 
         long v4 = (long)v3;
 
